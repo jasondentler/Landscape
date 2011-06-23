@@ -1,0 +1,12 @@
+﻿@model Index
+@{
+    Html.RegisterTemplate("header", "Templates/header.tmpl.html");
+    Html.RegisterTemplate("footer", "Templates/footer.tmpl.html");
+    Html.RegisterTemplate("include", "Templates/include.tmpl.html");
+}
+
+<div data-bind='template: "header"'></div>
+
+<div> Body goes here.</div>
+
+<div data-bind='template: "footer"'></div>
