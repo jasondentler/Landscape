@@ -8,7 +8,7 @@ namespace Landscape.Core
     public static class HtmlHelperExtensions
     {
 
-        public static void RegisterTemplate(this HtmlHelper html, string id, string appRelativeUrl)
+        public static void ReferenceTemplate(this HtmlHelper html, string id, string appRelativeUrl)
         {
             var urlHelper = new UrlHelper(html.ViewContext.RequestContext, html.RouteCollection);
 

@@ -45,13 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomJsonResult.cs" />
+    <Compile Include="Controller.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="IJsonSerializable.cs" />
     <Compile Include="JsonSerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
