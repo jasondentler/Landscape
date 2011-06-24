@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    @Html.RenderStylesheetLinks()
+    @Html.RenderScripts()
+    @Html.RenderTemplates()
+    @if (Model as IJsonSerializable != null)
+    {
+    <script type="text/javascript">
+        var model = @(((IJsonSerializable) Model).ToJson());
+    </script>
+    }
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>
+
