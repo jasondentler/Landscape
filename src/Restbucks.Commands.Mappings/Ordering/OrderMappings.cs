@@ -26,6 +26,12 @@ namespace Restbucks.Ordering
                 .ToCallOn((cmd, order) => order.PlaceOrder(cmd.Location))
                 .RegisterWith(commandService);
 
+            Map.Command<ChangeOrderLocation>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.ChangeLocation(cmd.NewLocation))
+                .RegisterWith(commandService);
+
 
         }
     }

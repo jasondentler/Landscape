@@ -53,6 +53,7 @@
     <Compile Include="Menu\AddCustomization.cs" />
     <Compile Include="Menu\AddProduct.cs" />
     <Compile Include="Ordering\AddOrderItem.cs" />
+    <Compile Include="Ordering\ChangeOrderLocation.cs" />
     <Compile Include="Ordering\PlaceOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

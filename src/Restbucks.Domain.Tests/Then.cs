@@ -10,6 +10,13 @@ namespace Restbucks
     public class Then
     {
 
+        [Then(@"nothing happens")]
+        public void ThenNothingHappens()
+        {
+            var events = DomainHelper.GetEvents();
+            events.Should().Be.Empty();
+        }
+
         [Then(@"nothing else happens")]
         public void ThenNothingElseHappens()
         {

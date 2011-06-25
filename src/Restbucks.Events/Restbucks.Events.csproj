@@ -56,6 +56,7 @@
     <Compile Include="Menu\ProductAdded.cs" />
     <Compile Include="Ordering\OrderCreated.cs" />
     <Compile Include="Ordering\OrderItemAdded.cs" />
+    <Compile Include="Ordering\OrderLocationChanged.cs" />
     <Compile Include="Ordering\OrderPlaced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -46,6 +46,16 @@ namespace Restbucks.Ordering
 
             DomainHelper.GivenEvent<OrderItem>(e);
         }
-    
+
+        [Given(@"I have placed the order ""for here""")]
+        public void GivenIHavePlacedTheOrderForHere()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var e = new OrderPlaced(orderId, Location.InShop);
+
+            DomainHelper.GivenEvent<Order>(e);
+        }
+
     }
 }

@@ -81,5 +81,25 @@ namespace Restbucks.Ordering
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I change the order location to take away")]
+        public void WhenIChangeTheOrderLocationToTakeAway()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var cmd = new ChangeOrderLocation(orderId, Location.TakeAway);
+
+            DomainHelper.WhenExecuting(cmd);
+        }
+
+        [When(@"I change the order location to in shop")]
+        public void WhenIChangeTheOrderLocationToInShop()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var cmd = new ChangeOrderLocation(orderId, Location.InShop);
+
+            DomainHelper.WhenExecuting(cmd);
+        }
+
     }
 }

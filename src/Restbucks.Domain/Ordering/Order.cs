@@ -9,6 +9,8 @@ namespace Restbucks.Ordering
     {
 
         private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
+        private OrderState _state = OrderState.Created;
+        private Location _location;
 
         private Order()
         {
@@ -43,6 +45,20 @@ namespace Restbucks.Ordering
             ApplyEvent(e);
         }
 
+        public void ChangeLocation(Location newLocation)
+        {
+
+            if (_state == OrderState.Created)
+                throw new InvalidAggregateStateException("You can't change the order location before you place the order.");
+
+            if (newLocation == _location) 
+                return;
+
+            var e = new OrderLocationChanged(EventSourceId, _location, newLocation);
+            ApplyEvent(e);
+        }
+
+
         protected void On(OrderCreated e)
         {
         }
@@ -53,6 +69,13 @@ namespace Restbucks.Ordering
 
         protected void On(OrderPlaced e)
         {
+            _state = OrderState.Placed;
+            _location = e.Location;
+        }
+
+        protected void On(OrderLocationChanged e)
+        {
+            _location = e.Location;
         }
 
     }

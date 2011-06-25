@@ -64,5 +64,17 @@ namespace Restbucks.Ordering
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
 
+        [Then(@"the order location is changed from in shop to take away")]
+        public void ThenTheOrderLocationIsChangedFromInShopToTakeAway()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var e = DomainHelper.GetEvent<OrderLocationChanged>();
+
+            e.OrderId.Should().Be.EqualTo(orderId);
+            e.PreviousLocation.Should().Be.EqualTo(Location.InShop);
+            e.Location.Should().Be.EqualTo(Location.TakeAway);
+        }
+
     }
 }

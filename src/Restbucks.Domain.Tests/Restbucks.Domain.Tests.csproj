@@ -86,6 +86,11 @@
     <Compile Include="Menu\SetupTheMenu.cs" />
     <Compile Include="Menu\Then.cs" />
     <Compile Include="Menu\When.cs" />
+    <Compile Include="Ordering\ChangeOrderLocation.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeOrderLocation.feature</DependentUpon>
+    </Compile>
     <Compile Include="Ordering\Given.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Menu\Given.cs" />
@@ -109,6 +114,10 @@
     <None Include="Menu\AddProduct.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Ordering\ChangeOrderLocation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChangeOrderLocation.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Ordering\PlaceAnOrder.feature">
