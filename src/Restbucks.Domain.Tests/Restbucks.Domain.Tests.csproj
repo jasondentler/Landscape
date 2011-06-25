@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Restbucks</RootNamespace>
+    <AssemblyName>Restbucks.Domain.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\ncqrs\Framework\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs">
+      <HintPath>..\..\libs\ncqrs\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Config.Ninject">
+      <HintPath>..\..\libs\ncqrs\Extensions\Ncqrs.Config.Ninject\Ncqrs.Config.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Spec">
+      <HintPath>..\..\libs\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\ncqrs\Framework\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\libs\ncqrs\Extensions\Ncqrs.Config.Ninject\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\libs\ncqrs\Spec\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx.Mvc">
+      <HintPath>..\packages\SharpTestsEx.1.1.1\lib\SharpTestsEx.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.6.1\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DomainHelper.cs" />
+    <Compile Include="Menu\AddCustomization.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddCustomization.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\AddProduct.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddProduct.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\SetupTheMenu.cs" />
+    <Compile Include="Menu\Then.cs" />
+    <Compile Include="Menu\When.cs" />
+    <Compile Include="Ordering\Given.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="Menu\Given.cs" />
+    <Compile Include="NcqrsModule.cs" />
+    <Compile Include="Ordering\PlaceAnOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlaceAnOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Ordering\Then.cs" />
+    <Compile Include="Ordering\When.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Then.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Menu\AddCustomization.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddCustomization.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Menu\AddProduct.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Ordering\PlaceAnOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PlaceAnOrder.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Landscape.Core\Landscape.Core.csproj">
+      <Project>{00EA1804-0946-4022-9A1D-1904E6DDCC83}</Project>
+      <Name>Landscape.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Commands.Mappings\Restbucks.Commands.Mappings.csproj">
+      <Project>{68EB7F31-9274-4860-A124-2AC82F475C98}</Project>
+      <Name>Restbucks.Commands.Mappings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Commands\Restbucks.Commands.csproj">
+      <Project>{457BE0FD-F8CA-471B-8126-35BF2408DC39}</Project>
+      <Name>Restbucks.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Core\Restbucks.Core.csproj">
+      <Project>{BCDA5495-B862-43B7-BF75-CDB233D4B786}</Project>
+      <Name>Restbucks.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Domain\Restbucks.Domain.csproj">
+      <Project>{0DB77AB2-78C0-4021-880E-F182C251F96C}</Project>
+      <Name>Restbucks.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Events\Restbucks.Events.csproj">
+      <Project>{11339A2A-D215-4FBD-AB3E-97ACBEEA1A73}</Project>
+      <Name>Restbucks.Events</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

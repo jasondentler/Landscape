@@ -16,7 +16,7 @@ namespace Restbucks.Ordering
 
         public AddOrderItem(
             Guid orderId,
-            Guid orderItemId,
+            Guid orderItemId, 
             Guid productId,
             IDictionary<string, string> preferences,
             int quantity)

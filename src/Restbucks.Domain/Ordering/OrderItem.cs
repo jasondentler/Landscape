@@ -40,10 +40,6 @@ namespace Restbucks.Ordering
         {
             return EntityId.GetHashCode();
         }
-
-        protected void On(OrderItemAdded e)
-        {
-        }
-
+        
     }
 }

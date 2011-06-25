@@ -3,7 +3,7 @@ using Ncqrs.Eventing.Sourcing;
 
 namespace Restbucks.Ordering
 {
-    public class OrderCreated : SourcedEvent 
+    public class OrderCreated  
     {
         public Guid OrderId { get; private set; }
 
