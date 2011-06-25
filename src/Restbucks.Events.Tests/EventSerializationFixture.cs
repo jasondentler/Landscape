@@ -7,6 +7,11 @@ using Ncqrs.Spec;
 
 namespace Restbucks
 {
+
+    /// <summary>
+    /// Resharper 6 RC hates inconclusive tests, so I've copied these serialization tests and modified them to fail when inconclusive.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Specification]
     public abstract class EventSerializationFixture<T>
         : BaseTestFixture
