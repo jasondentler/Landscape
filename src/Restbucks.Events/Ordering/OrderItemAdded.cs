@@ -5,7 +5,7 @@ using Ncqrs.Eventing.Sourcing;
 namespace Restbucks.Ordering
 {
 
-    public class OrderItemAdded : EntitySourcedEventBase
+    public class OrderItemAdded : EntitySourcedEventBase, IEvent
     {
 
         public Guid OrderId { get; private set; }

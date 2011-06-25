@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5951B85B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restbucks.Domain.Tests", "Restbucks.Domain.Tests\Restbucks.Domain.Tests.csproj", "{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restbucks.Events.Tests", "Restbucks.Events.Tests\Restbucks.Events.Tests.csproj", "{DEF8F3BB-A441-4581-8A31-C3A9BCF76572}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF8F3BB-A441-4581-8A31-C3A9BCF76572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF8F3BB-A441-4581-8A31-C3A9BCF76572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF8F3BB-A441-4581-8A31-C3A9BCF76572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF8F3BB-A441-4581-8A31-C3A9BCF76572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,5 +78,6 @@ Global
 		{68EB7F31-9274-4860-A124-2AC82F475C98} = {ED33E20C-D512-4CCB-A817-9C93F1A15076}
 		{5951B85B-C9B5-48A4-A598-ABBC150045F1} = {ED33E20C-D512-4CCB-A817-9C93F1A15076}
 		{38E80F16-0D4B-41B9-81D5-E1184A7F6E3E} = {5951B85B-C9B5-48A4-A598-ABBC150045F1}
+		{DEF8F3BB-A441-4581-8A31-C3A9BCF76572} = {5951B85B-C9B5-48A4-A598-ABBC150045F1}
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,8 @@
 ﻿using System;
-using Ncqrs.Eventing.Sourcing;
 
 namespace Restbucks.Ordering
 {
-    public class OrderCreated  
+    public class OrderCreated  : IEvent 
     {
         public Guid OrderId { get; private set; }
 

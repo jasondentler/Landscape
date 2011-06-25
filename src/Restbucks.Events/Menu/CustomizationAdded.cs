@@ -2,7 +2,7 @@
 
 namespace Restbucks.Menu
 {
-    public class CustomizationAdded
+    public class CustomizationAdded : IEvent 
     {
 
         public Guid ProductId { get; private set; }
