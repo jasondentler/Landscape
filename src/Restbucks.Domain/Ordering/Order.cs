@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ncqrs.Domain;
 
 namespace Restbucks.Ordering
 {
 
-    public class Order : AggregateRootMappedByConvention 
+    public class Order : AggregateRootMappedByConvention
     {
 
-        private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
+        private bool _hasItems = false;
         private OrderState _state;
         private Location _location;
 
@@ -36,25 +37,66 @@ namespace Restbucks.Ordering
             IDictionary<string, string> preferences,
             int quantity)
         {
-            _items.Add(new OrderItem(this, orderItemId, productId, preferences, quantity));
+
+            var e = new OrderItemAdded(
+                EventSourceId,
+                orderItemId,
+                productId,
+                preferences,
+                quantity);
+
+            ApplyEvent(e);
+
         }
 
         public void PlaceOrder(Location location)
         {
+            switch (_state)
+            {
+                case OrderState.Created:
+                    break;
+                case OrderState.Placed:
+                    return;
+                case OrderState.Cancelled:
+                    throw new InvalidAggregateStateException("This order is cancelled. Create a new order.");
+                default:
+                    throw new InvalidAggregateStateException(string.Empty);
+            }
+
+            if (!_hasItems)
+                throw new InvalidAggregateStateException("You can't place an empty order. Add an item.");
+
             var e = new OrderPlaced(EventSourceId, location);
             ApplyEvent(e);
+
+
         }
 
         public void ChangeLocation(Location newLocation)
         {
 
-            if (_state == OrderState.Created)
-                throw new InvalidAggregateStateException("You can't change the order location before you place the order.");
+            switch (_state)
+            {
+                case OrderState.Created:
+                    throw new InvalidAggregateStateException("You can't change the order location before you place the order.");
+                case OrderState.Cancelled:
+                    throw new InvalidAggregateStateException("You can't change the location of a cancelled order.");
+            }
 
             if (newLocation == _location) 
                 return;
 
             var e = new OrderLocationChanged(EventSourceId, _location, newLocation);
+            ApplyEvent(e);
+        }
+
+        public void Cancel()
+        {
+
+            if (_state == OrderState.Cancelled)
+                return;
+
+            var e = new OrderCancelled(EventSourceId);
             ApplyEvent(e);
         }
 
@@ -66,6 +108,7 @@ namespace Restbucks.Ordering
 
         protected void On(OrderItemAdded e)
         {
+            _hasItems = true;
         }
 
         protected void On(OrderPlaced e)
@@ -77,6 +120,11 @@ namespace Restbucks.Ordering
         protected void On(OrderLocationChanged e)
         {
             _location = e.Location;
+        }
+
+        protected void On(OrderCancelled e)
+        {
+            _state = OrderState.Cancelled;
         }
 
     }

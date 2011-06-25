@@ -54,6 +54,7 @@
     <Compile Include="IEvent.cs" />
     <Compile Include="Menu\CustomizationAdded.cs" />
     <Compile Include="Menu\ProductAdded.cs" />
+    <Compile Include="Ordering\OrderCancelled.cs" />
     <Compile Include="Ordering\OrderCreated.cs" />
     <Compile Include="Ordering\OrderItemAdded.cs" />
     <Compile Include="Ordering\OrderLocationChanged.cs" />

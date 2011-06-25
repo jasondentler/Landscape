@@ -18,21 +18,21 @@ namespace Restbucks.Ordering
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.6.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Place an order")]
-    public partial class PlaceAnOrderFeature
+    [NUnit.Framework.DescriptionAttribute("Cancel order")]
+    public partial class CancelOrderFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "PlaceAnOrder.feature"
+#line 1 "CancelOrder.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Place an order", "In order to avoid a murderous rampage\r\nAs a coffee addict\r\nI want to place my ord" +
-                    "er for coffee", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Cancel order", "In order to punish the barista for being slow\r\nAs a rude customer\r\nI want to canc" +
+                    "el my coffee order and stomp off in a fit", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -55,93 +55,91 @@ namespace Restbucks.Ordering
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Place the order")]
+        [NUnit.Framework.DescriptionAttribute("Cancel a placed order")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void PlaceTheOrder()
+        public virtual void CancelAPlacedOrder()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place the order", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel a placed order", new string[] {
                         "domain"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.Given("the franchise owner has set up the menu");
 #line 9
- testRunner.And("I have created an order");
+ testRunner.And("I have placed an order");
 #line 10
- testRunner.And("I have added a medium cappuccino, skim milk, single shot");
+ testRunner.When("I cancel the order");
 #line 11
- testRunner.When("I place the order for take away");
+ testRunner.Then("the order is cancelled");
 #line 12
- testRunner.Then("the order is placed for take away");
-#line 13
  testRunner.And("nothing else happens");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Place an empty order")]
+        [NUnit.Framework.DescriptionAttribute("Cancel an unplaced order")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void PlaceAnEmptyOrder()
+        public virtual void CancelAnUnplacedOrder()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place an empty order", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel an unplaced order", new string[] {
                         "domain"});
-#line 16
+#line 15
 this.ScenarioSetup(scenarioInfo);
-#line 17
+#line 16
  testRunner.Given("the franchise owner has set up the menu");
-#line 18
+#line 17
  testRunner.And("I have created an order");
+#line 18
+ testRunner.When("I cancel the order");
 #line 19
- testRunner.When("I place the order for take away");
+ testRunner.Then("the order is cancelled");
 #line 20
- testRunner.Then("the aggregate state is invalid");
-#line 21
- testRunner.And("the error is \"You can\'t place an empty order. Add an item.\"");
+ testRunner.And("nothing else happens");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Place an already-placed order")]
+        [NUnit.Framework.DescriptionAttribute("Cancel a cancelled order")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void PlaceAnAlready_PlacedOrder()
+        public virtual void CancelACancelledOrder()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place an already-placed order", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel a cancelled order", new string[] {
                         "domain"});
-#line 24
+#line 23
 this.ScenarioSetup(scenarioInfo);
-#line 25
+#line 24
  testRunner.Given("the franchise owner has set up the menu");
+#line 25
+ testRunner.And("I have created and cancelled an order");
 #line 26
- testRunner.Given("I have placed an order");
+ testRunner.When("I cancel the order");
 #line 27
- testRunner.When("I place the order for take away");
-#line 28
  testRunner.Then("nothing happens");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Place a cancelled order")]
+        [NUnit.Framework.DescriptionAttribute("Change location of a cancelled order")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void PlaceACancelledOrder()
+        public virtual void ChangeLocationOfACancelledOrder()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place a cancelled order", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change location of a cancelled order", new string[] {
                         "domain"});
-#line 31
+#line 30
 this.ScenarioSetup(scenarioInfo);
-#line 32
+#line 31
  testRunner.Given("the franchise owner has set up the menu");
-#line 33
+#line 32
  testRunner.And("I have created and cancelled an order");
+#line 33
+ testRunner.When("I change the order location to take away");
 #line 34
- testRunner.When("I place the order for take away");
-#line 35
  testRunner.Then("the aggregate state is invalid");
-#line 36
- testRunner.And("the error is \"This order is cancelled. Create a new order.\"");
+#line 35
+ testRunner.And("the error is \"You can\'t change the location of a cancelled order.\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

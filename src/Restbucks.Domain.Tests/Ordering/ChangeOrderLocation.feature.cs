@@ -66,9 +66,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.Given("the franchise owner has set up the menu");
 #line 9
- testRunner.And("I have started an order");
+ testRunner.And("I have created an order");
 #line 10
- testRunner.And("I have added a medium capuccino, skim milk, single shot");
+ testRunner.And("I have added a medium cappuccino, skim milk, single shot");
 #line 11
  testRunner.And("I have placed the order \"for here\"");
 #line 12
@@ -93,9 +93,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 18
  testRunner.Given("the franchise owner has set up the menu");
 #line 19
- testRunner.And("I have started an order");
+ testRunner.And("I have created an order");
 #line 20
- testRunner.And("I have added a medium capuccino, skim milk, single shot");
+ testRunner.And("I have added a medium cappuccino, skim milk, single shot");
 #line 21
  testRunner.When("I change the order location to take away");
 #line 22
@@ -118,9 +118,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 27
  testRunner.Given("the franchise owner has set up the menu");
 #line 28
- testRunner.And("I have started an order");
+ testRunner.And("I have created an order");
 #line 29
- testRunner.And("I have added a medium capuccino, skim milk, single shot");
+ testRunner.And("I have added a medium cappuccino, skim milk, single shot");
 #line 30
  testRunner.And("I have placed the order \"for here\"");
 #line 31

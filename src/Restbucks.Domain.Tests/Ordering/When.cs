@@ -18,13 +18,13 @@ namespace Restbucks.Ordering
             return orderId;
         }
 
-        [When(@"I add a medium capuccino, skim milk, single shot")]
-        public void WhenIAddAMediumCapuccinoSkimMilkSingleShot()
+        [When(@"I add a medium cappuccino, skim milk, single shot")]
+        public void WhenIAddAMediumCappuccinoSkimMilkSingleShot()
         {
 
             var orderId = GetOrderId();
             var orderItemId = Guid.NewGuid();
-            var productId = DomainHelper.GetId<Product>("Capuccino");
+            var productId = DomainHelper.GetId<Product>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "medium"},
@@ -97,6 +97,16 @@ namespace Restbucks.Ordering
             var orderId = DomainHelper.GetId<Order>();
 
             var cmd = new ChangeOrderLocation(orderId, Location.InShop);
+
+            DomainHelper.WhenExecuting(cmd);
+        }
+
+        [When(@"I cancel the order")]
+        public void WhenICancelTheOrder()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var cmd = new CancelOrder(orderId);
 
             DomainHelper.WhenExecuting(cmd);
         }

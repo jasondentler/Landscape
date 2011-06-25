@@ -17,12 +17,12 @@ namespace Restbucks.Ordering
             e.OrderId.Should().Be.EqualTo(orderId);
         }
 
-        [Then(@"a medium capuccino, skim milk, single shot is added to the order")]
-        public void ThenAMediumCapuccinoSkimMilkSingleShotIsAddedToTheOrder()
+        [Then(@"a medium cappuccino, skim milk, single shot is added to the order")]
+        public void ThenAMediumCappuccinoSkimMilkSingleShotIsAddedToTheOrder()
         {
             var orderId = DomainHelper.GetId<Order>();
             var orderItemId = DomainHelper.GetId<OrderItem>();
-            var productId = DomainHelper.GetId<Product>("Capuccino");
+            var productId = DomainHelper.GetId<Product>("Cappuccino");
 
             var e = DomainHelper.GetEvent<OrderItemAdded>();
 
@@ -74,6 +74,16 @@ namespace Restbucks.Ordering
             e.OrderId.Should().Be.EqualTo(orderId);
             e.PreviousLocation.Should().Be.EqualTo(Location.InShop);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
+        }
+
+        [Then(@"the order is cancelled")]
+        public void ThenTheOrderIsCancelled()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var e = DomainHelper.GetEvent<OrderCancelled>();
+
+            e.OrderId.Should().Be.EqualTo(orderId);
         }
 
     }

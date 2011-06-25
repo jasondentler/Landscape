@@ -18,7 +18,7 @@ namespace Restbucks.Menu
             var kind = new[] {"chocolate chip", "ginger"};
             var whippedCream = new[] {"yes", "no"};
 
-            AddProduct("Capuccino", 6.7M, new Dictionary<string, string[]>()
+            AddProduct("Cappuccino", 6.7M, new Dictionary<string, string[]>()
                                               {
                                                   {"Milk", milk},
                                                   {"Shots", shots},

@@ -86,10 +86,20 @@
     <Compile Include="Menu\SetupTheMenu.cs" />
     <Compile Include="Menu\Then.cs" />
     <Compile Include="Menu\When.cs" />
+    <Compile Include="Ordering\CancelOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CancelOrder.feature</DependentUpon>
+    </Compile>
     <Compile Include="Ordering\ChangeOrderLocation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangeOrderLocation.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Ordering\CreateAnOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreateAnOrder.feature</DependentUpon>
     </Compile>
     <Compile Include="Ordering\Given.cs" />
     <Compile Include="Setup.cs" />
@@ -115,9 +125,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
     </None>
+    <None Include="Ordering\CancelOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CancelOrder.feature.cs</LastGenOutput>
+    </None>
     <None Include="Ordering\ChangeOrderLocation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChangeOrderLocation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Ordering\CreateAnOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateAnOrder.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Ordering\PlaceAnOrder.feature">

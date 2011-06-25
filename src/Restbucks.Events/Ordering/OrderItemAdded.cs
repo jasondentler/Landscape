@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ncqrs.Eventing.Sourcing;
 
 namespace Restbucks.Ordering
 {
 
-    public class OrderItemAdded : EntitySourcedEventBase, IEvent
+    public class OrderItemAdded : IEvent
     {
 
         public Guid OrderId { get; private set; }

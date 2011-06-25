@@ -32,6 +32,11 @@ namespace Restbucks.Ordering
                 .ToCallOn((cmd, order) => order.ChangeLocation(cmd.NewLocation))
                 .RegisterWith(commandService);
 
+            Map.Command<CancelOrder>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.Cancel())
+                .RegisterWith(commandService);
 
         }
     }

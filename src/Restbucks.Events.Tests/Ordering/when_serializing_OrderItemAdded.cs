@@ -15,11 +15,7 @@ namespace Restbucks.Ordering
                                               {"Milk", "skim"},
                                               {"Size", "medium"}
                                           },
-                                      5)
-                       {
-                           AggregateId = Guid.NewGuid(),
-                           EntityId = Guid.NewGuid()
-                       };
+                                      5);
         }
 
     }
