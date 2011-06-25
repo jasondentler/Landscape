@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllEventsFixture.cs" />
+    <Compile Include="EventSerializationFixture.cs" />
+    <Compile Include="JsonSerializationFixture.cs" />
     <Compile Include="Menu\when_serializing_ProductAdded.cs" />
     <Compile Include="Menu\when_serializing_CustomizationAdded.cs" />
     <Compile Include="Ordering\when_serializing_OrderItemAdded.cs" />

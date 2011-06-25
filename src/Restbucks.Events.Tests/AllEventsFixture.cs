@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
-using Ncqrs.Spec;
 using NUnit.Framework;
+using Ncqrs.Spec;
 
 namespace Restbucks
 {

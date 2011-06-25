@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ncqrs.Spec;
 
 namespace Restbucks.Ordering
 {
@@ -16,7 +15,12 @@ namespace Restbucks.Ordering
                                               {"Milk", "skim"},
                                               {"Size", "medium"}
                                           },
-                                      5);
+                                      5)
+                       {
+                           AggregateId = Guid.NewGuid(),
+                           EntityId = Guid.NewGuid()
+                       };
         }
+
     }
 }

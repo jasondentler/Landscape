@@ -1,5 +1,4 @@
 ﻿using System;
-using Ncqrs.Spec;
 
 namespace Restbucks.Ordering
 {
