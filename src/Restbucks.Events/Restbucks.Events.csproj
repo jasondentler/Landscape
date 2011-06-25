@@ -50,17 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IComponent.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Menu\CustomizationAdded.cs" />
     <Compile Include="Menu\ProductAdded.cs" />
     <Compile Include="Ordering\OrderCreated.cs" />
     <Compile Include="Ordering\OrderItemAdded.cs" />
+    <Compile Include="Ordering\OrderPlaced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Restbucks.Core\Restbucks.Core.csproj">
+      <Project>{BCDA5495-B862-43B7-BF75-CDB233D4B786}</Project>
+      <Name>Restbucks.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

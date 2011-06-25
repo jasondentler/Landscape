@@ -15,10 +15,14 @@ namespace Restbucks
         public void all_events_are_marked_as_events()
         {
             var eventAssembly = typeof(IEvent).Assembly;
-            var unmarkedEventTypes = eventAssembly.GetTypes()
+
+            var nonComponents = eventAssembly.GetTypes()
                 .Where(t => t.IsClass
                             && !t.IsAbstract
-                            && !typeof(IEvent).IsAssignableFrom(t));
+                            && !typeof (IComponent).IsAssignableFrom(t));
+
+            var unmarkedEventTypes = nonComponents
+                .Where(t => !typeof (IEvent).IsAssignableFrom(t));
 
             if (!unmarkedEventTypes.Any()) return;
 

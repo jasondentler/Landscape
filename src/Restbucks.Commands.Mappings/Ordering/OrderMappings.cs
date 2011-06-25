@@ -20,6 +20,12 @@ namespace Restbucks.Ordering
                           order.AddItem(cmd.OrderItemId, cmd.ProductId, cmd.Preferences, cmd.Quantity))
                 .RegisterWith(commandService);
 
+            Map.Command<PlaceOrder>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.PlaceOrder(cmd.Location))
+                .RegisterWith(commandService);
+
 
         }
     }

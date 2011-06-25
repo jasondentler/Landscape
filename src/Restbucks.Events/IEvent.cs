@@ -11,5 +11,4 @@ namespace Restbucks
     public interface IEvent
     {
     }
-
 }

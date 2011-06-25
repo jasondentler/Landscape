@@ -101,6 +101,31 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Place the order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void PlaceTheOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place the order", new string[] {
+                        "domain"});
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("the franchise owner has set up the menu");
+#line 26
+ testRunner.And("I have started an order");
+#line 27
+ testRunner.And("I have added a medium capuccino, skim milk, single shot");
+#line 28
+ testRunner.When("I place the order for take away");
+#line 29
+ testRunner.Then("the order is placed for take away");
+#line 30
+ testRunner.And("nothing else happens");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

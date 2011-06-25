@@ -37,11 +37,21 @@ namespace Restbucks.Ordering
             _items.Add(new OrderItem(this, orderItemId, productId, preferences, quantity));
         }
 
+        public void PlaceOrder(Location location)
+        {
+            var e = new OrderPlaced(EventSourceId, location);
+            ApplyEvent(e);
+        }
+
         protected void On(OrderCreated e)
         {
         }
 
         protected void On(OrderItemAdded e)
+        {
+        }
+
+        protected void On(OrderPlaced e)
         {
         }
 

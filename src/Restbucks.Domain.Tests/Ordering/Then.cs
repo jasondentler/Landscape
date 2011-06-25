@@ -54,5 +54,15 @@ namespace Restbucks.Ordering
             e.Quantity.Should().Be.EqualTo(1);
         }
 
+        [Then(@"the order is placed for take away")]
+        public void ThenTheOrderIsPlacedForTakeAway()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var e = DomainHelper.GetEvent<OrderPlaced>();
+            e.OrderId.Should().Be.EqualTo(orderId);
+            e.Location.Should().Be.EqualTo(Location.TakeAway);
+        }
+
     }
 }

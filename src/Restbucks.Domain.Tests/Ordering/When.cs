@@ -71,5 +71,15 @@ namespace Restbucks.Ordering
             DomainHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I place the order for take away")]
+        public void WhenIPlaceTheOrderForTakeAway()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+
+            var cmd = new PlaceOrder(orderId, Location.TakeAway);
+
+            DomainHelper.WhenExecuting(cmd);
+        }
+
     }
 }

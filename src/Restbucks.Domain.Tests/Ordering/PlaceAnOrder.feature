@@ -19,3 +19,13 @@ Scenario: Add another item to an order
 	When I add a large hot chocolate, skim milk, no whipped cream
 	Then a large hot chocolate, skim milk, no whipped cream is added to the order
 	And nothing else happens
+
+@domain
+Scenario: Place the order 
+	Given the franchise owner has set up the menu
+	And I have started an order
+	And I have added a medium capuccino, skim milk, single shot
+	When I place the order for take away
+	Then the order is placed for take away 
+	And nothing else happens
+

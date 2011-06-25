@@ -3,8 +3,8 @@
     public enum Location
     {
 
-        TakeAway,
-        InShop
+        InShop,
+        TakeAway
 
     }
 }
