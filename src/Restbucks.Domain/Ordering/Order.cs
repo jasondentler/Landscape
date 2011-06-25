@@ -9,7 +9,7 @@ namespace Restbucks.Ordering
     {
 
         private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
-        private OrderState _state = OrderState.Created;
+        private OrderState _state;
         private Location _location;
 
         private Order()
@@ -61,6 +61,7 @@ namespace Restbucks.Ordering
 
         protected void On(OrderCreated e)
         {
+            _state = OrderState.Created;
         }
 
         protected void On(OrderItemAdded e)
