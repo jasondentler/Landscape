@@ -18,7 +18,7 @@ namespace Restbucks.Ordering
             DomainHelper.SetId<Order>(orderId);
 
             var e = new OrderCreated(orderId);
-            DomainHelper.GivenEvent<Order>(orderId);
+            DomainHelper.GivenEvent<Order>(e);
         }
 
         [Given(@"I have added a medium capuccino, skim milk, single shot")]

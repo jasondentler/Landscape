@@ -45,11 +45,6 @@ namespace Restbucks.Ordering
         {
         }
 
-        protected void On(System.Guid e)
-        {
-            throw new Exception("wtf!?!?");
-        }
-
     }
 
 }
