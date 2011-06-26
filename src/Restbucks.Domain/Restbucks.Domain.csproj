@@ -53,7 +53,7 @@
     <Compile Include="Menu\Product.cs" />
     <Compile Include="Ordering\Order.cs" />
     <Compile Include="Ordering\OrderItem.cs" />
-    <Compile Include="Payment\Product.cs" />
+    <Compile Include="Billing\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

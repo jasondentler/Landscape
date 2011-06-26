@@ -2,7 +2,7 @@
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
-namespace Restbucks.Payment
+namespace Restbucks.Billing
 {
     [Binding]
     public class Then

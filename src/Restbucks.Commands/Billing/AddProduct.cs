@@ -1,15 +1,16 @@
 ﻿using System;
+using Ncqrs.Commanding;
 
-namespace Restbucks.Payment
+namespace Restbucks.Billing
 {
-    public class ProductAdded : IEvent
+    public class AddProduct : CommandBase 
     {
         public Guid ProductId { get; private set; }
         public Guid MenuProductId { get; private set; }
         public string Name { get; private set; }
         public decimal Price { get; private set; }
 
-        public ProductAdded(
+        public AddProduct(
             Guid productId,
             Guid menuProductId,
             string name,

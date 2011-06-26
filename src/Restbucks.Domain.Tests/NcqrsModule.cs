@@ -30,7 +30,7 @@ namespace Restbucks
                 .ToConstant(new BasicGuidGenerator());
 
             var eventBus = new InProcessEventBus();
-            var asm = typeof (Restbucks.Payment.ProductHandler).Assembly;
+            var asm = typeof (Restbucks.Billing.ProductHandler).Assembly;
             eventBus.RegisterAllHandlersInAssembly(asm,
                                                    t => Kernel.Get(t));
             Kernel.Bind<IEventBus>()

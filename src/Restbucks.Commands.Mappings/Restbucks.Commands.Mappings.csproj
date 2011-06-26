@@ -54,7 +54,7 @@
     <Compile Include="ICommandMapping.cs" />
     <Compile Include="Menu\ProductMapping.cs" />
     <Compile Include="Ordering\OrderMappings.cs" />
-    <Compile Include="Payment\ProductMapping.cs" />
+    <Compile Include="Billing\ProductMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

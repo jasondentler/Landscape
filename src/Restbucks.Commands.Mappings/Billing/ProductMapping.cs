@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Ncqrs.Commanding.CommandExecution;
+﻿using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 using Ncqrs.Commanding.ServiceModel;
 
-namespace Restbucks.Payment
+namespace Restbucks.Billing
 {
     public class ProductMapping : ICommandMapping
     {

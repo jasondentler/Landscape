@@ -1,7 +1,7 @@
 ﻿using System;
 using Ncqrs.Domain;
 
-namespace Restbucks.Payment
+namespace Restbucks.Billing
 {
     public class Product : AggregateRootMappedByConvention 
     {

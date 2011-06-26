@@ -56,7 +56,7 @@
     <Compile Include="Ordering\CancelOrder.cs" />
     <Compile Include="Ordering\ChangeOrderLocation.cs" />
     <Compile Include="Ordering\PlaceOrder.cs" />
-    <Compile Include="Payment\AddProduct.cs" />
+    <Compile Include="Billing\AddProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing.ServiceModel.Bus;
 
-namespace Restbucks.Payment
+namespace Restbucks.Billing
 {
     public class ProductHandler
         : IEventHandler<Menu.ProductAdded>
@@ -24,7 +24,7 @@ namespace Restbucks.Payment
             var e = evnt.Payload;
             var productId = _idGenerator.GenerateNewId();
 
-            var cmd = new Restbucks.Payment.AddProduct(
+            var cmd = new AddProduct(
                 productId,
                 e.ProductId,
                 e.Name,
