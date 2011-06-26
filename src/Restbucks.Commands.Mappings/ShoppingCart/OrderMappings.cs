@@ -2,7 +2,7 @@
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
 
     public class OrderMappings : ICommandMapping

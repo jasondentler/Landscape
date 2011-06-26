@@ -2,7 +2,7 @@
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     [Binding]
     public class Then

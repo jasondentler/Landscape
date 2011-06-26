@@ -52,10 +52,10 @@
   <ItemGroup>
     <Compile Include="Menu\AddCustomization.cs" />
     <Compile Include="Menu\AddProduct.cs" />
-    <Compile Include="Ordering\AddOrderItem.cs" />
-    <Compile Include="Ordering\CancelOrder.cs" />
-    <Compile Include="Ordering\ChangeOrderLocation.cs" />
-    <Compile Include="Ordering\PlaceOrder.cs" />
+    <Compile Include="ShoppingCart\AddOrderItem.cs" />
+    <Compile Include="ShoppingCart\CancelOrder.cs" />
+    <Compile Include="ShoppingCart\ChangeOrderLocation.cs" />
+    <Compile Include="ShoppingCart\PlaceOrder.cs" />
     <Compile Include="Billing\AddProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

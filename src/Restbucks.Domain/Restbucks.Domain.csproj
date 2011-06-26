@@ -51,8 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\Product.cs" />
-    <Compile Include="Ordering\Order.cs" />
-    <Compile Include="Ordering\OrderItem.cs" />
+    <Compile Include="ShoppingCart\Order.cs" />
+    <Compile Include="ShoppingCart\OrderItem.cs" />
     <Compile Include="Billing\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

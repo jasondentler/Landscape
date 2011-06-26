@@ -5,7 +5,7 @@ using System.Text;
 using Restbucks.Menu;
 using TechTalk.SpecFlow;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     [Binding]
     public class Given

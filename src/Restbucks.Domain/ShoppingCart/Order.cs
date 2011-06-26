@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Ncqrs.Domain;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
 
     public class Order : AggregateRootMappedByConvention

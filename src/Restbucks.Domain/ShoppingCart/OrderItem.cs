@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Ncqrs.Domain;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
 
     /// <summary>

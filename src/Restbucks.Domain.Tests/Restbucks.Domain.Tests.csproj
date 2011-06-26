@@ -86,34 +86,34 @@
     <Compile Include="Menu\SetupTheMenu.cs" />
     <Compile Include="Menu\Then.cs" />
     <Compile Include="Menu\When.cs" />
-    <Compile Include="Ordering\CancelOrder.feature.cs">
+    <Compile Include="ShoppingCart\CancelOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CancelOrder.feature</DependentUpon>
     </Compile>
-    <Compile Include="Ordering\ChangeOrderLocation.feature.cs">
+    <Compile Include="ShoppingCart\ChangeOrderLocation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangeOrderLocation.feature</DependentUpon>
     </Compile>
-    <Compile Include="Ordering\CreateAnOrder.feature.cs">
+    <Compile Include="ShoppingCart\CreateAnOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CreateAnOrder.feature</DependentUpon>
     </Compile>
-    <Compile Include="Ordering\Given.cs" />
-    <Compile Include="Payment\Then.cs" />
+    <Compile Include="ShoppingCart\Given.cs" />
+    <Compile Include="Billing\Then.cs" />
     <Compile Include="QueuedCommandService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Menu\Given.cs" />
     <Compile Include="NcqrsModule.cs" />
-    <Compile Include="Ordering\PlaceAnOrder.feature.cs">
+    <Compile Include="ShoppingCart\PlaceAnOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PlaceAnOrder.feature</DependentUpon>
     </Compile>
-    <Compile Include="Ordering\Then.cs" />
-    <Compile Include="Ordering\When.cs" />
+    <Compile Include="ShoppingCart\Then.cs" />
+    <Compile Include="ShoppingCart\When.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Then.cs" />
   </ItemGroup>
@@ -127,20 +127,20 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
     </None>
-    <None Include="Ordering\CancelOrder.feature">
+    <None Include="ShoppingCart\CancelOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CancelOrder.feature.cs</LastGenOutput>
     </None>
-    <None Include="Ordering\ChangeOrderLocation.feature">
+    <None Include="ShoppingCart\ChangeOrderLocation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChangeOrderLocation.feature.cs</LastGenOutput>
     </None>
-    <None Include="Ordering\CreateAnOrder.feature">
+    <None Include="ShoppingCart\CreateAnOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CreateAnOrder.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="Ordering\PlaceAnOrder.feature">
+    <None Include="ShoppingCart\PlaceAnOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>PlaceAnOrder.feature.cs</LastGenOutput>
     </None>

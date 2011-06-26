@@ -63,12 +63,12 @@
     <Compile Include="JsonSerializationFixture.cs" />
     <Compile Include="Menu\when_serializing_ProductAdded.cs" />
     <Compile Include="Menu\when_serializing_CustomizationAdded.cs" />
-    <Compile Include="Ordering\when_serializing_OrderCancelled.cs" />
-    <Compile Include="Ordering\when_serializing_OrderLocationChanged.cs" />
-    <Compile Include="Ordering\when_serializing_OrderPlaced.cs" />
-    <Compile Include="Ordering\when_serializing_OrderItemAdded.cs" />
-    <Compile Include="Ordering\when_serializing_OrderCreated.cs" />
-    <Compile Include="Payment\when_serializing_ProductAdded.cs" />
+    <Compile Include="ShoppingCart\when_serializing_OrderCancelled.cs" />
+    <Compile Include="ShoppingCart\when_serializing_OrderLocationChanged.cs" />
+    <Compile Include="ShoppingCart\when_serializing_OrderPlaced.cs" />
+    <Compile Include="ShoppingCart\when_serializing_OrderItemAdded.cs" />
+    <Compile Include="ShoppingCart\when_serializing_OrderCreated.cs" />
+    <Compile Include="Billing\when_serializing_ProductAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

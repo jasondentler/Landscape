@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ncqrs.Commanding;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
 
-    public class AddOrderItem : CommandBase 
+    public class OrderItemAdded : IEvent
     {
 
         public Guid OrderId { get; private set; }
@@ -14,9 +13,9 @@ namespace Restbucks.Ordering
         public IDictionary<string, string> Preferences { get; private set; }
         public int Quantity { get; private set; }
 
-        public AddOrderItem(
+        public OrderItemAdded(
             Guid orderId,
-            Guid orderItemId, 
+            Guid orderItemId,
             Guid productId,
             IDictionary<string, string> preferences,
             int quantity)

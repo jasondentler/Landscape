@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
 
     public class when_serializing_OrderItemAdded

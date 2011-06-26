@@ -1,13 +1,12 @@
 ﻿using System;
-using Ncqrs.Commanding;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
-    public class CancelOrder : CommandBase 
+    public class OrderCancelled  : IEvent 
     {
         public Guid OrderId { get; private set; }
 
-        public CancelOrder(Guid orderId)
+        public OrderCancelled(Guid orderId)
         {
             OrderId = orderId;
         }

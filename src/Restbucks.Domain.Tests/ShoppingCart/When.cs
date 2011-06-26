@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Restbucks.Menu;
 using TechTalk.SpecFlow;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     [Binding]
     public class When

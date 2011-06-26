@@ -10,7 +10,7 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     using TechTalk.SpecFlow;
     

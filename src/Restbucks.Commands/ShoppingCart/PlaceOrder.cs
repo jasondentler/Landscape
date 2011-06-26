@@ -1,7 +1,7 @@
 ﻿using System;
 using Ncqrs.Commanding;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     public class PlaceOrder : CommandBase 
     {

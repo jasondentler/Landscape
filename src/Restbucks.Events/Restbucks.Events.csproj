@@ -54,11 +54,11 @@
     <Compile Include="IEvent.cs" />
     <Compile Include="Menu\CustomizationAdded.cs" />
     <Compile Include="Menu\ProductAdded.cs" />
-    <Compile Include="Ordering\OrderCancelled.cs" />
-    <Compile Include="Ordering\OrderCreated.cs" />
-    <Compile Include="Ordering\OrderItemAdded.cs" />
-    <Compile Include="Ordering\OrderLocationChanged.cs" />
-    <Compile Include="Ordering\OrderPlaced.cs" />
+    <Compile Include="ShoppingCart\OrderCancelled.cs" />
+    <Compile Include="ShoppingCart\OrderCreated.cs" />
+    <Compile Include="ShoppingCart\OrderItemAdded.cs" />
+    <Compile Include="ShoppingCart\OrderLocationChanged.cs" />
+    <Compile Include="ShoppingCart\OrderPlaced.cs" />
     <Compile Include="Billing\ProductAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Restbucks.Ordering
+namespace Restbucks.ShoppingCart
 {
     public class OrderCreated  : IEvent 
     {
