@@ -10,3 +10,7 @@ Scenario: Add a menu item
 	And coffee is added to the price list with a price of $7.20
 	And nothing else happens
 
+@domain
+Scenario: New menu items are added to the product service
+	When I add coffee to the menu with a price of $7.20
+	Then the product catalog has coffee

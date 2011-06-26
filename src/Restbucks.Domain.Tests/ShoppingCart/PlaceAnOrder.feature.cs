@@ -78,6 +78,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 14
  testRunner.And("the placed order contains a medium cappuccino, skim milk, single shot");
 #line 15
+ testRunner.And("the order total is $6.70");
+#line 16
  testRunner.And("nothing else happens");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -90,17 +92,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place an empty order", new string[] {
                         "domain"});
-#line 18
-this.ScenarioSetup(scenarioInfo);
 #line 19
- testRunner.Given("the franchise owner has set up the menu");
+this.ScenarioSetup(scenarioInfo);
 #line 20
- testRunner.And("I have created an order");
+ testRunner.Given("the franchise owner has set up the menu");
 #line 21
- testRunner.When("I place the order for take away");
+ testRunner.And("I have created an order");
 #line 22
- testRunner.Then("the aggregate state is invalid");
+ testRunner.When("I place the order for take away");
 #line 23
+ testRunner.Then("the aggregate state is invalid");
+#line 24
  testRunner.And("the error is \"You can\'t place an empty order. Add an item.\"");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -113,15 +115,15 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place an already-placed order", new string[] {
                         "domain"});
-#line 26
-this.ScenarioSetup(scenarioInfo);
 #line 27
- testRunner.Given("the franchise owner has set up the menu");
+this.ScenarioSetup(scenarioInfo);
 #line 28
- testRunner.Given("I have placed an order");
+ testRunner.Given("the franchise owner has set up the menu");
 #line 29
- testRunner.When("I place the order for take away");
+ testRunner.Given("I have placed an order");
 #line 30
+ testRunner.When("I place the order for take away");
+#line 31
  testRunner.Then("nothing happens");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -134,17 +136,17 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place a cancelled order", new string[] {
                         "domain"});
-#line 33
-this.ScenarioSetup(scenarioInfo);
 #line 34
- testRunner.Given("the franchise owner has set up the menu");
+this.ScenarioSetup(scenarioInfo);
 #line 35
- testRunner.And("I have created and cancelled an order");
+ testRunner.Given("the franchise owner has set up the menu");
 #line 36
- testRunner.When("I place the order for take away");
+ testRunner.And("I have created and cancelled an order");
 #line 37
- testRunner.Then("the aggregate state is invalid");
+ testRunner.When("I place the order for take away");
 #line 38
+ testRunner.Then("the aggregate state is invalid");
+#line 39
  testRunner.And("the error is \"This order is cancelled. Create a new order.\"");
 #line hidden
             testRunner.CollectScenarioErrors();

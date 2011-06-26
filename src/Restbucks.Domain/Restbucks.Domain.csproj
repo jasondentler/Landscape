@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\Order.cs" />
     <Compile Include="Menu\MenuItem.cs" />
     <Compile Include="ShoppingCart\Order.cs" />
     <Compile Include="ShoppingCart\OrderItem.cs" />

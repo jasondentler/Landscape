@@ -12,6 +12,7 @@ Scenario: Place the order
 	Then the order is placed for take away 
 	And the placed order has one item
 	And the placed order contains a medium cappuccino, skim milk, single shot
+	And the order total is $6.70
 	And nothing else happens
 
 @domain

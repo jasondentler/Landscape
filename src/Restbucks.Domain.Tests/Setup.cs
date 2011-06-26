@@ -15,7 +15,7 @@ namespace Restbucks
             if (NcqrsEnvironment.IsConfigured)
                 return;
 
-            var kernel = new StandardKernel(new NcqrsModule());
+            var kernel = new StandardKernel(new NcqrsModule(), new ServiceModule());
             NcqrsEnvironment.Configure(new NinjectConfiguration(kernel));
         }
 

@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\MenuItemHandler.cs" />
+    <Compile Include="Billing\MenuItemAddedHandler.cs" />
+    <Compile Include="Billing\OrderPlacedHandler.cs" />
+    <Compile Include="Billing\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

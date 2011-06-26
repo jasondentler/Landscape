@@ -86,6 +86,7 @@
     <Compile Include="Menu\SetupTheMenu.cs" />
     <Compile Include="Menu\Then.cs" />
     <Compile Include="Menu\When.cs" />
+    <Compile Include="ServiceModule.cs" />
     <Compile Include="ShoppingCart\CancelOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

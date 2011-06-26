@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\OrderCreated.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Menu\CustomizationAdded.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="ShoppingCart\OrderCancelled.cs" />
     <Compile Include="ShoppingCart\OrderCreated.cs" />
     <Compile Include="ShoppingCart\OrderItemAdded.cs" />
-    <Compile Include="ShoppingCart\OrderItemInfo.cs" />
     <Compile Include="ShoppingCart\OrderLocationChanged.cs" />
     <Compile Include="ShoppingCart\OrderPlaced.cs" />
     <Compile Include="Billing\ProductAdded.cs" />

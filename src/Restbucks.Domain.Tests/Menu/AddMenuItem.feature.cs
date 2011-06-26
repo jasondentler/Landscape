@@ -74,6 +74,23 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("New menu items are added to the product service")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void NewMenuItemsAreAddedToTheProductService()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("New menu items are added to the product service", new string[] {
+                        "domain"});
+#line 14
+this.ScenarioSetup(scenarioInfo);
+#line 15
+ testRunner.When("I add coffee to the menu with a price of $7.20");
+#line 16
+ testRunner.Then("the product catalog has coffee");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

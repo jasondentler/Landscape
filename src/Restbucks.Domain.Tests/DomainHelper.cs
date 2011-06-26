@@ -5,6 +5,7 @@ using Ncqrs;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Eventing;
+using Ncqrs.Eventing.ServiceModel.Bus;
 using Ncqrs.Eventing.Storage;
 using Ncqrs.Spec;
 using Newtonsoft.Json;
@@ -98,6 +99,10 @@ namespace Restbucks
                 .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence + 1);
 
             store.Store(stream);
+
+            var bus = NcqrsEnvironment.Get<IEventBus>();
+            bus.Publish(stream);
+
         }
 
         public static void WriteOutObject(object @event)

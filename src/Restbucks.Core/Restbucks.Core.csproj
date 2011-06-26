@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\IProductService.cs" />
     <Compile Include="InvalidAggregateStateException.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="OrderItemInfo.cs" />
     <Compile Include="OrderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
