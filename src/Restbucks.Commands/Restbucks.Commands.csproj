@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu\AddCustomization.cs" />
-    <Compile Include="Menu\AddProduct.cs" />
+    <Compile Include="Menu\AddMenuItem.cs" />
     <Compile Include="ShoppingCart\AddOrderItem.cs" />
     <Compile Include="ShoppingCart\CancelOrder.cs" />
     <Compile Include="ShoppingCart\ChangeOrderLocation.cs" />

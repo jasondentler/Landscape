@@ -18,21 +18,21 @@ namespace Restbucks.Menu
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.6.1.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Add Product")]
-    public partial class AddProductFeature
+    [NUnit.Framework.DescriptionAttribute("Add a menu item")]
+    public partial class AddAMenuItemFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "AddProduct.feature"
+#line 1 "AddMenuItem.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add Product", "In order to make my millions off the local caffeine addicts\r\nAs a Restbucks franc" +
-                    "hise owner\r\nI want to add products to the menu", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Add a menu item", "In order to make my millions off the local caffeine addicts\r\nAs a Restbucks franc" +
+                    "hise owner\r\nI want to add items to the menu", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -55,11 +55,11 @@ namespace Restbucks.Menu
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add a product")]
+        [NUnit.Framework.DescriptionAttribute("Add a menu item")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void AddAProduct()
+        public virtual void AddAMenuItem()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a product", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a menu item", new string[] {
                         "domain"});
 #line 7
 this.ScenarioSetup(scenarioInfo);

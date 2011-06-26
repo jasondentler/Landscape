@@ -4,13 +4,13 @@ using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace Restbucks.Billing
 {
-    public class ProductHandler
-        : IEventHandler<Menu.ProductAdded>
+    public class MenuItemHandler
+        : IEventHandler<Menu.MenuItemAdded>
     {
         private readonly IUniqueIdentifierGenerator _idGenerator;
         private readonly ICommandService _commandService;
 
-        public ProductHandler(
+        public MenuItemHandler(
             IUniqueIdentifierGenerator idGenerator,
             ICommandService commandService)
         {
@@ -18,7 +18,7 @@ namespace Restbucks.Billing
             _commandService = commandService;
         }
 
-        public void Handle(IPublishedEvent<Menu.ProductAdded> evnt)
+        public void Handle(IPublishedEvent<Menu.MenuItemAdded> evnt)
         {
 
             var e = evnt.Payload;
@@ -26,7 +26,7 @@ namespace Restbucks.Billing
 
             var cmd = new AddProduct(
                 productId,
-                e.ProductId,
+                e.MenuItemId,
                 e.Name,
                 e.Price);
 

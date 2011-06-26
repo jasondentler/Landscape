@@ -10,24 +10,24 @@ namespace Restbucks.Menu
         [Given(@"I have added coffee to the menu")]
         public void GivenIHaveAddedCoffeeToTheMenu()
         {
-            var productId = Guid.NewGuid();
+            var menuItemId = Guid.NewGuid();
             var name = "Coffee";
             var price = 7.20M;
 
-            DomainHelper.SetId<Product>(productId, name);
+            DomainHelper.SetId<MenuItem>(menuItemId, name);
             
-            var e = new ProductAdded(productId, name, price);
-            DomainHelper.GivenEvent<Product>(e);
+            var e = new MenuItemAdded(menuItemId, name, price);
+            DomainHelper.GivenEvent<MenuItem>(e);
         }
 
         [Given(@"I have added coffee sizes")]
         public void GivenIHaveAddedCoffeeSizes()
         {
             var name = "Coffee";
-            var productId = DomainHelper.GetId<Product>(name);
+            var menuItemId = DomainHelper.GetId<MenuItem>(name);
 
-            var e = new CustomizationAdded(productId, "Size", new[] {"Short", "Tall", "Grande", "Venti"});
-            DomainHelper.GivenEvent<Product>(e);
+            var e = new CustomizationAdded(menuItemId, "Size", new[] {"Short", "Tall", "Grande", "Venti"});
+            DomainHelper.GivenEvent<MenuItem>(e);
         }
 
 

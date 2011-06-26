@@ -5,20 +5,20 @@ using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
 namespace Restbucks.Menu
 {
 
-    public class ProductMapping : ICommandMapping
+    public class MenuItemMapping : ICommandMapping
     {
 
         public void MapCommands(CommandService commandService)
         {
 
-            Map.Command<AddProduct>()
-                .ToAggregateRoot<Product>()
-                .CreateNew(cmd => new Product(cmd.ProductId, cmd.Name, cmd.Price))
+            Map.Command<AddMenuItem>()
+                .ToAggregateRoot<MenuItem>()
+                .CreateNew(cmd => new MenuItem(cmd.MenuItemId, cmd.Name, cmd.Price))
                 .RegisterWith(commandService);
 
             Map.Command<AddCustomization>()
-                .ToAggregateRoot<Product>()
-                .WithId(cmd => cmd.ProductId)
+                .ToAggregateRoot<MenuItem>()
+                .WithId(cmd => cmd.MenuItemId)
                 .ToCallOn((cmd, product) => product.AddCustomization(cmd.Customization, cmd.Options))
                 .RegisterWith(commandService);
 

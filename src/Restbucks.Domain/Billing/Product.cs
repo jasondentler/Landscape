@@ -12,12 +12,12 @@ namespace Restbucks.Billing
 
         public Product(
             Guid productId,
-            Guid menuProductId, 
+            Guid menuItemId, 
             string name,
             decimal price)
             : base(productId)
         {
-            var e = new ProductAdded(productId, menuProductId, name, price);
+            var e = new ProductAdded(productId, menuItemId, name, price);
             ApplyEvent(e);
         }
 

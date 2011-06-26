@@ -22,13 +22,13 @@ namespace Restbucks.ShoppingCart
         {
             var orderId = DomainHelper.GetId<Order>();
             var orderItemId = DomainHelper.GetId<OrderItem>();
-            var productId = DomainHelper.GetId<Product>("Cappuccino");
+            var menuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
 
             var e = DomainHelper.GetEvent<OrderItemAdded>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.OrderItemId.Should().Be.EqualTo(orderItemId);
-            e.ProductId.Should().Be.EqualTo(productId);
+            e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("medium");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
             e.Preferences["Shots"].Should().Be.EqualTo("single");
@@ -41,13 +41,13 @@ namespace Restbucks.ShoppingCart
         {
             var orderId = DomainHelper.GetId<Order>();
             var orderItemId = DomainHelper.GetId<OrderItem>();
-            var productId = DomainHelper.GetId<Product>("Hot Chocolate");
+            var menuItemId = DomainHelper.GetId<MenuItem>("Hot Chocolate");
 
             var e = DomainHelper.GetEvent<OrderItemAdded>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.OrderItemId.Should().Be.EqualTo(orderItemId);
-            e.ProductId.Should().Be.EqualTo(productId);
+            e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("large");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
             e.Preferences["Whipped Cream"].Should().Be.EqualTo("no");

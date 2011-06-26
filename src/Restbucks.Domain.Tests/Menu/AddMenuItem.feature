@@ -1,10 +1,10 @@
-﻿Feature: Add Product
+﻿Feature: Add a menu item
 	In order to make my millions off the local caffeine addicts
 	As a Restbucks franchise owner
-	I want to add products to the menu
+	I want to add items to the menu
 
 @domain 
-Scenario: Add a product
+Scenario: Add a menu item
 	When I add coffee to the menu with a price of $7.20
 	Then coffee is added to the menu with a price of $7.20
 	And coffee is added to the price list with a price of $7.20

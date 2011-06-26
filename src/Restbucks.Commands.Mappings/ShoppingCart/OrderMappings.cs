@@ -15,9 +15,9 @@ namespace Restbucks.ShoppingCart
                 .ToAggregateRoot<Order>()
                 .UseExistingOrCreateNew(
                     cmd => cmd.OrderId,
-                    cmd => new Order(cmd.OrderId, cmd.OrderItemId, cmd.ProductId, cmd.Preferences, cmd.Quantity))
+                    cmd => new Order(cmd.OrderId, cmd.OrderItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
                 .ToCallOn((cmd, order) =>
-                          order.AddItem(cmd.OrderItemId, cmd.ProductId, cmd.Preferences, cmd.Quantity))
+                          order.AddItem(cmd.OrderItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
                 .RegisterWith(commandService);
 
             Map.Command<PlaceOrder>()

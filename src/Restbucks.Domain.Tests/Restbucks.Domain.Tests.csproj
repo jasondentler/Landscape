@@ -78,10 +78,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddCustomization.feature</DependentUpon>
     </Compile>
-    <Compile Include="Menu\AddProduct.feature.cs">
+    <Compile Include="Menu\AddMenuItem.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AddProduct.feature</DependentUpon>
+      <DependentUpon>AddMenuItem.feature</DependentUpon>
     </Compile>
     <Compile Include="Menu\SetupTheMenu.cs" />
     <Compile Include="Menu\Then.cs" />
@@ -123,9 +123,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddCustomization.feature.cs</LastGenOutput>
     </None>
-    <None Include="Menu\AddProduct.feature">
+    <None Include="Menu\AddMenuItem.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>AddProduct.feature.cs</LastGenOutput>
+      <LastGenOutput>AddMenuItem.feature.cs</LastGenOutput>
     </None>
     <None Include="ShoppingCart\CancelOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

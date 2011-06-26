@@ -1,24 +1,21 @@
 ﻿using System;
-using Ncqrs.Commanding;
 
 namespace Restbucks.Menu
 {
-
-    public class AddProduct : CommandBase 
+    public class MenuItemAdded : IEvent
     {
-        public Guid ProductId { get; private set; }
+        public Guid MenuItemId { get; private set; }
         public string Name { get; private set; }
         public decimal Price { get; private set; }
 
-        public AddProduct(
-            Guid productId,
+        public MenuItemAdded(
+            Guid menuItemId,
             string name,
             decimal price)
         {
-            ProductId = productId;
+            MenuItemId = menuItemId;
             Name = name;
             Price = price;
         }
     }
-
 }

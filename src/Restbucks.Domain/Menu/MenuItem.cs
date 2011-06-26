@@ -4,20 +4,20 @@ using Ncqrs.Domain;
 
 namespace Restbucks.Menu
 {
-    public class Product : AggregateRootMappedByConvention
+    public class MenuItem : AggregateRootMappedByConvention
     {
 
         private string _name;
         private readonly HashSet<string> _customizations = new HashSet<string>();
 
-        private Product()
+        private MenuItem()
         {
         }
 
-        public Product(Guid productId, string name, decimal price)
-            : base(productId)
+        public MenuItem(Guid menuItemId, string name, decimal price)
+            : base(menuItemId)
         {
-            var e = new ProductAdded(EventSourceId, name, price);
+            var e = new MenuItemAdded(EventSourceId, name, price);
             ApplyEvent(e);
         }
 
@@ -30,7 +30,7 @@ namespace Restbucks.Menu
             ApplyEvent(e);
         }
 
-        protected void On(ProductAdded e)
+        protected void On(MenuItemAdded e)
         {
             _name = e.Name;
         }

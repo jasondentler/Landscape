@@ -11,7 +11,7 @@ namespace Restbucks.Billing
 
             Map.Command<AddProduct>()
                 .ToAggregateRoot<Product>()
-                .CreateNew(cmd => new Product(cmd.ProductId, cmd.MenuProductId, cmd.Name, cmd.Price))
+                .CreateNew(cmd => new Product(cmd.ProductId, cmd.MenuItemId, cmd.Name, cmd.Price))
                 .RegisterWith(commandService);
 
         }

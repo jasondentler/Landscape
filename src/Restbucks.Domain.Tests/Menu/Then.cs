@@ -12,10 +12,10 @@ namespace Restbucks.Menu
         public void ThenCoffeeIsAddedToTheMenuWithAPriceOf7_20()
         {
             var name = "Coffee";
-            var productId = DomainHelper.GetId<Product>(name);
+            var menuItemId = DomainHelper.GetId<MenuItem>(name);
 
-            var e = DomainHelper.GetEvent<ProductAdded>();
-            e.ProductId.Should().Be.EqualTo(productId);
+            var e = DomainHelper.GetEvent<MenuItemAdded>();
+            e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Name.Should().Be.EqualTo(name);
             e.Price.Should().Be.EqualTo(7.20M);
         }

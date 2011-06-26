@@ -24,7 +24,7 @@ namespace Restbucks.ShoppingCart
 
             var orderId = GetOrderId();
             var orderItemId = Guid.NewGuid();
-            var productId = DomainHelper.GetId<Product>("Cappuccino");
+            var menuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "medium"},
@@ -38,7 +38,7 @@ namespace Restbucks.ShoppingCart
             var cmd = new AddOrderItem(
                 orderId,
                 orderItemId,
-                productId,
+                menuItemId,
                 preferences,
                 quantity);
 
@@ -50,7 +50,7 @@ namespace Restbucks.ShoppingCart
         {
             var orderId = GetOrderId();
             var orderItemId = Guid.NewGuid();
-            var productId = DomainHelper.GetId<Product>("Hot Chocolate");
+            var menuItemId = DomainHelper.GetId<MenuItem>("Hot Chocolate");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "large"},
@@ -64,7 +64,7 @@ namespace Restbucks.ShoppingCart
             var cmd = new AddOrderItem(
                 orderId,
                 orderItemId,
-                productId,
+                menuItemId,
                 preferences,
                 quantity);
 

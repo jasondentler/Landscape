@@ -18,38 +18,38 @@ namespace Restbucks.Menu
             var kind = new[] {"chocolate chip", "ginger"};
             var whippedCream = new[] {"yes", "no"};
 
-            AddProduct("Cappuccino", 6.7M, new Dictionary<string, string[]>()
+            AddMenuItem("Cappuccino", 6.7M, new Dictionary<string, string[]>()
                                               {
                                                   {"Milk", milk},
                                                   {"Shots", shots},
                                                   {"Size", size}
                                               });
-            AddProduct("Cookie", 1M, new Dictionary<string, string[]>()
+            AddMenuItem("Cookie", 1M, new Dictionary<string, string[]>()
                                          {
                                              {"Kind", kind}
                                          });
 
-            AddProduct("Espresso", 6.9M, new Dictionary<string, string[]>()
+            AddMenuItem("Espresso", 6.9M, new Dictionary<string, string[]>()
                                              {
                                                  {"Milk", milk},
                                                  {"Shots", shots},
                                                  {"Size", size}
                                              });
 
-            AddProduct("Hot Chocolate", 10.5M, new Dictionary<string, string[]>()
+            AddMenuItem("Hot Chocolate", 10.5M, new Dictionary<string, string[]>()
                                                    {
                                                        {"Milk", milk},
                                                        {"Size", size},
                                                        {"Whipped Cream", whippedCream}
                                                    });
-            AddProduct("Latte", 7.6M, new Dictionary<string, string[]>()
+            AddMenuItem("Latte", 7.6M, new Dictionary<string, string[]>()
                                           {
                                               {"Milk", milk},
                                               {"Shots", shots},
                                               {"Size", size}
                                           });
 
-            AddProduct("Tea", 8.4M, new Dictionary<string, string[]>()
+            AddMenuItem("Tea", 8.4M, new Dictionary<string, string[]>()
                                         {
                                             {"Milk", milk},
                                             {"Shots", shots},
@@ -58,40 +58,40 @@ namespace Restbucks.Menu
 
         }
 
-        private void AddProduct(
+        private void AddMenuItem(
             string name,
             decimal price,
             IDictionary<string, string[]> customizations)
         {
-            var productId = AddProduct(name, price);
-            AddCustomizations(productId, customizations);
+            var menuItemId = AddMenuItem(name, price);
+            AddCustomizations(menuItemId, customizations);
         }
 
-        private Guid AddProduct(string name, decimal price)
+        private Guid AddMenuItem(string name, decimal price)
         {
-            var productId = Guid.NewGuid();
-            DomainHelper.SetId<Product>(productId, name);
+            var menuItemId = Guid.NewGuid();
+            DomainHelper.SetId<MenuItem>(menuItemId, name);
 
-            var e = new ProductAdded(productId, name, price);
-            DomainHelper.GivenEvent<Product>(e);
-            return productId;
+            var e = new MenuItemAdded(menuItemId, name, price);
+            DomainHelper.GivenEvent<MenuItem>(e);
+            return menuItemId;
         }
 
         private void AddCustomizations(
-            Guid productId, 
+            Guid menuItemId, 
             IDictionary<string, string[]> customizations)
         {
             foreach (var item in customizations)
-                AddCustomization(productId, item.Key, item.Value);
+                AddCustomization(menuItemId, item.Key, item.Value);
         }
 
         private void AddCustomization(
-            Guid productId,
+            Guid menuItemId,
             string customization,
             string[] options)
         {
-            var e = new CustomizationAdded(productId, customization, options);
-            DomainHelper.GivenEvent<Product>(e);
+            var e = new CustomizationAdded(menuItemId, customization, options);
+            DomainHelper.GivenEvent<MenuItem>(e);
         }
 
     }

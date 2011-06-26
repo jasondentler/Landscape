@@ -20,7 +20,7 @@ namespace Restbucks.ShoppingCart
         public Order(
             Guid orderId,
             Guid orderItemId, 
-            Guid productId, 
+            Guid menuItemId, 
             IDictionary<string, string> prefernces,
             int quantity)
             : base(orderId)
@@ -28,12 +28,12 @@ namespace Restbucks.ShoppingCart
             var e = new OrderCreated(EventSourceId);
             ApplyEvent(e);
 
-            AddItem(orderItemId, productId, prefernces, quantity);
+            AddItem(orderItemId, menuItemId, prefernces, quantity);
         }
 
         public void AddItem(
             Guid orderItemId, 
-            Guid productId,
+            Guid menuItemId,
             IDictionary<string, string> preferences,
             int quantity)
         {
@@ -41,7 +41,7 @@ namespace Restbucks.ShoppingCart
             var e = new OrderItemAdded(
                 EventSourceId,
                 orderItemId,
-                productId,
+                menuItemId,
                 preferences,
                 quantity);
 
