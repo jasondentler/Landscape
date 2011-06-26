@@ -9,7 +9,7 @@ namespace Restbucks.ShoppingCart
     public class Order : AggregateRootMappedByConvention
     {
 
-        private bool _hasItems = false;
+        private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
         private OrderState _state;
         private Location _location;
 
@@ -63,10 +63,10 @@ namespace Restbucks.ShoppingCart
                     throw new InvalidAggregateStateException(string.Empty);
             }
 
-            if (!_hasItems)
+            if (!_items.Any())
                 throw new InvalidAggregateStateException("You can't place an empty order. Add an item.");
 
-            var e = new OrderPlaced(EventSourceId, location);
+            var e = new OrderPlaced(EventSourceId, location, GetOrderItemInfo());
             ApplyEvent(e);
 
 
@@ -108,7 +108,7 @@ namespace Restbucks.ShoppingCart
 
         protected void On(OrderItemAdded e)
         {
-            _hasItems = true;
+            _items.Add(new OrderItem(this, e));
         }
 
         protected void On(OrderPlaced e)
@@ -126,6 +126,21 @@ namespace Restbucks.ShoppingCart
         {
             _state = OrderState.Cancelled;
         }
+
+        private OrderItemInfo[] GetOrderItemInfo()
+        {
+            return _items.Select(item => GetOrderItemInfo(item)).ToArray();
+        }
+
+        private OrderItemInfo GetOrderItemInfo(OrderItem orderItem)
+        {
+            return new OrderItemInfo(
+                orderItem.OrderItemId,
+                orderItem.MenuItemId,
+                orderItem.Preferences,
+                orderItem.Quantity);
+        }
+
 
     }
 

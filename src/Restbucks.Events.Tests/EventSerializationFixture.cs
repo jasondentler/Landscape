@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 using Ncqrs.Spec;
+using SharpTestsEx;
 
 namespace Restbucks
 {

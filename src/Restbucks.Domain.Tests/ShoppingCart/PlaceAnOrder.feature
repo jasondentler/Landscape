@@ -10,6 +10,8 @@ Scenario: Place the order
 	And I have added a medium cappuccino, skim milk, single shot
 	When I place the order for take away
 	Then the order is placed for take away 
+	And the placed order has one item
+	And the placed order contains a medium cappuccino, skim milk, single shot
 	And nothing else happens
 
 @domain

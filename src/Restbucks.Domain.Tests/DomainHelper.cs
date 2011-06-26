@@ -180,6 +180,13 @@ namespace Restbucks
             return (T)GetCommand();
         }
 
+        public static IEnumerable<object> GetAllEvents(Guid eventSourceId)
+        {
+            var store = NcqrsEnvironment.Get<IEventStore>();
+            var existingEvents = store.ReadFrom(eventSourceId, 0, long.MaxValue);
+            return existingEvents.Select(e => e.Payload);
+        }
+
         public static IEnumerable<UncommittedEvent> GetEvents()
         {
             return ScenarioContext.Current.Get<IEnumerable<UncommittedEvent>>();

@@ -53,7 +53,13 @@ namespace Restbucks.ShoppingCart
         {
             var orderId = DomainHelper.GetId<Order>();
 
-            var e = new OrderPlaced(orderId, Location.InShop);
+            var itemInfos = DomainHelper.GetAllEvents(orderId)
+                .OfType<OrderItemAdded>()
+                .Select(i => new OrderItemInfo(
+                                 i.OrderItemId, i.MenuItemId, i.Preferences, i.Quantity))
+                .ToArray();
+
+            var e = new OrderPlaced(orderId, Location.InShop, itemInfos);
 
             DomainHelper.GivenEvent<Order>(e);
         }

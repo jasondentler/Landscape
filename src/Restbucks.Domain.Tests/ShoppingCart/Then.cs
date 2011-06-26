@@ -1,4 +1,5 @@
-﻿using Restbucks.Menu;
+﻿using System.Linq;
+using Restbucks.Menu;
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
@@ -62,6 +63,31 @@ namespace Restbucks.ShoppingCart
             var e = DomainHelper.GetEvent<OrderPlaced>();
             e.OrderId.Should().Be.EqualTo(orderId);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
+        }
+
+        [Then(@"the placed order has one item")]
+        public void ThenThePlacedOrderHasOneItem()
+        {
+            var e = DomainHelper.GetEvent<OrderPlaced>();
+            e.Items.Length.Should().Be.EqualTo(1);
+        }
+
+        [Then(@"the placed order contains a medium cappuccino, skim milk, single shot")]
+        public void ThenThePlacedOrderContainsAMediumCappuccinoSkimMilkSingleShot()
+        {
+            var cappucinoMenuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
+
+            var e = DomainHelper.GetEvent<OrderPlaced>();
+
+            var matchingItems = e.Items
+                .Where(i => i.MenuItemId == cappucinoMenuItemId)
+                .Where(i => i.Preferences["Size"] == "medium")
+                .Where(i => i.Preferences["Milk"] == "skim")
+                .Where(i => i.Preferences["Shots"] == "single")
+                .Where(i => i.Quantity == 1);
+
+            matchingItems.Any().Should().Be.True();
+
         }
 
         [Then(@"the order location is changed from in shop to take away")]
