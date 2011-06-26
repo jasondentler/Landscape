@@ -72,6 +72,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\Given.cs" />
+    <Compile Include="Billing\PayForTheOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PayForTheOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\When.cs" />
     <Compile Include="DomainHelper.cs" />
     <Compile Include="Menu\AddCustomization.feature.cs">
       <AutoGen>True</AutoGen>
@@ -120,6 +127,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Billing\PayForTheOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PayForTheOrder.feature.cs</LastGenOutput>
+    </None>
     <None Include="Menu\AddCustomization.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddCustomization.feature.cs</LastGenOutput>

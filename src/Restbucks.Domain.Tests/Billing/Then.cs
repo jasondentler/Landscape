@@ -57,6 +57,18 @@ namespace Restbucks.Billing
             e.ShoppingCardOrderId.Should().Be.EqualTo(shoppingCardOrderId);
             e.OrderTotal.Should().Be.EqualTo(total);
         }
+
+        [Then(@"the order is paid for")]
+        public void ThenTheOrderIsPaidFor()
+        {
+            var orderId = DomainHelper.GetId<Order>();
+            var shoppingCardOrderId = DomainHelper.GetId<ShoppingCart.Order>();
+
+            var e = DomainHelper.GetEvent<OrderPaid>();
+
+            e.OrderId.Should().Be.EqualTo(orderId);
+            e.ShoppingCardOrderId.Should().Be.EqualTo(shoppingCardOrderId);
+        }
     
     }
 }

@@ -4,8 +4,11 @@ using Ncqrs.Domain;
 
 namespace Restbucks.Billing
 {
-    public class Order : AggregateRootMappedByConvention 
+    public class Order : AggregateRootMappedByConvention
     {
+
+        private Guid _shoppingCardOrderId;
+        private decimal _orderTotal;
 
         private Order()
         {
@@ -33,7 +36,19 @@ namespace Restbucks.Billing
 
         }
 
+        public void PayWithCreditCard(string cardOwner, string cardNumber, decimal paymentAmount)
+        {
+            var e = new OrderPaid(EventSourceId, _shoppingCardOrderId);
+            ApplyEvent(e);
+        }
+
         protected void On(OrderCreated e)
+        {
+            _shoppingCardOrderId = e.ShoppingCardOrderId;
+            _orderTotal = e.OrderTotal;
+        }
+
+        protected void On(OrderPaid e)
         {
         }
 

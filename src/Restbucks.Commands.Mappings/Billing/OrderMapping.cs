@@ -22,6 +22,12 @@ namespace Restbucks.Billing
                                })
                 .RegisterWith(commandService);
 
+            Map.Command<PayWithCreditCard>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.PayWithCreditCard(cmd.CardOwner, cmd.CardNumber, cmd.PaymentAmount))
+                .RegisterWith(commandService);
+
         }
 
     }

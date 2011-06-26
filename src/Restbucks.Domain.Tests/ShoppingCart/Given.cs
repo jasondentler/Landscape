@@ -85,8 +85,6 @@ namespace Restbucks.ShoppingCart
         [Given(@"I have created and cancelled an order")]
         public void GivenIHaveCreatedAndCancelledAnOrder()
         {
-            GivenIHaveCreatedAnOrder();
-            GivenIHaveAddedAMediumCappuccinoSkimMilkSingleShot();
             GivenIHavePlacedAnOrder();
             GivenIHaveCancelledTheOrder();
         }

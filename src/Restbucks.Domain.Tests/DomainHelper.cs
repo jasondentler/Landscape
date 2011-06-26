@@ -44,6 +44,7 @@ namespace Restbucks
         private const string ExceptionKey = "caughtException";
         private const string TestedEventsKey = "testedEvents";
         private const string EventSourceIdKey = "eventSourceId";
+        private const string GivenEventsKey = "givenEvents";
 
         private class WrappedValue<T>
         {
@@ -86,23 +87,50 @@ namespace Restbucks
 
         public static void GivenEvent(Guid eventSourceId, object @event)
         {
-            Console.Write("\tGiven ");
-            WriteOutObject(@event);
+            IEnumerable<UncommittedEvent> events;
+            using (var context = new EventContext())
+            {
+                var store = NcqrsEnvironment.Get<IEventStore>();
+                var existingEvents = store.ReadFrom(eventSourceId, 0, long.MaxValue);
+                long maxEventSequence = 0;
+                if (existingEvents.Any())
+                    maxEventSequence = existingEvents.Max(e => e.EventSequence);
 
-            var store = NcqrsEnvironment.Get<IEventStore>();
-            var existingEvents = store.ReadFrom(eventSourceId, 0, long.MaxValue);
-            long maxEventSequence = 0;
-            if (existingEvents.Any())
-                maxEventSequence = existingEvents.Max(e => e.EventSequence);
+                var stream = Prepare.Events(@event)
+                    .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence + 1);
 
-            var stream = Prepare.Events(@event)
-                .ForSourceUncomitted(eventSourceId, Guid.NewGuid(), (int)maxEventSequence + 1);
+                store.Store(stream);
 
-            store.Store(stream);
+                var bus = NcqrsEnvironment.Get<IEventBus>();
+                bus.Publish(stream);
 
-            var bus = NcqrsEnvironment.Get<IEventBus>();
-            bus.Publish(stream);
+                events = context.Events;
+            }
 
+            CaptureGivenEvents(new [] {@event});
+            CaptureGivenEvents(events.Select(e => e.Payload));
+
+        }
+
+        private static void CaptureGivenEvents(IEnumerable<object> events)
+        {
+            List<object> givenEvents;
+            if (!ContainsKey(GivenEventsKey))
+            {
+                givenEvents = new List<object>();
+                Set(givenEvents, GivenEventsKey);
+            }
+            else
+            {
+                givenEvents = Get<List<object>>(GivenEventsKey);
+            }
+
+            foreach (var e in events)
+            {
+                Console.Write("\tGiven ");
+                WriteOutObject(e);
+                givenEvents.Add(e);
+            }
         }
 
         public static void WriteOutObject(object @event)
@@ -183,6 +211,11 @@ namespace Restbucks
             where T : ICommand
         {
             return (T)GetCommand();
+        }
+
+        public static IEnumerable<object> GetGivenEvents()
+        {
+            return Get<List<object>>(GivenEventsKey).ToArray();
         }
 
         public static IEnumerable<object> GetAllEvents(Guid eventSourceId)

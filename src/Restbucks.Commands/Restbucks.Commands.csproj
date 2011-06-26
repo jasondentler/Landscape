@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\CreateOrder.cs" />
+    <Compile Include="Billing\PayWithCreditCard.cs" />
     <Compile Include="Menu\AddCustomization.cs" />
     <Compile Include="Menu\AddMenuItem.cs" />
     <Compile Include="ShoppingCart\AddOrderItem.cs" />

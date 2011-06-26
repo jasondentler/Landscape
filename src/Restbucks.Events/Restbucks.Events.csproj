@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\OrderCreated.cs" />
+    <Compile Include="Billing\OrderPaid.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Menu\CustomizationAdded.cs" />
