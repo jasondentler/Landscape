@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 
@@ -51,6 +50,7 @@ namespace Restbucks
                     finally
                     {
                         // In case a test threw an exception, clear any remaining queued commands
+                        // Remember, this is for testing only.
                         ClearQueue();
                         _isExecuting = false;
                     }

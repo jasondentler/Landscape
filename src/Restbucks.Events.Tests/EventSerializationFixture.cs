@@ -8,10 +8,10 @@ using Ncqrs.Spec;
 namespace Restbucks
 {
 
-    /// <summary>
-    /// Resharper 6 RC hates inconclusive tests, so I've copied these serialization tests and modified them to fail when inconclusive.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <remarks>>
+    /// Resharper 6 RC hates inconclusive tests, so I've copied these serialization tests and 
+    /// modified them to fail when inconclusive. They are from Ncqrs.Specs originally 
+    /// </remarks>
     [Specification]
     public abstract class EventSerializationFixture<T>
         : BaseTestFixture
