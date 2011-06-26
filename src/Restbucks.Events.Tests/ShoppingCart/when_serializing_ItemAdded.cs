@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace Restbucks.ShoppingCart
 {
 
-    public class when_serializing_OrderItemAdded
-        : JsonEventSerializationFixture<OrderItemAdded>
+    public class when_serializing_ItemAdded
+        : JsonEventSerializationFixture<ItemAdded>
     {
-        protected override OrderItemAdded GivenEvent()
+        protected override ItemAdded GivenEvent()
         {
-            return new OrderItemAdded(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(),
+            return new ItemAdded(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid(),
                                       new Dictionary<string, string>()
                                           {
                                               {"Milk", "skim"},

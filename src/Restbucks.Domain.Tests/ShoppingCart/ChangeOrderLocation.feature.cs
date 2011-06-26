@@ -101,7 +101,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 22
  testRunner.Then("the aggregate state is invalid");
 #line 23
- testRunner.And("the error is \"You can\'t change the order location before you place the order.\"");
+ testRunner.And("the error is \"You can\'t change the location before you place the order.\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

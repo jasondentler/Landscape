@@ -20,7 +20,7 @@ Scenario: Can't change location on an unplaced order
 	And I have added a medium cappuccino, skim milk, single shot
 	When I change the order location to take away
 	Then the aggregate state is invalid
-	And the error is "You can't change the order location before you place the order."
+	And the error is "You can't change the location before you place the order."
 
 @domain
 Scenario: Changing location to the same location does nothing

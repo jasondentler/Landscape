@@ -47,7 +47,7 @@ namespace Restbucks.Billing
         {
             var total = decimal.Parse(totalString);
 
-            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Order>();
+            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
 
             var e = ThenHelper.GetEvent<OrderPlaced>();
 
@@ -74,7 +74,7 @@ namespace Restbucks.Billing
         public void ThenTheOrderIsPaidFor()
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
-            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Order>();
+            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
 
             var e = ThenHelper.GetEvent<OrderPaid>();
 

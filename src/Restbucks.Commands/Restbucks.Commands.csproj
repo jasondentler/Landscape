@@ -54,9 +54,9 @@
     <Compile Include="Billing\PayWithCreditCard.cs" />
     <Compile Include="Menu\AddCustomization.cs" />
     <Compile Include="Menu\AddMenuItem.cs" />
-    <Compile Include="ShoppingCart\AddOrderItem.cs" />
+    <Compile Include="ShoppingCart\AddItem.cs" />
     <Compile Include="Billing\CancelOrder.cs" />
-    <Compile Include="ShoppingCart\ChangeOrderLocation.cs" />
+    <Compile Include="ShoppingCart\ChangeLocation.cs" />
     <Compile Include="ShoppingCart\PlaceOrder.cs" />
     <Compile Include="Billing\AddProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

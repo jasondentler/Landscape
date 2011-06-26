@@ -12,24 +12,24 @@ namespace Restbucks.ShoppingCart
         public void MapCommands(CommandService commandService)
         {
 
-            Map.Command<AddOrderItem>()
-                .ToAggregateRoot<Order>()
+            Map.Command<AddItem>()
+                .ToAggregateRoot<Cart>()
                 .UseExistingOrCreateNew(
-                    cmd => cmd.OrderId,
-                    cmd => new Order(cmd.OrderId, cmd.OrderItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
+                    cmd => cmd.CartId,
+                    cmd => new Cart(cmd.CartId, cmd.ItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
                 .ToCallOn((cmd, order) =>
-                          order.AddItem(cmd.OrderItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
+                          order.AddItem(cmd.ItemId, cmd.MenuItemId, cmd.Preferences, cmd.Quantity))
                 .RegisterWith(commandService);
 
             Map.Command<PlaceOrder>()
-                .ToAggregateRoot<Order>()
-                .WithId(cmd => cmd.OrderId)
+                .ToAggregateRoot<Cart>()
+                .WithId(cmd => cmd.CartId)
                 .ToCallOn((cmd, order) => order.PlaceOrder(cmd.Location))
                 .RegisterWith(commandService);
 
-            Map.Command<ChangeOrderLocation>()
-                .ToAggregateRoot<Order>()
-                .WithId(cmd => cmd.OrderId)
+            Map.Command<ChangeLocation>()
+                .ToAggregateRoot<Cart>()
+                .WithId(cmd => cmd.CartId)
                 .ToCallOn((cmd, order) => order.ChangeLocation(cmd.NewLocation))
                 .RegisterWith(commandService);
 

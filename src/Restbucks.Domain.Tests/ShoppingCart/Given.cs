@@ -16,16 +16,16 @@ namespace Restbucks.ShoppingCart
         public void GivenIHaveCreatedAnOrder()
         {
             var orderId = Guid.NewGuid();
-            AggregateRootHelper.SetIdFor<Order>(orderId);
+            AggregateRootHelper.SetIdFor<Cart>(orderId);
 
-            var e = new OrderCreated(orderId);
-            GivenHelper.GivenEvent<Order>(e);
+            var e = new CartCreated(orderId);
+            GivenHelper.GivenEvent<Cart>(e);
         }
 
         [Given(@"I have added a medium cappuccino, skim milk, single shot")]
         public void GivenIHaveAddedAMediumCappuccinoSkimMilkSingleShot()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
             var orderItemId = Guid.NewGuid();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
@@ -36,32 +36,32 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
 
-            var e = new OrderItemAdded(
+            var e = new ItemAdded(
                 orderId,
                 orderItemId,
                 menuItemId,
                 preferences,
                 quantity);
 
-            GivenHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Cart>(e);
         }
 
         [Given(@"I have placed the order ""for here""")]
         public void GivenIHavePlacedTheOrderForHere()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
             var itemInfos = ThenHelper.GetAggregateRootEvents(orderId)
-                .OfType<OrderItemAdded>()
+                .OfType<ItemAdded>()
                 .Select(i => new OrderItemInfo(
-                                 i.OrderItemId, i.MenuItemId, i.Preferences, i.Quantity))
+                                 i.ItemId, i.MenuItemId, i.Preferences, i.Quantity))
                 .ToArray();
 
             var e = new OrderPlaced(orderId, Location.InShop, itemInfos);
 
-            GivenHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Cart>(e);
         }
 
 

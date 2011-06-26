@@ -57,9 +57,9 @@
     <Compile Include="Menu\CustomizationAdded.cs" />
     <Compile Include="Menu\MenuItemAdded.cs" />
     <Compile Include="Billing\OrderCancelled.cs" />
-    <Compile Include="ShoppingCart\OrderCreated.cs" />
-    <Compile Include="ShoppingCart\OrderItemAdded.cs" />
-    <Compile Include="ShoppingCart\OrderLocationChanged.cs" />
+    <Compile Include="ShoppingCart\CartCreated.cs" />
+    <Compile Include="ShoppingCart\ItemAdded.cs" />
+    <Compile Include="ShoppingCart\LocationChanged.cs" />
     <Compile Include="ShoppingCart\OrderPlaced.cs" />
     <Compile Include="Billing\ProductAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

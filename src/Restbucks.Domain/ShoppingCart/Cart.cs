@@ -6,10 +6,10 @@ using Restbucks.Billing;
 
 namespace Restbucks.ShoppingCart
 {
-    public class Order : AggregateRootMappedByConvention
+    public class Cart : AggregateRootMappedByConvention
     {
 
-        private enum OrderState
+        private enum CartState
         {
 
             Created,
@@ -20,38 +20,38 @@ namespace Restbucks.ShoppingCart
 
 
 
-        private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
-        private OrderState _state;
+        private readonly HashSet<CartItem> _items = new HashSet<CartItem>();
+        private CartState _state;
         private Location _location;
 
-        private Order()
+        private Cart()
         {
         }
 
-        public Order(
-            Guid orderId,
-            Guid orderItemId, 
+        public Cart(
+            Guid cartId,
+            Guid cartItemId, 
             Guid menuItemId, 
             IDictionary<string, string> prefernces,
             int quantity)
-            : base(orderId)
+            : base(cartId)
         {
-            var e = new OrderCreated(EventSourceId);
+            var e = new CartCreated(EventSourceId);
             ApplyEvent(e);
 
-            AddItem(orderItemId, menuItemId, prefernces, quantity);
+            AddItem(cartItemId, menuItemId, prefernces, quantity);
         }
 
         public void AddItem(
-            Guid orderItemId, 
+            Guid cartItemId, 
             Guid menuItemId,
             IDictionary<string, string> preferences,
             int quantity)
         {
 
-            var e = new OrderItemAdded(
+            var e = new ItemAdded(
                 EventSourceId,
-                orderItemId,
+                cartItemId,
                 menuItemId,
                 preferences,
                 quantity);
@@ -64,12 +64,12 @@ namespace Restbucks.ShoppingCart
         {
             switch (_state)
             {
-                case OrderState.Created:
+                case CartState.Created:
                     break;
-                case OrderState.Placed:
+                case CartState.Placed:
                     return;
-                case OrderState.Abandoned:
-                    throw new InvalidAggregateStateException("This order is cancelled. Create a new order.");
+                case CartState.Abandoned:
+                    throw new InvalidAggregateStateException("This shopping cart is abandoned. Create a new order.");
                 default:
                     throw new InvalidAggregateStateException(string.Empty);
             }
@@ -88,23 +88,24 @@ namespace Restbucks.ShoppingCart
 
             switch (_state)
             {
-                case OrderState.Created:
-                    throw new InvalidAggregateStateException("You can't change the order location before you place the order.");
-                case OrderState.Abandoned:
-                    throw new InvalidAggregateStateException("You can't change the location of a cancelled order.");
+                case CartState.Created:
+                    throw new InvalidAggregateStateException("You can't change the location before you place the order.");
+                case CartState.Abandoned:
+                    throw new InvalidAggregateStateException(
+                        "You can't change the location. This shopping cart is abandoned.");
             }
 
             if (newLocation == _location) 
                 return;
 
-            var e = new OrderLocationChanged(EventSourceId, _location, newLocation);
+            var e = new LocationChanged(EventSourceId, _location, newLocation);
             ApplyEvent(e);
         }
 
         public void Cancel()
         {
 
-            if (_state == OrderState.Abandoned)
+            if (_state == CartState.Abandoned)
                 return;
 
             var e = new OrderCancelled(EventSourceId);
@@ -112,30 +113,30 @@ namespace Restbucks.ShoppingCart
         }
 
 
-        protected void On(OrderCreated e)
+        protected void On(CartCreated e)
         {
-            _state = OrderState.Created;
+            _state = CartState.Created;
         }
 
-        protected void On(OrderItemAdded e)
+        protected void On(ItemAdded e)
         {
-            _items.Add(new OrderItem(this, e));
+            _items.Add(new CartItem(this, e));
         }
 
         protected void On(OrderPlaced e)
         {
-            _state = OrderState.Placed;
+            _state = CartState.Placed;
             _location = e.Location;
         }
 
-        protected void On(OrderLocationChanged e)
+        protected void On(LocationChanged e)
         {
             _location = e.Location;
         }
 
         protected void On(OrderCancelled e)
         {
-            _state = OrderState.Abandoned;
+            _state = CartState.Abandoned;
         }
 
         private OrderItemInfo[] GetOrderItemInfo()
@@ -143,13 +144,13 @@ namespace Restbucks.ShoppingCart
             return _items.Select(item => GetOrderItemInfo(item)).ToArray();
         }
 
-        private OrderItemInfo GetOrderItemInfo(OrderItem orderItem)
+        private OrderItemInfo GetOrderItemInfo(CartItem cartItem)
         {
             return new OrderItemInfo(
-                orderItem.OrderItemId,
-                orderItem.MenuItemId,
-                orderItem.Preferences,
-                orderItem.Quantity);
+                cartItem.ItemId,
+                cartItem.MenuItemId,
+                cartItem.Preferences,
+                cartItem.Quantity);
         }
 
 

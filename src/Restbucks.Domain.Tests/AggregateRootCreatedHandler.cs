@@ -9,7 +9,7 @@ namespace Restbucks
     /// </remarks>
     public class AggregateRootCreatedHandler :
         IEventHandler<Menu.MenuItemAdded>, 
-        IEventHandler<ShoppingCart.OrderCreated>,
+        IEventHandler<ShoppingCart.CartCreated>,
         IEventHandler<Billing.ProductAdded>,
         IEventHandler<Billing.OrderPlaced>
     {
@@ -17,7 +17,7 @@ namespace Restbucks
         public void RegisterWith(InProcessEventBus eventBus)
         {
             eventBus.RegisterHandler<Menu.MenuItemAdded>(this);
-            eventBus.RegisterHandler<ShoppingCart.OrderCreated>(this);
+            eventBus.RegisterHandler<ShoppingCart.CartCreated>(this);
             eventBus.RegisterHandler<Billing.ProductAdded>(this);
             eventBus.RegisterHandler<Billing.OrderPlaced>(this);
         }
@@ -28,10 +28,10 @@ namespace Restbucks
             AggregateRootHelper.SetIdFor<Menu.MenuItem>(e.MenuItemId, e.Name);
         }
 
-        public void Handle(IPublishedEvent<ShoppingCart.OrderCreated> evnt)
+        public void Handle(IPublishedEvent<ShoppingCart.CartCreated> evnt)
         {
             var e = evnt.Payload;
-            AggregateRootHelper.SetIdFor<ShoppingCart.Order>(e.OrderId);
+            AggregateRootHelper.SetIdFor<ShoppingCart.Cart>(e.CartId);
         }
 
         public void Handle(IPublishedEvent<Billing.ProductAdded> evnt)

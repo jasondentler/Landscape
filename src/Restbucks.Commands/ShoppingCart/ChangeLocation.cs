@@ -3,16 +3,16 @@ using Ncqrs.Commanding;
 
 namespace Restbucks.ShoppingCart
 {
-    public class ChangeOrderLocation : CommandBase 
+    public class ChangeLocation : CommandBase 
     {
-        public Guid OrderId { get; private set; }
+        public Guid CartId { get; private set; }
         public Location NewLocation { get; private set; }
 
-        public ChangeOrderLocation(
-            Guid orderId,
+        public ChangeLocation(
+            Guid cartId,
             Location newLocation)
         {
-            OrderId = orderId;
+            CartId = cartId;
             NewLocation = newLocation;
         }
     }

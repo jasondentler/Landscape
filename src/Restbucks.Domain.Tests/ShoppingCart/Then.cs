@@ -12,23 +12,23 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is created")]
         public void ThenTheOrderIsCreated()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var e = ThenHelper.GetEvent<OrderCreated>();
-            e.OrderId.Should().Be.EqualTo(orderId);
+            var e = ThenHelper.GetEvent<CartCreated>();
+            e.CartId.Should().Be.EqualTo(orderId);
         }
 
         [Then(@"a medium cappuccino, skim milk, single shot is added to the order")]
         public void ThenAMediumCappuccinoSkimMilkSingleShotIsAddedToTheOrder()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
-            var orderItemId = AggregateRootHelper.GetIdFor<OrderItem>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var orderItemId = AggregateRootHelper.GetIdFor<CartItem>();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
 
-            var e = ThenHelper.GetEvent<OrderItemAdded>();
+            var e = ThenHelper.GetEvent<ItemAdded>();
 
-            e.OrderId.Should().Be.EqualTo(orderId);
-            e.OrderItemId.Should().Be.EqualTo(orderItemId);
+            e.CartId.Should().Be.EqualTo(orderId);
+            e.ItemId.Should().Be.EqualTo(orderItemId);
             e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("medium");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
@@ -40,14 +40,14 @@ namespace Restbucks.ShoppingCart
         [Then(@"a large hot chocolate, skim milk, no whipped cream is added to the order")]
         public void ThenALargeHotChocolateSkimMilkNoWhippedCreamIsAddedToTheOrder()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
-            var orderItemId = AggregateRootHelper.GetIdFor<OrderItem>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var orderItemId = AggregateRootHelper.GetIdFor<CartItem>();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Hot Chocolate");
 
-            var e = ThenHelper.GetEvent<OrderItemAdded>();
+            var e = ThenHelper.GetEvent<ItemAdded>();
 
-            e.OrderId.Should().Be.EqualTo(orderId);
-            e.OrderItemId.Should().Be.EqualTo(orderItemId);
+            e.CartId.Should().Be.EqualTo(orderId);
+            e.ItemId.Should().Be.EqualTo(orderItemId);
             e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("large");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
@@ -58,10 +58,10 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is placed for take away")]
         public void ThenTheOrderIsPlacedForTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
             var e = ThenHelper.GetEvent<OrderPlaced>();
-            e.OrderId.Should().Be.EqualTo(orderId);
+            e.CartId.Should().Be.EqualTo(orderId);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
 
@@ -93,11 +93,11 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order location is changed from in shop to take away")]
         public void ThenTheOrderLocationIsChangedFromInShopToTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var e = ThenHelper.GetEvent<OrderLocationChanged>();
+            var e = ThenHelper.GetEvent<LocationChanged>();
 
-            e.OrderId.Should().Be.EqualTo(orderId);
+            e.CartId.Should().Be.EqualTo(orderId);
             e.PreviousLocation.Should().Be.EqualTo(Location.InShop);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }

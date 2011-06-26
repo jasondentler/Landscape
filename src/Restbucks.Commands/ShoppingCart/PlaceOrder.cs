@@ -5,14 +5,14 @@ namespace Restbucks.ShoppingCart
 {
     public class PlaceOrder : CommandBase 
     {
-        public Guid OrderId { get; private set; }
+        public Guid CartId { get; private set; }
         public Location Location { get; private set; }
 
         public PlaceOrder(
-            Guid orderId,
+            Guid cartId,
             Location location)
         {
-            OrderId = orderId;
+            CartId = cartId;
             Location = location;
         }
     }

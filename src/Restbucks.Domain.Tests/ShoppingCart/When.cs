@@ -11,10 +11,10 @@ namespace Restbucks.ShoppingCart
 
         private Guid GetOrderId()
         {
-            if (AggregateRootHelper.IdExists<Order>())
-                return AggregateRootHelper.GetIdFor<Order>();
+            if (AggregateRootHelper.IdExists<Cart>())
+                return AggregateRootHelper.GetIdFor<Cart>();
             var orderId = Guid.NewGuid();
-            AggregateRootHelper.SetIdFor<Order>(orderId);
+            AggregateRootHelper.SetIdFor<Cart>(orderId);
             return orderId;
         }
 
@@ -33,9 +33,9 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
 
-            var cmd = new AddOrderItem(
+            var cmd = new AddItem(
                 orderId,
                 orderItemId,
                 menuItemId,
@@ -59,9 +59,9 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
 
-            var cmd = new AddOrderItem(
+            var cmd = new AddItem(
                 orderId,
                 orderItemId,
                 menuItemId,
@@ -74,7 +74,7 @@ namespace Restbucks.ShoppingCart
         [When(@"I place the order for take away")]
         public void WhenIPlaceTheOrderForTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
             var cmd = new PlaceOrder(orderId, Location.TakeAway);
 
@@ -84,9 +84,9 @@ namespace Restbucks.ShoppingCart
         [When(@"I change the order location to take away")]
         public void WhenIChangeTheOrderLocationToTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var cmd = new ChangeOrderLocation(orderId, Location.TakeAway);
+            var cmd = new ChangeLocation(orderId, Location.TakeAway);
 
             WhenHelper.WhenExecuting(cmd);
         }
@@ -94,9 +94,9 @@ namespace Restbucks.ShoppingCart
         [When(@"I change the order location to in shop")]
         public void WhenIChangeTheOrderLocationToInShop()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var cmd = new ChangeOrderLocation(orderId, Location.InShop);
+            var cmd = new ChangeLocation(orderId, Location.InShop);
 
             WhenHelper.WhenExecuting(cmd);
         }

@@ -66,10 +66,10 @@
     <Compile Include="Menu\when_serializing_MenuItemAdded.cs" />
     <Compile Include="Menu\when_serializing_CustomizationAdded.cs" />
     <Compile Include="Billing\when_serializing_OrderCancelled.cs" />
-    <Compile Include="ShoppingCart\when_serializing_OrderLocationChanged.cs" />
+    <Compile Include="ShoppingCart\when_serializing_LocationChanged.cs" />
     <Compile Include="ShoppingCart\when_serializing_OrderPlaced.cs" />
-    <Compile Include="ShoppingCart\when_serializing_OrderItemAdded.cs" />
-    <Compile Include="ShoppingCart\when_serializing_OrderCreated.cs" />
+    <Compile Include="ShoppingCart\when_serializing_ItemAdded.cs" />
+    <Compile Include="ShoppingCart\when_serializing_CartCreated.cs" />
     <Compile Include="Billing\when_serializing_ProductAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

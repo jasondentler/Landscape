@@ -18,7 +18,7 @@ namespace Restbucks.Billing
                                    var productService = NcqrsEnvironment.Get<IProductService>();
                                    var menuItemIds = cmd.Items.Select(i => i.MenuItemId).Distinct();
                                    var productInfos = productService.GetProductInfoByMenuItemIds(menuItemIds);
-                                   return new Order(cmd.OrderId, cmd.ShoppingCardOrderId, cmd.Items, productInfos);
+                                   return new Order(cmd.OrderId, cmd.CartId, cmd.Items, productInfos);
                                })
                 .RegisterWith(commandService);
 
