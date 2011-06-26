@@ -6,7 +6,7 @@
 @domain 
 Scenario: Add a product
 	When I add coffee to the menu with a price of $7.20
-	Then coffee is added to the menu
-	And the price of coffee is $7.20
+	Then coffee is added to the menu with a price of $7.20
+	And coffee is added to the price list with a price of $7.20
 	And nothing else happens
 

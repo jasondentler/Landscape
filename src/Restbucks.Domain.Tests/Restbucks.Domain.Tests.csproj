@@ -102,6 +102,8 @@
       <DependentUpon>CreateAnOrder.feature</DependentUpon>
     </Compile>
     <Compile Include="Ordering\Given.cs" />
+    <Compile Include="Payment\Then.cs" />
+    <Compile Include="QueuedCommandService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Menu\Given.cs" />
     <Compile Include="NcqrsModule.cs" />
@@ -148,6 +150,10 @@
       <Project>{00EA1804-0946-4022-9A1D-1904E6DDCC83}</Project>
       <Name>Landscape.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Restbucks.BoundedContextCommunication\Restbucks.BoundedContextCommunication.csproj">
+      <Project>{B42BB193-A29A-4F70-BAF2-822F8259F5C6}</Project>
+      <Name>Restbucks.BoundedContextCommunication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Restbucks.Commands.Mappings\Restbucks.Commands.Mappings.csproj">
       <Project>{68EB7F31-9274-4860-A124-2AC82F475C98}</Project>
       <Name>Restbucks.Commands.Mappings</Name>
@@ -169,6 +175,7 @@
       <Name>Restbucks.Events</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,11 +1,11 @@
 ﻿using Ncqrs;
 using Ncqrs.Commanding.ServiceModel;
-using Ncqrs.Config.Ninject;
-using Ncqrs.Domain.Storage;
+using Ncqrs.Domain;
+using Ncqrs.Eventing.ServiceModel.Bus;
 using Ninject;
 using Ninject.Modules;
 
-namespace Restbucks.Domain.Tests
+namespace Restbucks
 {
     public class NcqrsModule : NinjectModule
     {
@@ -15,9 +15,28 @@ namespace Restbucks.Domain.Tests
 
             Kernel.Bind<IKernel>().ToConstant(Kernel);
 
+            Kernel.Bind<IUnitOfWorkFactory>()
+                .To<UnitOfWorkFactory>();
+
             var commandService = new CommandService();
             commandService.Configure();
-            Kernel.Bind<ICommandService>().ToConstant(commandService);
+
+            var queuedCommandService = new QueuedCommandService(commandService);
+
+            Kernel.Bind<ICommandService>()
+                .ToConstant(queuedCommandService);
+
+            Kernel.Bind<IUniqueIdentifierGenerator>()
+                .ToConstant(new BasicGuidGenerator());
+
+            var eventBus = new InProcessEventBus();
+            var asm = typeof (Restbucks.Payment.ProductHandler).Assembly;
+            eventBus.RegisterAllHandlersInAssembly(asm,
+                                                   t => Kernel.Get(t));
+            Kernel.Bind<IEventBus>()
+                .ToConstant(eventBus);
+
+
 
         }
     }

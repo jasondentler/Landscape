@@ -1,7 +1,6 @@
 ﻿using Ncqrs;
 using Ncqrs.Config.Ninject;
 using Ninject;
-using Restbucks.Domain.Tests;
 using TechTalk.SpecFlow;
 
 namespace Restbucks

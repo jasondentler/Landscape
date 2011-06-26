@@ -66,9 +66,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.When("I add coffee to the menu with a price of $7.20");
 #line 9
- testRunner.Then("coffee is added to the menu");
+ testRunner.Then("coffee is added to the menu with a price of $7.20");
 #line 10
- testRunner.And("the price of coffee is $7.20");
+ testRunner.And("coffee is added to the price list with a price of $7.20");
 #line 11
  testRunner.And("nothing else happens");
 #line hidden
