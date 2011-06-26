@@ -11,10 +11,10 @@ namespace Restbucks.ShoppingCart
 
         private Guid GetOrderId()
         {
-            if (DomainHelper.IdExists<Order>())
-                return DomainHelper.GetId<Order>();
+            if (AggregateRootHelper.IdExists<Order>())
+                return AggregateRootHelper.GetIdFor<Order>();
             var orderId = Guid.NewGuid();
-            DomainHelper.SetId<Order>(orderId);
+            AggregateRootHelper.SetIdFor<Order>(orderId);
             return orderId;
         }
 
@@ -24,7 +24,7 @@ namespace Restbucks.ShoppingCart
 
             var orderId = GetOrderId();
             var orderItemId = Guid.NewGuid();
-            var menuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "medium"},
@@ -33,7 +33,7 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            DomainHelper.SetId<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
 
             var cmd = new AddOrderItem(
                 orderId,
@@ -42,7 +42,7 @@ namespace Restbucks.ShoppingCart
                 preferences,
                 quantity);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I add a large hot chocolate, skim milk, no whipped cream")]
@@ -50,7 +50,7 @@ namespace Restbucks.ShoppingCart
         {
             var orderId = GetOrderId();
             var orderItemId = Guid.NewGuid();
-            var menuItemId = DomainHelper.GetId<MenuItem>("Hot Chocolate");
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Hot Chocolate");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "large"},
@@ -59,7 +59,7 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            DomainHelper.SetId<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
 
             var cmd = new AddOrderItem(
                 orderId,
@@ -68,47 +68,47 @@ namespace Restbucks.ShoppingCart
                 preferences,
                 quantity);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I place the order for take away")]
         public void WhenIPlaceTheOrderForTakeAway()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
             var cmd = new PlaceOrder(orderId, Location.TakeAway);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I change the order location to take away")]
         public void WhenIChangeTheOrderLocationToTakeAway()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
             var cmd = new ChangeOrderLocation(orderId, Location.TakeAway);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I change the order location to in shop")]
         public void WhenIChangeTheOrderLocationToInShop()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
             var cmd = new ChangeOrderLocation(orderId, Location.InShop);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I cancel the order")]
         public void WhenICancelTheOrder()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
             var cmd = new CancelOrder(orderId);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
     }

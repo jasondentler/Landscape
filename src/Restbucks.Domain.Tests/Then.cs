@@ -13,14 +13,14 @@ namespace Restbucks
         [Then(@"nothing happens")]
         public void ThenNothingHappens()
         {
-            var events = DomainHelper.GetEvents();
+            var events = ThenHelper.GetResultingEvents();
             events.Should().Be.Empty();
         }
 
         [Then(@"nothing else happens")]
         public void ThenNothingElseHappens()
         {
-            var untestedEvents = DomainHelper.GetUntestedEvents();
+            var untestedEvents = ThenHelper.GetUntestedEvents();
 
             var data = untestedEvents.Select(e =>
                                              string.Format("{0}: {1}",
@@ -39,14 +39,14 @@ namespace Restbucks
         [Then(@"the aggregate state is invalid")]
         public void ThenTheAggregateStateIsInvalid()
         {
-            var ex = DomainHelper.GetException<InvalidAggregateStateException>();
+            var ex = ThenHelper.GetException<InvalidAggregateStateException>();
             ex.Should().Not.Be.Null();
         }
 
         [Then(@"the error is ""(.*)""")]
         public void ThenTheErrorIs(string message)
         {
-            var ex = DomainHelper.GetException();
+            var ex = ThenHelper.GetException();
             var actual = ex.Message;
             actual.Should().Be.EqualTo(message);
         }

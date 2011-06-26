@@ -14,20 +14,20 @@ namespace Restbucks.Menu
             var name = "Coffee";
             var price = 7.20M;
 
-            DomainHelper.SetId<MenuItem>(menuItemId, name);
+            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
             
             var e = new MenuItemAdded(menuItemId, name, price);
-            DomainHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent<MenuItem>(e);
         }
 
         [Given(@"I have added coffee sizes")]
         public void GivenIHaveAddedCoffeeSizes()
         {
             var name = "Coffee";
-            var menuItemId = DomainHelper.GetId<MenuItem>(name);
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>(name);
 
             var e = new CustomizationAdded(menuItemId, "Size", new[] {"Short", "Tall", "Grande", "Venti"});
-            DomainHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent<MenuItem>(e);
         }
 
 

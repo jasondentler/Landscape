@@ -70,10 +70,10 @@ namespace Restbucks.Menu
         private Guid AddMenuItem(string name, decimal price)
         {
             var menuItemId = Guid.NewGuid();
-            DomainHelper.SetId<MenuItem>(menuItemId, name);
+            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
 
             var e = new MenuItemAdded(menuItemId, name, price);
-            DomainHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent<MenuItem>(e);
             return menuItemId;
         }
 
@@ -91,7 +91,7 @@ namespace Restbucks.Menu
             string[] options)
         {
             var e = new CustomizationAdded(menuItemId, customization, options);
-            DomainHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent<MenuItem>(e);
         }
 
     }

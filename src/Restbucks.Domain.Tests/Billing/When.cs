@@ -10,17 +10,17 @@ namespace Restbucks.Billing
         [When(@"I pay with a credit card")]
         public void WhenIPayWithACreditCard()
         {
-            var orderCreated = DomainHelper.GetGivenEvents()
+            var orderCreated = GivenHelper.GetGivenEvents()
                 .OfType<OrderCreated>()
                 .Single();
 
             var orderId = orderCreated.OrderId;
 
-            DomainHelper.SetId<Order>(orderId);
+            AggregateRootHelper.SetIdFor<Order>(orderId);
 
             var cmd = new PayWithCreditCard(orderId, "John Doe", "5444444444444444", orderCreated.OrderTotal);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
     }

@@ -16,18 +16,18 @@ namespace Restbucks.ShoppingCart
         public void GivenIHaveCreatedAnOrder()
         {
             var orderId = Guid.NewGuid();
-            DomainHelper.SetId<Order>(orderId);
+            AggregateRootHelper.SetIdFor<Order>(orderId);
 
             var e = new OrderCreated(orderId);
-            DomainHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Order>(e);
         }
 
         [Given(@"I have added a medium cappuccino, skim milk, single shot")]
         public void GivenIHaveAddedAMediumCappuccinoSkimMilkSingleShot()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
             var orderItemId = Guid.NewGuid();
-            var menuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
                                       {"Size", "medium"},
@@ -36,7 +36,7 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            DomainHelper.SetId<OrderItem>(orderItemId);
+            AggregateRootHelper.SetIdFor<OrderItem>(orderItemId);
 
             var e = new OrderItemAdded(
                 orderId,
@@ -45,15 +45,15 @@ namespace Restbucks.ShoppingCart
                 preferences,
                 quantity);
 
-            DomainHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Order>(e);
         }
 
         [Given(@"I have placed the order ""for here""")]
         public void GivenIHavePlacedTheOrderForHere()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
-            var itemInfos = DomainHelper.GetAllEvents(orderId)
+            var itemInfos = ThenHelper.GetAggregateRootEvents(orderId)
                 .OfType<OrderItemAdded>()
                 .Select(i => new OrderItemInfo(
                                  i.OrderItemId, i.MenuItemId, i.Preferences, i.Quantity))
@@ -61,17 +61,17 @@ namespace Restbucks.ShoppingCart
 
             var e = new OrderPlaced(orderId, Location.InShop, itemInfos);
 
-            DomainHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Order>(e);
         }
 
         [Given(@"I have cancelled the order")]
         public void GivenIHaveCancelledTheOrder()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
             var e = new OrderCancelled(orderId);
 
-            DomainHelper.GivenEvent<Order>(e);
+            GivenHelper.GivenEvent<Order>(e);
         }
 
         [Given(@"I have placed an order")]

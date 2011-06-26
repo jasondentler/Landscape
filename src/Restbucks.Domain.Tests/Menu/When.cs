@@ -13,23 +13,23 @@ namespace Restbucks.Menu
             var name = "Coffee";
             var price = 7.20M;
 
-            DomainHelper.SetId<MenuItem>(menuItemId, name);
+            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
 
             var cmd = new AddMenuItem(menuItemId, name, price);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
 
         [When(@"I add coffee sizes")]
         public void WhenIAddCoffeeSizes()
         {
-            var menuItemId = DomainHelper.GetId<MenuItem>("Coffee");
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Coffee");
             var customization = "Size";
             var sizes = new[] {"Short", "Tall", "Grande", "Venti"};
 
             var cmd = new AddCustomization(menuItemId, customization, sizes);
 
-            DomainHelper.WhenExecuting(cmd);
+            WhenHelper.WhenExecuting(cmd);
         }
     
     }

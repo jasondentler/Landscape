@@ -1,5 +1,6 @@
 ﻿using System;
 using Ncqrs;
+using Restbucks.Menu;
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
@@ -12,9 +13,9 @@ namespace Restbucks.Billing
         [Then(@"coffee is added to the price list with a price of \$7\.20")]
         public void ThenCoffeeIsAddedToThePriceListWithAPriceOf7_20()
         {
-            var menuItemId = DomainHelper.GetId<Menu.MenuItem>("Coffee");
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Coffee");
 
-            var e = DomainHelper.GetEvent<ProductAdded>();
+            var e = ThenHelper.GetEvent<ProductAdded>();
 
             // We don't know what ID was generated, but we at least know two values it shouldn't be...
             e.ProductId.Should().Not.Be.EqualTo(Guid.Empty);
@@ -28,7 +29,7 @@ namespace Restbucks.Billing
         [Then(@"the product catalog has coffee")]
         public void ThenTheProductCatalogHasCoffee()
         {
-            var e = DomainHelper.GetEvent<ProductAdded>();
+            var e = ThenHelper.GetEvent<ProductAdded>();
             var menuItemId = e.MenuItemId;
 
             var productService = NcqrsEnvironment.Get<IProductService>();
@@ -46,9 +47,9 @@ namespace Restbucks.Billing
         {
             var total = decimal.Parse(totalString);
 
-            var shoppingCardOrderId = DomainHelper.GetId<ShoppingCart.Order>();
+            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Order>();
 
-            var e = DomainHelper.GetEvent<OrderCreated>();
+            var e = ThenHelper.GetEvent<OrderCreated>();
 
             // We don't know what orderId was generated, but we can check two values that it shouldn't be.
             e.OrderId.Should().Not.Be.EqualTo(Guid.Empty);
@@ -61,10 +62,10 @@ namespace Restbucks.Billing
         [Then(@"the order is paid for")]
         public void ThenTheOrderIsPaidFor()
         {
-            var orderId = DomainHelper.GetId<Order>();
-            var shoppingCardOrderId = DomainHelper.GetId<ShoppingCart.Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Order>();
 
-            var e = DomainHelper.GetEvent<OrderPaid>();
+            var e = ThenHelper.GetEvent<OrderPaid>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.ShoppingCardOrderId.Should().Be.EqualTo(shoppingCardOrderId);

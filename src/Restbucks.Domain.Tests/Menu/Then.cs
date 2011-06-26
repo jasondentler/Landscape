@@ -12,9 +12,9 @@ namespace Restbucks.Menu
         public void ThenCoffeeIsAddedToTheMenuWithAPriceOf7_20()
         {
             var name = "Coffee";
-            var menuItemId = DomainHelper.GetId<MenuItem>(name);
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>(name);
 
-            var e = DomainHelper.GetEvent<MenuItemAdded>();
+            var e = ThenHelper.GetEvent<MenuItemAdded>();
             e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Name.Should().Be.EqualTo(name);
             e.Price.Should().Be.EqualTo(7.20M);
@@ -23,7 +23,7 @@ namespace Restbucks.Menu
         [Then(@"coffee sizes are added")]
         public void ThenCoffeeSizesAreAdded()
         {
-            var e = DomainHelper.GetEvent<CustomizationAdded>();
+            var e = ThenHelper.GetEvent<CustomizationAdded>();
             e.Customization.Should().Be.EqualTo("Size");
             e.Options.Count().Should().Be.EqualTo(4);
             e.Options.Should().Contain("Short");

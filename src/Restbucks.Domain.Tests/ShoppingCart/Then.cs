@@ -12,20 +12,20 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is created")]
         public void ThenTheOrderIsCreated()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
-            var e = DomainHelper.GetEvent<OrderCreated>();
+            var e = ThenHelper.GetEvent<OrderCreated>();
             e.OrderId.Should().Be.EqualTo(orderId);
         }
 
         [Then(@"a medium cappuccino, skim milk, single shot is added to the order")]
         public void ThenAMediumCappuccinoSkimMilkSingleShotIsAddedToTheOrder()
         {
-            var orderId = DomainHelper.GetId<Order>();
-            var orderItemId = DomainHelper.GetId<OrderItem>();
-            var menuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderItemId = AggregateRootHelper.GetIdFor<OrderItem>();
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
 
-            var e = DomainHelper.GetEvent<OrderItemAdded>();
+            var e = ThenHelper.GetEvent<OrderItemAdded>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.OrderItemId.Should().Be.EqualTo(orderItemId);
@@ -40,11 +40,11 @@ namespace Restbucks.ShoppingCart
         [Then(@"a large hot chocolate, skim milk, no whipped cream is added to the order")]
         public void ThenALargeHotChocolateSkimMilkNoWhippedCreamIsAddedToTheOrder()
         {
-            var orderId = DomainHelper.GetId<Order>();
-            var orderItemId = DomainHelper.GetId<OrderItem>();
-            var menuItemId = DomainHelper.GetId<MenuItem>("Hot Chocolate");
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderItemId = AggregateRootHelper.GetIdFor<OrderItem>();
+            var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Hot Chocolate");
 
-            var e = DomainHelper.GetEvent<OrderItemAdded>();
+            var e = ThenHelper.GetEvent<OrderItemAdded>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.OrderItemId.Should().Be.EqualTo(orderItemId);
@@ -58,9 +58,9 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is placed for take away")]
         public void ThenTheOrderIsPlacedForTakeAway()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
-            var e = DomainHelper.GetEvent<OrderPlaced>();
+            var e = ThenHelper.GetEvent<OrderPlaced>();
             e.OrderId.Should().Be.EqualTo(orderId);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
@@ -68,16 +68,16 @@ namespace Restbucks.ShoppingCart
         [Then(@"the placed order has one item")]
         public void ThenThePlacedOrderHasOneItem()
         {
-            var e = DomainHelper.GetEvent<OrderPlaced>();
+            var e = ThenHelper.GetEvent<OrderPlaced>();
             e.Items.Length.Should().Be.EqualTo(1);
         }
 
         [Then(@"the placed order contains a medium cappuccino, skim milk, single shot")]
         public void ThenThePlacedOrderContainsAMediumCappuccinoSkimMilkSingleShot()
         {
-            var cappucinoMenuItemId = DomainHelper.GetId<MenuItem>("Cappuccino");
+            var cappucinoMenuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
 
-            var e = DomainHelper.GetEvent<OrderPlaced>();
+            var e = ThenHelper.GetEvent<OrderPlaced>();
 
             var matchingItems = e.Items
                 .Where(i => i.MenuItemId == cappucinoMenuItemId)
@@ -93,9 +93,9 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order location is changed from in shop to take away")]
         public void ThenTheOrderLocationIsChangedFromInShopToTakeAway()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
-            var e = DomainHelper.GetEvent<OrderLocationChanged>();
+            var e = ThenHelper.GetEvent<OrderLocationChanged>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.PreviousLocation.Should().Be.EqualTo(Location.InShop);
@@ -105,9 +105,9 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is cancelled")]
         public void ThenTheOrderIsCancelled()
         {
-            var orderId = DomainHelper.GetId<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
 
-            var e = DomainHelper.GetEvent<OrderCancelled>();
+            var e = ThenHelper.GetEvent<OrderCancelled>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
         }
