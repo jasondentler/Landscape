@@ -29,11 +29,3 @@ Scenario: Place an already-placed order
 	Given I have placed an order
 	When I place the order for take away
 	Then nothing happens
-
-@domain
-Scenario: Place a cancelled order
-	Given the franchise owner has set up the menu
-	And I have created and cancelled an order
-	When I place the order for take away
-	Then the aggregate state is invalid
-	And the error is "This order is cancelled. Create a new order."

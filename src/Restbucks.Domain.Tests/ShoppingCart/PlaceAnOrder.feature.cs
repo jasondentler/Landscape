@@ -128,29 +128,6 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Place a cancelled order")]
-        [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void PlaceACancelledOrder()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place a cancelled order", new string[] {
-                        "domain"});
-#line 34
-this.ScenarioSetup(scenarioInfo);
-#line 35
- testRunner.Given("the franchise owner has set up the menu");
-#line 36
- testRunner.And("I have created and cancelled an order");
-#line 37
- testRunner.When("I place the order for take away");
-#line 38
- testRunner.Then("the aggregate state is invalid");
-#line 39
- testRunner.And("the error is \"This order is cancelled. Create a new order.\"");
-#line hidden
-            testRunner.CollectScenarioErrors();
-        }
     }
 }
 #endregion

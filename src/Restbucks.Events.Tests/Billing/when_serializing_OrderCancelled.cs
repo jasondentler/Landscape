@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Restbucks.ShoppingCart
+namespace Restbucks.Billing
 {
 
     public class when_serializing_OrderCancelled

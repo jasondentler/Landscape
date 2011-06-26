@@ -1,7 +1,7 @@
 ﻿using System;
 using Ncqrs.Commanding;
 
-namespace Restbucks.ShoppingCart
+namespace Restbucks.Billing
 {
     public class CancelOrder : CommandBase 
     {

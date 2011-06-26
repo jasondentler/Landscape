@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace Restbucks.Billing
@@ -6,6 +7,18 @@ namespace Restbucks.Billing
     [Binding]
     public class When
     {
+
+        [When(@"I cancel the order")]
+        public void WhenICancelTheOrder()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+
+            var cmd = new CancelOrder(orderId);
+
+            WhenHelper.WhenExecuting(cmd);
+        }
+
+
 
         [When(@"I pay with a credit card")]
         public void WhenIPayWithACreditCard()
@@ -19,6 +32,22 @@ namespace Restbucks.Billing
             AggregateRootHelper.SetIdFor<Order>(orderId);
 
             var cmd = new PayWithCreditCard(orderId, "John Doe", "5444444444444444", orderCreated.OrderTotal);
+
+            WhenHelper.WhenExecuting(cmd);
+        }
+
+        [When(@"I pay the wrong amount")]
+        public void WhenIPayTheWrongAmount()
+        {
+            var orderCreated = GivenHelper.GetGivenEvents()
+                .OfType<OrderCreated>()
+                .Single();
+
+            var orderId = orderCreated.OrderId;
+
+            AggregateRootHelper.SetIdFor<Order>(orderId);
+
+            var cmd = new PayWithCreditCard(orderId, "John Doe", "5444444444444444", orderCreated.OrderTotal - 0.50M);
 
             WhenHelper.WhenExecuting(cmd);
         }

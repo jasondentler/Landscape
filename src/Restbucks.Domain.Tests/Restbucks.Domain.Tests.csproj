@@ -72,6 +72,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Billing\Given.cs" />
+    <Compile Include="AggregateRootCreatedHandler.cs" />
     <Compile Include="Billing\PayForTheOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,7 +98,7 @@
     <Compile Include="Menu\When.cs" />
     <Compile Include="ScenarioContextHelper.cs" />
     <Compile Include="ServiceModule.cs" />
-    <Compile Include="ShoppingCart\CancelOrder.feature.cs">
+    <Compile Include="Billing\CancelOrder.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CancelOrder.feature</DependentUpon>
@@ -142,7 +144,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddMenuItem.feature.cs</LastGenOutput>
     </None>
-    <None Include="ShoppingCart\CancelOrder.feature">
+    <None Include="Billing\CancelOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CancelOrder.feature.cs</LastGenOutput>
     </None>

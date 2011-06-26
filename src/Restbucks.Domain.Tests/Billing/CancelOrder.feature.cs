@@ -10,7 +10,7 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
-namespace Restbucks.ShoppingCart
+namespace Restbucks.Billing
 {
     using TechTalk.SpecFlow;
     
@@ -31,8 +31,8 @@ namespace Restbucks.ShoppingCart
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Cancel order", "In order to punish the barista for being slow\r\nAs a rude customer\r\nI want to canc" +
-                    "el my coffee order and stomp off in a fit", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Cancel order", "In order to punish the barista for being slow\r\nAs an obnoxious customer\r\nI want t" +
+                    "o cancel my coffee order and stomp off in a fit", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -78,68 +78,47 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Cancel an unplaced order")]
-        [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void CancelAnUnplacedOrder()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel an unplaced order", new string[] {
-                        "domain"});
-#line 15
-this.ScenarioSetup(scenarioInfo);
-#line 16
- testRunner.Given("the franchise owner has set up the menu");
-#line 17
- testRunner.And("I have created an order");
-#line 18
- testRunner.When("I cancel the order");
-#line 19
- testRunner.Then("the order is cancelled");
-#line 20
- testRunner.And("nothing else happens");
-#line hidden
-            testRunner.CollectScenarioErrors();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Cancel a cancelled order")]
         [NUnit.Framework.CategoryAttribute("domain")]
         public virtual void CancelACancelledOrder()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cancel a cancelled order", new string[] {
                         "domain"});
-#line 23
+#line 15
 this.ScenarioSetup(scenarioInfo);
-#line 24
+#line 16
  testRunner.Given("the franchise owner has set up the menu");
-#line 25
+#line 17
  testRunner.And("I have created and cancelled an order");
-#line 26
+#line 18
  testRunner.When("I cancel the order");
-#line 27
+#line 19
  testRunner.Then("nothing happens");
 #line hidden
             testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Change location of a cancelled order")]
+        [NUnit.Framework.DescriptionAttribute("Can\'t cancel a paid order")]
         [NUnit.Framework.CategoryAttribute("domain")]
-        public virtual void ChangeLocationOfACancelledOrder()
+        public virtual void CanTCancelAPaidOrder()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change location of a cancelled order", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can\'t cancel a paid order", new string[] {
                         "domain"});
-#line 30
+#line 22
 this.ScenarioSetup(scenarioInfo);
-#line 31
+#line 23
  testRunner.Given("the franchise owner has set up the menu");
-#line 32
- testRunner.And("I have created and cancelled an order");
-#line 33
- testRunner.When("I change the order location to take away");
-#line 34
+#line 24
+ testRunner.And("I have placed an order");
+#line 25
+ testRunner.And("I have paid for the order");
+#line 26
+ testRunner.When("I cancel the order");
+#line 27
  testRunner.Then("the aggregate state is invalid");
-#line 35
- testRunner.And("the error is \"You can\'t change the location of a cancelled order.\"");
+#line 28
+ testRunner.And("the error is \"You can\'t cancel this order. You\'ve already paid for it.\"");
 #line hidden
             testRunner.CollectScenarioErrors();
         }

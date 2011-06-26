@@ -44,7 +44,6 @@
     <Compile Include="InvalidAggregateStateException.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="OrderItemInfo.cs" />
-    <Compile Include="OrderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

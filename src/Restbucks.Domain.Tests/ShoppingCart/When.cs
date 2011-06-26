@@ -101,15 +101,5 @@ namespace Restbucks.ShoppingCart
             WhenHelper.WhenExecuting(cmd);
         }
 
-        [When(@"I cancel the order")]
-        public void WhenICancelTheOrder()
-        {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
-
-            var cmd = new CancelOrder(orderId);
-
-            WhenHelper.WhenExecuting(cmd);
-        }
-
     }
 }

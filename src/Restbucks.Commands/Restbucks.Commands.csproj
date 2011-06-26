@@ -55,7 +55,7 @@
     <Compile Include="Menu\AddCustomization.cs" />
     <Compile Include="Menu\AddMenuItem.cs" />
     <Compile Include="ShoppingCart\AddOrderItem.cs" />
-    <Compile Include="ShoppingCart\CancelOrder.cs" />
+    <Compile Include="Billing\CancelOrder.cs" />
     <Compile Include="ShoppingCart\ChangeOrderLocation.cs" />
     <Compile Include="ShoppingCart\PlaceOrder.cs" />
     <Compile Include="Billing\AddProduct.cs" />

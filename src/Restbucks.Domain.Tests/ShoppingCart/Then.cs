@@ -102,15 +102,6 @@ namespace Restbucks.ShoppingCart
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
 
-        [Then(@"the order is cancelled")]
-        public void ThenTheOrderIsCancelled()
-        {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
-
-            var e = ThenHelper.GetEvent<OrderCancelled>();
-
-            e.OrderId.Should().Be.EqualTo(orderId);
-        }
 
     }
 }

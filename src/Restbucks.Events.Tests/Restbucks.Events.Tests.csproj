@@ -65,7 +65,7 @@
     <Compile Include="JsonSerializationFixture.cs" />
     <Compile Include="Menu\when_serializing_MenuItemAdded.cs" />
     <Compile Include="Menu\when_serializing_CustomizationAdded.cs" />
-    <Compile Include="ShoppingCart\when_serializing_OrderCancelled.cs" />
+    <Compile Include="Billing\when_serializing_OrderCancelled.cs" />
     <Compile Include="ShoppingCart\when_serializing_OrderLocationChanged.cs" />
     <Compile Include="ShoppingCart\when_serializing_OrderPlaced.cs" />
     <Compile Include="ShoppingCart\when_serializing_OrderItemAdded.cs" />

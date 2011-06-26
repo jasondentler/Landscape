@@ -1,6 +1,7 @@
 ﻿using Ncqrs.Commanding.CommandExecution;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Commanding.CommandExecution.Mapping.Fluent;
+using Restbucks.Billing;
 
 namespace Restbucks.ShoppingCart
 {
@@ -30,12 +31,6 @@ namespace Restbucks.ShoppingCart
                 .ToAggregateRoot<Order>()
                 .WithId(cmd => cmd.OrderId)
                 .ToCallOn((cmd, order) => order.ChangeLocation(cmd.NewLocation))
-                .RegisterWith(commandService);
-
-            Map.Command<CancelOrder>()
-                .ToAggregateRoot<Order>()
-                .WithId(cmd => cmd.OrderId)
-                .ToCallOn((cmd, order) => order.Cancel())
                 .RegisterWith(commandService);
 
         }

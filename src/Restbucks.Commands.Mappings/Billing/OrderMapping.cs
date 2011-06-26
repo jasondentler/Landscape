@@ -22,6 +22,14 @@ namespace Restbucks.Billing
                                })
                 .RegisterWith(commandService);
 
+            Map.Command<CancelOrder>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.Cancel())
+                .RegisterWith(commandService);
+
+
+
             Map.Command<PayWithCreditCard>()
                 .ToAggregateRoot<Order>()
                 .WithId(cmd => cmd.OrderId)

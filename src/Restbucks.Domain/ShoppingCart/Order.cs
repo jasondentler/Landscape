@@ -2,12 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ncqrs.Domain;
+using Restbucks.Billing;
 
 namespace Restbucks.ShoppingCart
 {
-
     public class Order : AggregateRootMappedByConvention
     {
+
+        private enum OrderState
+        {
+
+            Created,
+            Placed,
+            Abandoned,
+
+        }
+
+
 
         private readonly HashSet<OrderItem> _items = new HashSet<OrderItem>();
         private OrderState _state;
@@ -57,7 +68,7 @@ namespace Restbucks.ShoppingCart
                     break;
                 case OrderState.Placed:
                     return;
-                case OrderState.Cancelled:
+                case OrderState.Abandoned:
                     throw new InvalidAggregateStateException("This order is cancelled. Create a new order.");
                 default:
                     throw new InvalidAggregateStateException(string.Empty);
@@ -79,7 +90,7 @@ namespace Restbucks.ShoppingCart
             {
                 case OrderState.Created:
                     throw new InvalidAggregateStateException("You can't change the order location before you place the order.");
-                case OrderState.Cancelled:
+                case OrderState.Abandoned:
                     throw new InvalidAggregateStateException("You can't change the location of a cancelled order.");
             }
 
@@ -93,7 +104,7 @@ namespace Restbucks.ShoppingCart
         public void Cancel()
         {
 
-            if (_state == OrderState.Cancelled)
+            if (_state == OrderState.Abandoned)
                 return;
 
             var e = new OrderCancelled(EventSourceId);
@@ -124,7 +135,7 @@ namespace Restbucks.ShoppingCart
 
         protected void On(OrderCancelled e)
         {
-            _state = OrderState.Cancelled;
+            _state = OrderState.Abandoned;
         }
 
         private OrderItemInfo[] GetOrderItemInfo()

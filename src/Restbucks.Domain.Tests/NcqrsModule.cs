@@ -33,6 +33,10 @@ namespace Restbucks
             var asm = typeof (Restbucks.Billing.MenuItemAddedHandler).Assembly;
             eventBus.RegisterAllHandlersInAssembly(asm,
                                                    t => Kernel.Get(t));
+
+            var aggregateRootCreatedHandler = new AggregateRootCreatedHandler();
+            aggregateRootCreatedHandler.RegisterWith(eventBus);
+
             Kernel.Bind<IEventBus>()
                 .ToConstant(eventBus);
 

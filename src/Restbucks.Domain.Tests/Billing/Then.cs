@@ -59,6 +59,17 @@ namespace Restbucks.Billing
             e.OrderTotal.Should().Be.EqualTo(total);
         }
 
+        [Then(@"the order is cancelled")]
+        public void ThenTheOrderIsCancelled()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+
+            var e = ThenHelper.GetEvent<OrderCancelled>();
+
+            e.OrderId.Should().Be.EqualTo(orderId);
+        }
+
+
         [Then(@"the order is paid for")]
         public void ThenTheOrderIsPaidFor()
         {

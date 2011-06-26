@@ -76,6 +76,54 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Can\'t pay for a paid order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void CanTPayForAPaidOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Can\'t pay for a paid order", new string[] {
+                        "domain"});
+#line 15
+this.ScenarioSetup(scenarioInfo);
+#line 16
+ testRunner.Given("the franchise owner has set up the menu");
+#line 17
+ testRunner.And("I have placed an order");
+#line 18
+ testRunner.And("I have paid for the order");
+#line 19
+ testRunner.When("I pay with a credit card");
+#line 20
+ testRunner.Then("the aggregate state is invalid");
+#line 21
+ testRunner.And("the error is \"This order is already paid for. Have a nice day.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Pay the wrong amount")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void PayTheWrongAmount()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pay the wrong amount", new string[] {
+                        "domain"});
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("the franchise owner has set up the menu");
+#line 26
+ testRunner.And("I have placed an order");
+#line 27
+ testRunner.When("I pay the wrong amount");
+#line 28
+ testRunner.Then("the aggregate state is invalid");
+#line 29
+ testRunner.And("the error is \"Incorrect amount. Your order total is $6.70.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

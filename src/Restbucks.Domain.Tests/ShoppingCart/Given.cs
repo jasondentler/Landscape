@@ -64,15 +64,6 @@ namespace Restbucks.ShoppingCart
             GivenHelper.GivenEvent<Order>(e);
         }
 
-        [Given(@"I have cancelled the order")]
-        public void GivenIHaveCancelledTheOrder()
-        {
-            var orderId = AggregateRootHelper.GetIdFor<Order>();
-
-            var e = new OrderCancelled(orderId);
-
-            GivenHelper.GivenEvent<Order>(e);
-        }
 
         [Given(@"I have placed an order")]
         public void GivenIHavePlacedAnOrder()
@@ -82,12 +73,6 @@ namespace Restbucks.ShoppingCart
             GivenIHavePlacedTheOrderForHere();
         }
 
-        [Given(@"I have created and cancelled an order")]
-        public void GivenIHaveCreatedAndCancelledAnOrder()
-        {
-            GivenIHavePlacedAnOrder();
-            GivenIHaveCancelledTheOrder();
-        }
 
     }
 }

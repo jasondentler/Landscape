@@ -130,6 +130,58 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change location of a cancelled order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeLocationOfACancelledOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change location of a cancelled order", new string[] {
+                        "domain"});
+#line 35
+this.ScenarioSetup(scenarioInfo);
+#line 36
+ testRunner.Given("the franchise owner has set up the menu");
+#line 37
+ testRunner.And("I have created and cancelled an order");
+#line 38
+ testRunner.When("I change the order location to take away");
+#line 39
+ testRunner.Then("the aggregate state is invalid");
+#line 40
+ testRunner.And("the error is \"You can\'t change the location of a cancelled order.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Change location of a paid order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void ChangeLocationOfAPaidOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change location of a paid order", new string[] {
+                        "domain"});
+#line 43
+this.ScenarioSetup(scenarioInfo);
+#line 44
+ testRunner.Given("the franchise owner has set up the menu");
+#line 45
+ testRunner.And("I have created an order");
+#line 46
+ testRunner.And("I have added a medium cappuccino, skim milk, single shot");
+#line 47
+ testRunner.And("I have placed the order \"for here\"");
+#line 48
+ testRunner.And("I have paid for the order");
+#line 49
+ testRunner.When("I change the order location to take away");
+#line 50
+ testRunner.Then("the order location is changed from in shop to take away");
+#line 51
+ testRunner.And("nothing else happens");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion
