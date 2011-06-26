@@ -24,7 +24,7 @@ namespace Restbucks.Billing
         public void WhenIPayWithACreditCard()
         {
             var orderCreated = GivenHelper.GetGivenEvents()
-                .OfType<OrderCreated>()
+                .OfType<OrderPlaced>()
                 .Single();
 
             var orderId = orderCreated.OrderId;
@@ -40,7 +40,7 @@ namespace Restbucks.Billing
         public void WhenIPayTheWrongAmount()
         {
             var orderCreated = GivenHelper.GetGivenEvents()
-                .OfType<OrderCreated>()
+                .OfType<OrderPlaced>()
                 .Single();
 
             var orderId = orderCreated.OrderId;

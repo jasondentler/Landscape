@@ -8,17 +8,6 @@ namespace Restbucks.Billing
     public class Given
     {
 
-        //public static Guid GetOrderId()
-        //{
-        //    var orderCreated = GivenHelper.GetGivenEvents()
-        //        .OfType<OrderCreated>()
-        //        .Last();
-
-        //    AggregateRootHelper.SetIdFor<Order>(orderCreated.OrderId);
-
-        //    return orderCreated.OrderId;
-        //}
-
         [Given(@"I have cancelled the order")]
         public void GivenIHaveCancelledTheOrder()
         {
@@ -33,7 +22,7 @@ namespace Restbucks.Billing
         public void GivenIHavePaidForTheOrder()
         {
             var orderCreated = GivenHelper.GetGivenEvents()
-                .OfType<OrderCreated>()
+                .OfType<OrderPlaced>()
                 .Single();
 
             var orderId = orderCreated.OrderId;

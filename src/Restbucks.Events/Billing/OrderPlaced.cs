@@ -3,13 +3,13 @@
 namespace Restbucks.Billing
 {
 
-    public class OrderCreated : IEvent 
+    public class OrderPlaced : IEvent 
     {
         public Guid OrderId { get; private set; }
         public Guid ShoppingCardOrderId { get; private set; }
         public decimal OrderTotal { get; private set; }
 
-        public OrderCreated(
+        public OrderPlaced(
             Guid orderId,
             Guid shoppingCardOrderId,
             decimal orderTotal)

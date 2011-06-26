@@ -7,7 +7,7 @@ namespace Restbucks.Billing
 {
 
     public class OrderPlacedHandler :
-        IEventHandler<OrderPlaced>
+        IEventHandler<ShoppingCart.OrderPlaced>
     {
         private readonly IUniqueIdentifierGenerator _idGenerator;
         private readonly ICommandService _commandService;

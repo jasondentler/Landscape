@@ -7,12 +7,12 @@ namespace Restbucks.Billing
     public class Order : AggregateRootMappedByConvention
     {
 
-        //private enum State
-        //{
-        //    Placed,
-        //    Paid,
-        //    Cancelled
-        //}
+        private enum State
+        {
+            Placed,
+            Paid,
+            Cancelled
+        }
         
         private Guid _shoppingCardOrderId;
         private decimal _orderTotal;
@@ -41,7 +41,7 @@ namespace Restbucks.Billing
                 .Select(i => i.Quantity*i.Price)
                 .Sum();
 
-            var e = new OrderCreated(EventSourceId, shoppingCardOrderId, orderTotal);
+            var e = new OrderPlaced(EventSourceId, shoppingCardOrderId, orderTotal);
             ApplyEvent(e);
 
         }
@@ -71,7 +71,7 @@ namespace Restbucks.Billing
             ApplyEvent(e);
         }
 
-        protected void On(OrderCreated e)
+        protected void On(OrderPlaced e)
         {
             _shoppingCardOrderId = e.ShoppingCardOrderId;
             _orderTotal = e.OrderTotal;

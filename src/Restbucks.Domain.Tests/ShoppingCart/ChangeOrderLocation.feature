@@ -31,7 +31,7 @@ Scenario: Changing location to the same location does nothing
 	When I change the order location to in shop
 	Then nothing happens
 
-@domain
+@domain @ignore
 Scenario: Change location of a cancelled order
 	Given the franchise owner has set up the menu
 	And I have created and cancelled an order

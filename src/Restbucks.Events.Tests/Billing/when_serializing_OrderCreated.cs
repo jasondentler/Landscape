@@ -4,11 +4,11 @@ namespace Restbucks.Billing
 {
 
     public class when_serializing_OrderCreated
-        : JsonEventSerializationFixture<OrderCreated>
+        : JsonEventSerializationFixture<OrderPlaced>
     {
-        protected override OrderCreated GivenEvent()
+        protected override OrderPlaced GivenEvent()
         {
-            return new OrderCreated(Guid.NewGuid(), Guid.NewGuid(), 29.7M);
+            return new OrderPlaced(Guid.NewGuid(), Guid.NewGuid(), 29.7M);
         }
     }
 }

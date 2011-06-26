@@ -134,10 +134,12 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Change location of a cancelled order")]
         [NUnit.Framework.CategoryAttribute("domain")]
+        [NUnit.Framework.IgnoreAttribute()]
         public virtual void ChangeLocationOfACancelledOrder()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Change location of a cancelled order", new string[] {
-                        "domain"});
+                        "domain",
+                        "ignore"});
 #line 35
 this.ScenarioSetup(scenarioInfo);
 #line 36

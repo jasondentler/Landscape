@@ -49,7 +49,7 @@ namespace Restbucks.Billing
 
             var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Order>();
 
-            var e = ThenHelper.GetEvent<OrderCreated>();
+            var e = ThenHelper.GetEvent<OrderPlaced>();
 
             // We don't know what orderId was generated, but we can check two values that it shouldn't be.
             e.OrderId.Should().Not.Be.EqualTo(Guid.Empty);

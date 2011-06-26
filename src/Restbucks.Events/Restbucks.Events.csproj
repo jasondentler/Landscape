@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Billing\OrderCreated.cs" />
+    <Compile Include="Billing\OrderPlaced.cs" />
     <Compile Include="Billing\OrderPaid.cs" />
     <Compile Include="IComponent.cs" />
     <Compile Include="IEvent.cs" />
