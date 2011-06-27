@@ -6,7 +6,7 @@
 @domain
 Scenario: Place the order 
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	And I have added a medium cappuccino, skim milk, single shot
 	When I place the order for take away
 	Then the order is placed for take away 
@@ -18,7 +18,7 @@ Scenario: Place the order
 @domain
 Scenario: Place an empty order
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	When I place the order for take away
 	Then the aggregate state is invalid
 	And the error is "You can't place an empty order. Add an item."
@@ -26,6 +26,6 @@ Scenario: Place an empty order
 @domain
 Scenario: Place an already-placed order
 	Given the franchise owner has set up the menu
-	Given I have placed an order
+	And I have placed an order
 	When I place the order for take away
 	Then nothing happens

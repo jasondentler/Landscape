@@ -28,8 +28,6 @@ namespace Restbucks.Billing
             var orderId = orderCreated.OrderId;
             var shoppingCartOrderId = orderCreated.ShoppingCardOrderId;
             
-            AggregateRootHelper.SetIdFor<Order>(orderId);
-
             var e = new OrderPaid(orderId, shoppingCartOrderId);
             GivenHelper.GivenEvent<Order>(e);
 

@@ -70,10 +70,9 @@ namespace Restbucks.Menu
         private Guid AddMenuItem(string name, decimal price)
         {
             var menuItemId = Guid.NewGuid();
-            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
-
+            
             var e = new MenuItemAdded(menuItemId, name, price);
-            GivenHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent(menuItemId, e);
             return menuItemId;
         }
 

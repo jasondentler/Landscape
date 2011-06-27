@@ -13,8 +13,6 @@ namespace Restbucks.Menu
             var name = "Coffee";
             var price = 7.20M;
 
-            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
-
             var cmd = new AddMenuItem(menuItemId, name, price);
 
             WhenHelper.WhenExecuting(cmd);

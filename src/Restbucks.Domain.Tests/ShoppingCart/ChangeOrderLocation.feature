@@ -6,7 +6,7 @@
 @domain
 Scenario: Change order location
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	And I have added a medium cappuccino, skim milk, single shot
 	And I have placed the order "for here"
 	When I change the order location to take away
@@ -16,7 +16,7 @@ Scenario: Change order location
 @domain
 Scenario: Can't change location on an unplaced order
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	And I have added a medium cappuccino, skim milk, single shot
 	When I change the order location to take away
 	Then the aggregate state is invalid
@@ -25,7 +25,7 @@ Scenario: Can't change location on an unplaced order
 @domain
 Scenario: Changing location to the same location does nothing
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	And I have added a medium cappuccino, skim milk, single shot
 	And I have placed the order "for here"
 	When I change the order location to in shop
@@ -42,7 +42,7 @@ Scenario: Change location of a cancelled order
 @domain
 Scenario: Change location of a paid order
 	Given the franchise owner has set up the menu
-	And I have created an order
+	And I have created a cart
 	And I have added a medium cappuccino, skim milk, single shot
 	And I have placed the order "for here"
 	And I have paid for the order

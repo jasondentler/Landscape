@@ -14,10 +14,8 @@ namespace Restbucks.Menu
             var name = "Coffee";
             var price = 7.20M;
 
-            AggregateRootHelper.SetIdFor<MenuItem>(menuItemId, name);
-            
             var e = new MenuItemAdded(menuItemId, name, price);
-            GivenHelper.GivenEvent<MenuItem>(e);
+            GivenHelper.GivenEvent(menuItemId, e);
         }
 
         [Given(@"I have added coffee sizes")]

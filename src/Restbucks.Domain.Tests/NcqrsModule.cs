@@ -34,7 +34,7 @@ namespace Restbucks
             eventBus.RegisterAllHandlersInAssembly(asm,
                                                    t => Kernel.Get(t));
 
-            var aggregateRootCreatedHandler = new AggregateRootCreatedHandler();
+            var aggregateRootCreatedHandler = new EntityCreatedHandler();
             aggregateRootCreatedHandler.RegisterWith(eventBus);
 
             Kernel.Bind<IEventBus>()

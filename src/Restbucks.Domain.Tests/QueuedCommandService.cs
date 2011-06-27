@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
 

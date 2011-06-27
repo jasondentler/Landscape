@@ -9,26 +9,26 @@ namespace Restbucks.ShoppingCart
     public class Then
     {
 
-        [Then(@"the order is created")]
-        public void ThenTheOrderIsCreated()
+        [Then(@"the cart is created")]
+        public void ThenTheCartIsCreated()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
             var e = ThenHelper.GetEvent<CartCreated>();
-            e.CartId.Should().Be.EqualTo(orderId);
+            e.CartId.Should().Be.EqualTo(cartId);
         }
 
-        [Then(@"a medium cappuccino, skim milk, single shot is added to the order")]
-        public void ThenAMediumCappuccinoSkimMilkSingleShotIsAddedToTheOrder()
+        [Then(@"a medium cappuccino, skim milk, single shot is added to the cart")]
+        public void ThenAMediumCappuccinoSkimMilkSingleShotIsAddedToTheCart()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
-            var orderItemId = AggregateRootHelper.GetIdFor<CartItem>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+            var itemId = AggregateRootHelper.GetIdFor<CartItem>();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
 
             var e = ThenHelper.GetEvent<ItemAdded>();
 
-            e.CartId.Should().Be.EqualTo(orderId);
-            e.ItemId.Should().Be.EqualTo(orderItemId);
+            e.CartId.Should().Be.EqualTo(cartId);
+            e.ItemId.Should().Be.EqualTo(itemId);
             e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("medium");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
@@ -37,17 +37,17 @@ namespace Restbucks.ShoppingCart
 
         }
 
-        [Then(@"a large hot chocolate, skim milk, no whipped cream is added to the order")]
-        public void ThenALargeHotChocolateSkimMilkNoWhippedCreamIsAddedToTheOrder()
+        [Then(@"a large hot chocolate, skim milk, no whipped cream is added to the cart")]
+        public void ThenALargeHotChocolateSkimMilkNoWhippedCreamIsAddedToTheCart()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
-            var orderItemId = AggregateRootHelper.GetIdFor<CartItem>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+            var itemId = AggregateRootHelper.GetIdFor<CartItem>();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Hot Chocolate");
 
             var e = ThenHelper.GetEvent<ItemAdded>();
 
-            e.CartId.Should().Be.EqualTo(orderId);
-            e.ItemId.Should().Be.EqualTo(orderItemId);
+            e.CartId.Should().Be.EqualTo(cartId);
+            e.ItemId.Should().Be.EqualTo(itemId);
             e.MenuItemId.Should().Be.EqualTo(menuItemId);
             e.Preferences["Size"].Should().Be.EqualTo("large");
             e.Preferences["Milk"].Should().Be.EqualTo("skim");
@@ -58,10 +58,10 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order is placed for take away")]
         public void ThenTheOrderIsPlacedForTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
             var e = ThenHelper.GetEvent<OrderPlaced>();
-            e.CartId.Should().Be.EqualTo(orderId);
+            e.CartId.Should().Be.EqualTo(cartId);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
 
@@ -93,11 +93,11 @@ namespace Restbucks.ShoppingCart
         [Then(@"the order location is changed from in shop to take away")]
         public void ThenTheOrderLocationIsChangedFromInShopToTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
             var e = ThenHelper.GetEvent<LocationChanged>();
 
-            e.CartId.Should().Be.EqualTo(orderId);
+            e.CartId.Should().Be.EqualTo(cartId);
             e.PreviousLocation.Should().Be.EqualTo(Location.InShop);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }

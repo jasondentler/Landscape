@@ -47,15 +47,15 @@ namespace Restbucks.Billing
         {
             var total = decimal.Parse(totalString);
 
-            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
 
             var e = ThenHelper.GetEvent<OrderPlaced>();
 
             // We don't know what orderId was generated, but we can check two values that it shouldn't be.
             e.OrderId.Should().Not.Be.EqualTo(Guid.Empty);
-            e.OrderId.Should().Not.Be.EqualTo(shoppingCardOrderId);
+            e.OrderId.Should().Not.Be.EqualTo(cartId);
 
-            e.ShoppingCardOrderId.Should().Be.EqualTo(shoppingCardOrderId);
+            e.ShoppingCardOrderId.Should().Be.EqualTo(cartId);
             e.OrderTotal.Should().Be.EqualTo(total);
         }
 
@@ -74,12 +74,12 @@ namespace Restbucks.Billing
         public void ThenTheOrderIsPaidFor()
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
-            var shoppingCardOrderId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
 
             var e = ThenHelper.GetEvent<OrderPaid>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
-            e.ShoppingCardOrderId.Should().Be.EqualTo(shoppingCardOrderId);
+            e.ShoppingCardOrderId.Should().Be.EqualTo(cartId);
         }
     
     }

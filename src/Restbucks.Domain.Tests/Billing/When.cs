@@ -29,8 +29,6 @@ namespace Restbucks.Billing
 
             var orderId = orderCreated.OrderId;
 
-            AggregateRootHelper.SetIdFor<Order>(orderId);
-
             var cmd = new PayWithCreditCard(orderId, "John Doe", "5444444444444444", orderCreated.OrderTotal);
 
             WhenHelper.WhenExecuting(cmd);
@@ -44,8 +42,6 @@ namespace Restbucks.Billing
                 .Single();
 
             var orderId = orderCreated.OrderId;
-
-            AggregateRootHelper.SetIdFor<Order>(orderId);
 
             var cmd = new PayWithCreditCard(orderId, "John Doe", "5444444444444444", orderCreated.OrderTotal - 0.50M);
 

@@ -9,21 +9,21 @@ namespace Restbucks.ShoppingCart
     public class When
     {
 
-        private Guid GetOrderId()
+        private Guid GetCartId()
         {
             if (AggregateRootHelper.IdExists<Cart>())
                 return AggregateRootHelper.GetIdFor<Cart>();
-            var orderId = Guid.NewGuid();
-            AggregateRootHelper.SetIdFor<Cart>(orderId);
-            return orderId;
+            var cartId = Guid.NewGuid();
+            AggregateRootHelper.SetIdFor<Cart>(cartId);
+            return cartId;
         }
 
         [When(@"I add a medium cappuccino, skim milk, single shot")]
         public void WhenIAddAMediumCappuccinoSkimMilkSingleShot()
         {
 
-            var orderId = GetOrderId();
-            var orderItemId = Guid.NewGuid();
+            var cartId = GetCartId();
+            var itemId = Guid.NewGuid();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
@@ -33,11 +33,9 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
-
             var cmd = new AddItem(
-                orderId,
-                orderItemId,
+                cartId,
+                itemId,
                 menuItemId,
                 preferences,
                 quantity);
@@ -48,8 +46,8 @@ namespace Restbucks.ShoppingCart
         [When(@"I add a large hot chocolate, skim milk, no whipped cream")]
         public void WhenIAddALargeHotChocolateSkimMilkNoWhippedCream()
         {
-            var orderId = GetOrderId();
-            var orderItemId = Guid.NewGuid();
+            var cartId = GetCartId();
+            var itemId = Guid.NewGuid();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Hot Chocolate");
             var preferences = new Dictionary<string, string>()
                                   {
@@ -59,11 +57,9 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
-
             var cmd = new AddItem(
-                orderId,
-                orderItemId,
+                cartId,
+                itemId,
                 menuItemId,
                 preferences,
                 quantity);
@@ -74,9 +70,9 @@ namespace Restbucks.ShoppingCart
         [When(@"I place the order for take away")]
         public void WhenIPlaceTheOrderForTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var cmd = new PlaceOrder(orderId, Location.TakeAway);
+            var cmd = new PlaceOrder(cartId, Location.TakeAway);
 
             WhenHelper.WhenExecuting(cmd);
         }
@@ -84,9 +80,9 @@ namespace Restbucks.ShoppingCart
         [When(@"I change the order location to take away")]
         public void WhenIChangeTheOrderLocationToTakeAway()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var cmd = new ChangeLocation(orderId, Location.TakeAway);
+            var cmd = new ChangeLocation(cartId, Location.TakeAway);
 
             WhenHelper.WhenExecuting(cmd);
         }
@@ -94,9 +90,9 @@ namespace Restbucks.ShoppingCart
         [When(@"I change the order location to in shop")]
         public void WhenIChangeTheOrderLocationToInShop()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var cmd = new ChangeLocation(orderId, Location.InShop);
+            var cmd = new ChangeLocation(cartId, Location.InShop);
 
             WhenHelper.WhenExecuting(cmd);
         }

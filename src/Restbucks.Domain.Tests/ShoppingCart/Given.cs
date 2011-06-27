@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Restbucks.Menu;
 using TechTalk.SpecFlow;
 
@@ -11,22 +10,21 @@ namespace Restbucks.ShoppingCart
     public class Given
     {
 
-        [Given(@"I have created an order")]
-        [Given(@"I have started an order")]
-        public void GivenIHaveCreatedAnOrder()
+        [Given(@"I have created a cart")]
+        [Given(@"I have started a cart")]
+        public void GivenIHaveCreatedAnCart()
         {
-            var orderId = Guid.NewGuid();
-            AggregateRootHelper.SetIdFor<Cart>(orderId);
+            var cartId = Guid.NewGuid();
 
-            var e = new CartCreated(orderId);
-            GivenHelper.GivenEvent<Cart>(e);
+            var e = new CartCreated(cartId);
+            GivenHelper.GivenEvent(cartId, e);
         }
 
         [Given(@"I have added a medium cappuccino, skim milk, single shot")]
         public void GivenIHaveAddedAMediumCappuccinoSkimMilkSingleShot()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
-            var orderItemId = Guid.NewGuid();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+            var itemId = Guid.NewGuid();
             var menuItemId = AggregateRootHelper.GetIdFor<MenuItem>("Cappuccino");
             var preferences = new Dictionary<string, string>()
                                   {
@@ -36,11 +34,10 @@ namespace Restbucks.ShoppingCart
                                   };
             var quantity = 1;
 
-            AggregateRootHelper.SetIdFor<CartItem>(orderItemId);
 
             var e = new ItemAdded(
-                orderId,
-                orderItemId,
+                cartId,
+                itemId,
                 menuItemId,
                 preferences,
                 quantity);
@@ -51,15 +48,15 @@ namespace Restbucks.ShoppingCart
         [Given(@"I have placed the order ""for here""")]
         public void GivenIHavePlacedTheOrderForHere()
         {
-            var orderId = AggregateRootHelper.GetIdFor<Cart>();
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
 
-            var itemInfos = ThenHelper.GetAggregateRootEvents(orderId)
+            var itemInfos = ThenHelper.GetAggregateRootEvents(cartId)
                 .OfType<ItemAdded>()
                 .Select(i => new OrderItemInfo(
                                  i.ItemId, i.MenuItemId, i.Preferences, i.Quantity))
                 .ToArray();
 
-            var e = new OrderPlaced(orderId, Location.InShop, itemInfos);
+            var e = new OrderPlaced(cartId, Location.InShop, itemInfos);
 
             GivenHelper.GivenEvent<Cart>(e);
         }
@@ -68,7 +65,7 @@ namespace Restbucks.ShoppingCart
         [Given(@"I have placed an order")]
         public void GivenIHavePlacedAnOrder()
         {
-            GivenIHaveCreatedAnOrder();
+            GivenIHaveCreatedAnCart();
             GivenIHaveAddedAMediumCappuccinoSkimMilkSingleShot();
             GivenIHavePlacedTheOrderForHere();
         }
