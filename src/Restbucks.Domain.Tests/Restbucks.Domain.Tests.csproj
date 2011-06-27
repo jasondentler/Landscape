@@ -72,6 +72,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barista\Given.cs" />
+    <Compile Include="Barista\PrepareOrder.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrepareOrder.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Barista\QueueOrderToBarista.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueueOrderToBarista.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Barista\Then.cs" />
+    <Compile Include="Barista\When.cs" />
     <Compile Include="Billing\Given.cs" />
     <Compile Include="EntityCreatedHandler.cs" />
     <Compile Include="Billing\PayForTheOrder.feature.cs">
@@ -137,6 +150,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Barista\PrepareOrder.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PrepareOrder.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Barista\QueueOrderToBarista.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>QueueOrderToBarista.feature.cs</LastGenOutput>
+    </None>
     <None Include="Billing\PayForTheOrder.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>PayForTheOrder.feature.cs</LastGenOutput>

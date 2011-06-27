@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barista\OrderItemInfo.cs" />
     <Compile Include="Billing\IProductService.cs" />
     <Compile Include="InvalidAggregateStateException.cs" />
     <Compile Include="Location.cs" />
-    <Compile Include="OrderItemInfo.cs" />
+    <Compile Include="Billing\OrderItemInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

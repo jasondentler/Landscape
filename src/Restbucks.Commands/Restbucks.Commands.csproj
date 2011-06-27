@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barista\BeginPreparingOrder.cs" />
+    <Compile Include="Barista\QueueOrder.cs" />
     <Compile Include="Billing\CreateOrder.cs" />
     <Compile Include="Billing\PayWithCreditCard.cs" />
     <Compile Include="Menu\AddCustomization.cs" />

@@ -13,6 +13,7 @@ Scenario: Place the order
 	And the placed order has one item
 	And the placed order contains a medium cappuccino, skim milk, single shot
 	And the order total is $6.70
+	And the barista receives the order
 	And nothing else happens
 
 @domain
