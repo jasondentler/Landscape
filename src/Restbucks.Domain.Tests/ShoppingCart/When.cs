@@ -97,5 +97,15 @@ namespace Restbucks.ShoppingCart
             WhenHelper.WhenExecuting(cmd);
         }
 
+        [When(@"I abandon the cart")]
+        public void WhenIAbandonTheCart()
+        {
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+
+            var cmd = new AbandonCart(cartId);
+
+            WhenHelper.WhenExecuting(cmd);
+        }
+
     }
 }

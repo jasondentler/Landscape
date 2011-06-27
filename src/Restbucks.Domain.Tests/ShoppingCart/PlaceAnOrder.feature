@@ -29,3 +29,14 @@ Scenario: Place an already-placed order
 	And I have placed an order
 	When I place the order for take away
 	Then nothing happens
+
+@domain
+Scenario: Place an order on an abandoned cart
+	Given the franchise owner has set up the menu
+	And I have created a cart
+	And I have added a medium cappuccino, skim milk, single shot
+	And I have abandoned the cart
+	When I place the order for take away
+	Then the aggregate state is invalid
+	And the error is "This shopping cart is abandoned. Create a new order."
+

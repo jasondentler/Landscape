@@ -54,7 +54,7 @@
     <Compile Include="CommandServiceExtensions.cs" />
     <Compile Include="ICommandMapping.cs" />
     <Compile Include="Menu\MenuItemMapping.cs" />
-    <Compile Include="ShoppingCart\OrderMappings.cs" />
+    <Compile Include="ShoppingCart\CartMappings.cs" />
     <Compile Include="Billing\ProductMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

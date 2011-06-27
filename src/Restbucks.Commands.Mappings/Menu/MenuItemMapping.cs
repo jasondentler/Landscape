@@ -19,7 +19,7 @@ namespace Restbucks.Menu
             Map.Command<AddCustomization>()
                 .ToAggregateRoot<MenuItem>()
                 .WithId(cmd => cmd.MenuItemId)
-                .ToCallOn((cmd, product) => product.AddCustomization(cmd.Customization, cmd.Options))
+                .ToCallOn((cmd, menuItem) => menuItem.AddCustomization(cmd.Customization, cmd.Options))
                 .RegisterWith(commandService);
 
 

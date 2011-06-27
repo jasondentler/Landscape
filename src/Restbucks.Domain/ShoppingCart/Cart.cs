@@ -102,17 +102,21 @@ namespace Restbucks.ShoppingCart
             ApplyEvent(e);
         }
 
-        public void Cancel()
+        public void Abandon()
         {
 
-            if (_state == CartState.Abandoned)
-                return;
+            switch (_state)
+            {
+                case CartState.Abandoned:
+                    return;
+                case CartState.Placed:
+                    throw new InvalidAggregateStateException("You've already placed the order. You can't abandon your shopping cart.");
+            }
 
-            var e = new OrderCancelled(EventSourceId);
+            var e = new CartAbandoned(EventSourceId);
             ApplyEvent(e);
         }
-
-
+        
         protected void On(CartCreated e)
         {
             _state = CartState.Created;
@@ -134,9 +138,9 @@ namespace Restbucks.ShoppingCart
             _location = e.Location;
         }
 
-        protected void On(OrderCancelled e)
+        protected void On(CartAbandoned e)
         {
-            _state = CartState.Abandoned;
+            _state = CartState.Abandoned; ;
         }
 
         private OrderItemInfo[] GetOrderItemInfo()

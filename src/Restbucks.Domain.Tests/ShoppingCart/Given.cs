@@ -61,6 +61,15 @@ namespace Restbucks.ShoppingCart
             GivenHelper.GivenEvent<Cart>(e);
         }
 
+        [Given(@"I have abandoned the cart")]
+        public void GivenIHaveAbandonedTheCart()
+        {
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+
+            var e = new CartAbandoned(cartId);
+            GivenHelper.GivenEvent<Cart>(e);
+        }
+
 
         [Given(@"I have placed an order")]
         public void GivenIHavePlacedAnOrder()

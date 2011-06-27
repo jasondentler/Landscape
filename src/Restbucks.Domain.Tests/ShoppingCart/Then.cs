@@ -102,6 +102,16 @@ namespace Restbucks.ShoppingCart
             e.Location.Should().Be.EqualTo(Location.TakeAway);
         }
 
+        [Then(@"the cart is abandoned")]
+        public void ThenTheCartIsAbandoned()
+        {
+            var cartId = AggregateRootHelper.GetIdFor<Cart>();
+
+            var e = ThenHelper.GetEvent<CartAbandoned>();
+
+            e.CartId.Should().Be.EqualTo(cartId);
+        }
+
 
     }
 }

@@ -80,6 +80,11 @@
       <DependentUpon>PayForTheOrder.feature</DependentUpon>
     </Compile>
     <Compile Include="Billing\When.cs" />
+    <Compile Include="ShoppingCart\AbandonCart.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AbandonCart.feature</DependentUpon>
+    </Compile>
     <Compile Include="ThenHelper.cs" />
     <Compile Include="AggregateRootHelper.cs" />
     <Compile Include="GivenHelper.cs" />
@@ -108,10 +113,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChangeOrderLocation.feature</DependentUpon>
     </Compile>
-    <Compile Include="ShoppingCart\CreateAnOrder.feature.cs">
+    <Compile Include="ShoppingCart\FillShoppingCart.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CreateAnOrder.feature</DependentUpon>
+      <DependentUpon>FillShoppingCart.feature</DependentUpon>
     </Compile>
     <Compile Include="ShoppingCart\Given.cs" />
     <Compile Include="Billing\Then.cs" />
@@ -148,13 +153,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CancelOrder.feature.cs</LastGenOutput>
     </None>
+    <None Include="ShoppingCart\AbandonCart.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AbandonCart.feature.cs</LastGenOutput>
+    </None>
     <None Include="ShoppingCart\ChangeOrderLocation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ChangeOrderLocation.feature.cs</LastGenOutput>
     </None>
-    <None Include="ShoppingCart\CreateAnOrder.feature">
+    <None Include="ShoppingCart\FillShoppingCart.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CreateAnOrder.feature.cs</LastGenOutput>
+      <LastGenOutput>FillShoppingCart.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="ShoppingCart\PlaceAnOrder.feature">
