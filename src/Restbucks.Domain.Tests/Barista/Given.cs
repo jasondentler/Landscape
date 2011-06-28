@@ -55,6 +55,24 @@ namespace Restbucks.Barista
                     item.Quantity);
         }
 
+        [Given(@"I have started preparing the order")]
+        public void GivenIHaveStartedPreparingTheOrder()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+
+            var e = new OrderBeingPrepared(orderId);
+            GivenHelper.GivenEvent<Order>(e);
+        }
+
+        [Given(@"I have prepared the order")]
+        public void GivenIHavePreparedTheOrder()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+
+            var e = new OrderPrepared(orderId);
+            GivenHelper.GivenEvent<Order>(e);
+        }
+
 
     }
 }

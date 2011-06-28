@@ -11,12 +11,12 @@ namespace Restbucks.Barista
         [Then(@"the barista receives the order")]
         public void ThenTheBaristaReceivesTheOrder()
         {
-            var baristaOrderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
             var menuItemId = AggregateRootHelper.GetIdFor<Menu.MenuItem>("Cappuccino");
             
             var e = ThenHelper.GetEvent<OrderQueued>();
 
-            e.OrderId.Should().Be.EqualTo(baristaOrderId);
+            e.OrderId.Should().Be.EqualTo(orderId);
             e.Items.Length.Should().Be.EqualTo(1);
 
             var item = e.Items.Single();
@@ -33,12 +33,12 @@ namespace Restbucks.Barista
         [Then(@"the order is queued for the barista")]
         public void ThenTheOrderIsQueuedForTheBarista()
         {
-            var baristaOrderId = AggregateRootHelper.GetIdFor<Order>();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
             var cappucinoId = AggregateRootHelper.GetIdFor<Menu.MenuItem>("Cappuccino");
 
             var e = ThenHelper.GetEvent<OrderQueued>();
 
-            e.OrderId.Should().Be.EqualTo(baristaOrderId);
+            e.OrderId.Should().Be.EqualTo(orderId);
             e.Items.Length.Should().Be.EqualTo(1);
 
             var item = e.Items.Single();
@@ -54,9 +54,20 @@ namespace Restbucks.Barista
         [Then(@"the order is being prepared")]
         public void ThenTheOrderIsBeingPrepared()
         {
-            ScenarioContext.Current.Pending();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+
+            var e = ThenHelper.GetEvent<OrderBeingPrepared>();
+
+            e.OrderId.Should().Be.EqualTo(orderId);
         }
 
+        [Then(@"the order is prepared")]
+        public void ThenTheOrderIsPrepared()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var e = ThenHelper.GetEvent<OrderPrepared>();
+            e.OrderId.Should().Be.EqualTo(orderId);
+        }
 
     }
 }

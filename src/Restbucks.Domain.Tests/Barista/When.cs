@@ -35,7 +35,17 @@ namespace Restbucks.Barista
         [When(@"I begin preparing the order")]
         public void WhenIBeginPreparingTheOrder()
         {
-            ScenarioContext.Current.Pending();
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var cmd = new BeginPreparingOrder(orderId);
+            WhenHelper.WhenExecuting(cmd);
+        }
+
+        [When(@"I finish preparing the order")]
+        public void WhenIFinishPreparingTheOrder()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var cmd = new FinishPreparingOrder(orderId);
+            WhenHelper.WhenExecuting(cmd);
         }
 
 

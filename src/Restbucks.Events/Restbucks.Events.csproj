@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barista\OrderPrepared.cs" />
     <Compile Include="Barista\OrderBeingPrepared.cs" />
     <Compile Include="Barista\OrderQueued.cs" />
     <Compile Include="Billing\OrderPlaced.cs" />

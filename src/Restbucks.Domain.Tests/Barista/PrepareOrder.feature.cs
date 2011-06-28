@@ -75,6 +75,106 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Begin preparing an order that\'s already being prepared")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void BeginPreparingAnOrderThatSAlreadyBeingPrepared()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Begin preparing an order that\'s already being prepared", new string[] {
+                        "domain"});
+#line 15
+this.ScenarioSetup(scenarioInfo);
+#line 16
+ testRunner.Given("the franchise owner has set up the menu");
+#line 17
+ testRunner.And("an order has been queued for the barista");
+#line 18
+ testRunner.And("I have started preparing the order");
+#line 19
+ testRunner.When("I begin preparing the order");
+#line 20
+ testRunner.Then("the aggregate state is invalid");
+#line 21
+ testRunner.And("the error is \"This order is already being prepared.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Begin preparing an order that\'s already prepared")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void BeginPreparingAnOrderThatSAlreadyPrepared()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Begin preparing an order that\'s already prepared", new string[] {
+                        "domain"});
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 25
+ testRunner.Given("the franchise owner has set up the menu");
+#line 26
+ testRunner.And("an order has been queued for the barista");
+#line 27
+ testRunner.And("I have started preparing the order");
+#line 28
+ testRunner.And("I have prepared the order");
+#line 29
+ testRunner.When("I begin preparing the order");
+#line 30
+ testRunner.Then("the aggregate state is invalid");
+#line 31
+ testRunner.And("the error is \"This order is already prepared.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Finish preparing the order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void FinishPreparingTheOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Finish preparing the order", new string[] {
+                        "domain"});
+#line 34
+this.ScenarioSetup(scenarioInfo);
+#line 35
+ testRunner.Given("the franchise owner has set up the menu");
+#line 36
+ testRunner.And("an order has been queued for the barista");
+#line 37
+ testRunner.And("I have started preparing the order");
+#line 38
+ testRunner.When("I finish preparing the order");
+#line 39
+ testRunner.Then("the order is prepared");
+#line 40
+ testRunner.And("nothing else happens");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Finish preparing a queued order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void FinishPreparingAQueuedOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Finish preparing a queued order", new string[] {
+                        "domain"});
+#line 43
+this.ScenarioSetup(scenarioInfo);
+#line 44
+ testRunner.Given("the franchise owner has set up the menu");
+#line 45
+ testRunner.And("an order has been queued for the barista");
+#line 46
+ testRunner.When("I finish preparing the order");
+#line 47
+ testRunner.Then("the aggregate state is invalid");
+#line 48
+ testRunner.And("the error is \"You never started preparing this order.\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion
