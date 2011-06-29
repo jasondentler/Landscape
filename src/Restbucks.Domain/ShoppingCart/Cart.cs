@@ -77,7 +77,7 @@ namespace Restbucks.ShoppingCart
             if (!_items.Any())
                 throw new InvalidAggregateStateException("You can't place an empty order. Add an item.");
 
-            var e = new OrderPlaced(EventSourceId, location, GetOrderItemInfo());
+            var e = new OrderPlaced(EventSourceId, location, GetOrderItemInfo(), Guid.NewGuid());
             ApplyEvent(e);
 
 

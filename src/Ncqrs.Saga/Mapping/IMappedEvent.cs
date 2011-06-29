@@ -6,7 +6,7 @@ namespace Ncqrs.Saga.Mapping
     {
 
         IMappedSagaEvent<TEvent, TSaga> ToSaga<TSaga>()
-            where TSaga : AggregateRoot, ISaga;
+            where TSaga : class, ISaga;
 
     }
 }

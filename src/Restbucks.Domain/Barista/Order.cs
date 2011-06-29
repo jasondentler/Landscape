@@ -14,6 +14,7 @@ namespace Restbucks.Barista
         }
 
         private State _state;
+        private Guid _deliverySagaId;
 
         private Order()
         {
@@ -22,13 +23,15 @@ namespace Restbucks.Barista
         public Order(
             Guid orderId,
             Location location,
-            OrderItemInfo[] items)
+            OrderItemInfo[] items,
+            Guid deliverySagaId)
             : base(orderId)
         {
             var e = new OrderQueued(
                 orderId,
                 location,
-                items);
+                items,
+                deliverySagaId);
             ApplyEvent(e);
         }
 
@@ -49,13 +52,14 @@ namespace Restbucks.Barista
             if (_state == State.Queued)
                 throw new InvalidAggregateStateException("You never started preparing this order.");
 
-            var e = new OrderPrepared(EventSourceId);
+            var e = new OrderPrepared(EventSourceId, _deliverySagaId);
             ApplyEvent(e);
         }
 
         protected void On(OrderQueued e)
         {
             _state = State.Queued;
+            _deliverySagaId = e.DeliverySagaId;
         }
 
         protected void On(OrderBeingPrepared e)

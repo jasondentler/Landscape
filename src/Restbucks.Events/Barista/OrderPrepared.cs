@@ -6,11 +6,14 @@ namespace Restbucks.Barista
     {
 
         public Guid OrderId { get; private set; }
+        public Guid DeliverySagaId { get; private set; }
 
         public OrderPrepared(
-            Guid orderId)
+            Guid orderId,
+            Guid deliverySagaId)
         {
             OrderId = orderId;
+            DeliverySagaId = deliverySagaId;
         }
     }
 }

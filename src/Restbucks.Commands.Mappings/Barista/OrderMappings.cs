@@ -11,7 +11,7 @@ namespace Restbucks.Barista
 
             Map.Command<QueueOrder>()
                 .ToAggregateRoot<Order>()
-                .CreateNew(cmd => new Order(cmd.OrderId, cmd.Location, cmd.Items))
+                .CreateNew(cmd => new Order(cmd.OrderId, cmd.Location, cmd.Items, cmd.DeliverySagaId))
                 .RegisterWith(commandService);
 
             Map.Command<BeginPreparingOrder>()

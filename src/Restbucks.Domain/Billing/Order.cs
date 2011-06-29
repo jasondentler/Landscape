@@ -14,7 +14,8 @@ namespace Restbucks.Billing
             Cancelled
         }
         
-        private Guid _shoppingCardOrderId;
+        private Guid _shoppingCartOrderId;
+        private Guid _deliverySagaId;
         private decimal _orderTotal;
 
         private bool _isPaid;
@@ -26,9 +27,10 @@ namespace Restbucks.Billing
 
         public Order(
             Guid orderId,
-            Guid shoppingCardOrderId,
+            Guid shoppingCartOrderId,
             OrderItemInfo[] items,
-            IProductInfo[] products)
+            IProductInfo[] products,
+            Guid deliverySagaId)
             : base(orderId)
         {
 
@@ -41,7 +43,7 @@ namespace Restbucks.Billing
                 .Select(i => i.Quantity*i.Price)
                 .Sum();
 
-            var e = new OrderPlaced(EventSourceId, shoppingCardOrderId, orderTotal);
+            var e = new OrderPlaced(EventSourceId, shoppingCartOrderId, orderTotal, deliverySagaId);
             ApplyEvent(e);
 
         }
@@ -67,13 +69,14 @@ namespace Restbucks.Billing
             if (paymentAmount != _orderTotal)
                 throw new InvalidAggregateStateException("Incorrect amount. Your order total is {0:C}.", _orderTotal);
 
-            var e = new OrderPaid(EventSourceId, _shoppingCardOrderId);
+            var e = new OrderPaid(EventSourceId, _shoppingCartOrderId, _deliverySagaId);
             ApplyEvent(e);
         }
 
         protected void On(OrderPlaced e)
         {
-            _shoppingCardOrderId = e.ShoppingCardOrderId;
+            _shoppingCartOrderId = e.ShoppingCartOrderId;
+            _deliverySagaId = e.DeliverySagaId;
             _orderTotal = e.OrderTotal;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Restbucks.Sagas;
 using TechTalk.SpecFlow;
 
 namespace Restbucks.Billing
@@ -21,14 +22,16 @@ namespace Restbucks.Billing
         [Given(@"I have paid for the order")]
         public void GivenIHavePaidForTheOrder()
         {
+            var deliverySagaId = AggregateRootHelper.GetOrCreateId<DeliverySaga>();
+
             var orderCreated = GivenHelper.GetGivenEvents()
                 .OfType<OrderPlaced>()
                 .Single();
 
             var orderId = orderCreated.OrderId;
-            var shoppingCartOrderId = orderCreated.ShoppingCardOrderId;
+            var shoppingCartOrderId = orderCreated.ShoppingCartOrderId;
             
-            var e = new OrderPaid(orderId, shoppingCartOrderId);
+            var e = new OrderPaid(orderId, shoppingCartOrderId, deliverySagaId);
             GivenHelper.GivenEvent<Order>(e);
 
         }

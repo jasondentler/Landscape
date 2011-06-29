@@ -28,7 +28,8 @@ namespace Restbucks.Billing
             var cmd = new CreateOrder(
                 orderId,
                 e.CartId,
-                e.Items);
+                e.Items,
+                e.DeliverySagaId);
 
             _commandService.Execute(cmd);
 

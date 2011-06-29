@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Restbucks.Menu;
 using SharpTestsEx;
 using TechTalk.SpecFlow;
@@ -63,6 +64,9 @@ namespace Restbucks.ShoppingCart
             var e = ThenHelper.GetEvent<OrderPlaced>();
             e.CartId.Should().Be.EqualTo(cartId);
             e.Location.Should().Be.EqualTo(Location.TakeAway);
+
+            e.DeliverySagaId.Should().Not.Be.EqualTo(Guid.Empty);
+            e.DeliverySagaId.Should().Not.Be.EqualTo(cartId);
         }
 
         [Then(@"the placed order has one item")]

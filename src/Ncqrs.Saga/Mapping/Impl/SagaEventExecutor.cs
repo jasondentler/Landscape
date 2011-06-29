@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using Ncqrs.Commanding;
 using Ncqrs.Commanding.ServiceModel;
-using Ncqrs.Domain;
-using Ncqrs.Domain.Storage;
 using Ncqrs.Eventing;
 using Ncqrs.Eventing.Storage;
-using Ncqrs.Spec;
 
 namespace Ncqrs.Saga.Mapping.Impl
 {
     public class SagaEventExecutor<TEvent, TSaga>
         : ISagaEventExecutor<TEvent, TSaga>
-        where TSaga : AggregateRoot, ISaga
+        where TSaga : class, ISaga
     {
 
         private readonly Func<TEvent, Guid> _getSagaId;
@@ -37,13 +34,12 @@ namespace Ncqrs.Saga.Mapping.Impl
 
             IEnumerable<ICommand> dispatches;
             IEnumerable<UncommittedEvent> events;
-            using (var eventContext = new EventContext())
-            using (var dispatchContext = new SagaDispatchContext())
-            {
-                _method(@event, saga);
-                dispatches = dispatchContext.Dispatches;
-                events = eventContext.Events;
-            }
+
+
+            _method(@event, saga);
+            dispatches = new ICommand[0];
+            events = new UncommittedEvent[0];
+
 
             StoreEvent(events, sagaId, saga);
 
@@ -53,24 +49,14 @@ namespace Ncqrs.Saga.Mapping.Impl
 
         private TSaga LoadSaga(Guid sagaId)
         {
+            var store = NcqrsEnvironment.Get<IEventStore>();
+            var creationStrategy = NcqrsEnvironment.Get<ISagaCreationStrategy>();
+            var stream = store.ReadFrom(sagaId, 0, long.MaxValue);
 
-            TSaga saga = null;
-
-            Action<IUnitOfWorkContext> uowAction =
-                uow => saga = uow.GetById<TSaga>(sagaId) ?? _constructor(sagaId);
-
-            if (UnitOfWorkContext.Current != null)
-            {
-                uowAction(UnitOfWorkContext.Current);
-            }
-            else
-            {
-                using (var uow = new UnitOfWorkFactory().CreateUnitOfWork(Guid.NewGuid()))
-                    uowAction(uow);
-            }
+            var saga = creationStrategy.CreateSaga<TSaga>();
+            saga.InitializeFromHistory(stream);
 
             return saga;
-
         }
 
         private void StoreEvent(IEnumerable<UncommittedEvent> events, Guid sagaId, TSaga saga)
@@ -84,8 +70,6 @@ namespace Ncqrs.Saga.Mapping.Impl
                 stream.Append(@event);
 
             store.Store(stream);
-
-            saga.AcceptChanges();
 
         }
 

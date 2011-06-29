@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Barista\BeginPreparingOrder.cs" />
+    <Compile Include="Barista\DeliverOrder.cs" />
     <Compile Include="Barista\FinishPreparingOrder.cs" />
     <Compile Include="Barista\QueueOrder.cs" />
     <Compile Include="Billing\CreateOrder.cs" />

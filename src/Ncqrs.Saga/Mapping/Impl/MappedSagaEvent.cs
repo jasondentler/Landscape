@@ -10,7 +10,7 @@ namespace Ncqrs.Saga.Mapping.Impl
         : IMappedSagaEvent<TEvent, TSaga>,
         IMappedEventToSaga<TEvent, TSaga>,
         IMappedEventToSagaWithConstructor<TEvent, TSaga> 
-        where TSaga : AggregateRoot, ISaga
+        where TSaga : class, ISaga
     {
 
         private Func<TEvent, Guid> _getSagaId;

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Restbucks.Sagas;
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
@@ -13,10 +14,12 @@ namespace Restbucks.Barista
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
             var menuItemId = AggregateRootHelper.GetIdFor<Menu.MenuItem>("Cappuccino");
-            
+            var deliverySagaId = AggregateRootHelper.GetIdFor<DeliverySaga>();
+
             var e = ThenHelper.GetEvent<OrderQueued>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
+            e.DeliverySagaId.Should().Be.EqualTo(deliverySagaId);
             e.Items.Length.Should().Be.EqualTo(1);
 
             var item = e.Items.Single();
@@ -28,6 +31,8 @@ namespace Restbucks.Barista
             item.Preferences["Shots"].Should().Be.EqualTo("single");
             item.Quantity.Should().Be.EqualTo(1);
 
+            
+
         }
 
         [Then(@"the order is queued for the barista")]
@@ -35,10 +40,11 @@ namespace Restbucks.Barista
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
             var cappucinoId = AggregateRootHelper.GetIdFor<Menu.MenuItem>("Cappuccino");
-
+            var deliverySagaId = AggregateRootHelper.GetIdFor<DeliverySaga>();
             var e = ThenHelper.GetEvent<OrderQueued>();
-
+            
             e.OrderId.Should().Be.EqualTo(orderId);
+            e.DeliverySagaId.Should().Be.EqualTo(deliverySagaId);
             e.Items.Length.Should().Be.EqualTo(1);
 
             var item = e.Items.Single();
@@ -65,7 +71,9 @@ namespace Restbucks.Barista
         public void ThenTheOrderIsPrepared()
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var deliverySagaId = AggregateRootHelper.GetIdFor<DeliverySaga>();
             var e = ThenHelper.GetEvent<OrderPrepared>();
+            e.DeliverySagaId.Should().Be.EqualTo(deliverySagaId);
             e.OrderId.Should().Be.EqualTo(orderId);
         }
 

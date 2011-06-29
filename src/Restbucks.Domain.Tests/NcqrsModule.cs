@@ -2,8 +2,11 @@
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Eventing.ServiceModel.Bus;
+using Ncqrs.Saga;
+using Ncqrs.Saga.Mapping;
 using Ninject;
 using Ninject.Modules;
+using Restbucks.Sagas;
 
 namespace Restbucks
 {
@@ -34,13 +37,16 @@ namespace Restbucks
             eventBus.RegisterAllHandlersInAssembly(asm,
                                                    t => Kernel.Get(t));
 
+            eventBus.RegisterSagaMappingsIn(typeof (DeliverySagaMapping).Assembly);
+
             var aggregateRootCreatedHandler = new EntityCreatedHandler();
             aggregateRootCreatedHandler.RegisterWith(eventBus);
 
             Kernel.Bind<IEventBus>()
                 .ToConstant(eventBus);
 
-
+            Kernel.Bind<ISagaCreationStrategy>()
+                .To<SagaCreationStrategy>();
 
         }
     }

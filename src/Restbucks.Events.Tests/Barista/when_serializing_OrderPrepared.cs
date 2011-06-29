@@ -8,7 +8,7 @@ namespace Restbucks.Barista
     {
         protected override OrderPrepared GivenEvent()
         {
-            return new OrderPrepared(Guid.NewGuid());
+            return new OrderPrepared(Guid.NewGuid(), Guid.NewGuid());
         }
     }
 }

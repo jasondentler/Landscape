@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Restbucks.Billing;
 using Restbucks.Menu;
+using Restbucks.Sagas;
 using TechTalk.SpecFlow;
 
 namespace Restbucks.ShoppingCart
@@ -50,6 +51,7 @@ namespace Restbucks.ShoppingCart
         public void GivenIHavePlacedTheOrderForHere()
         {
             var cartId = AggregateRootHelper.GetIdFor<Cart>();
+            var deliverySagaId = AggregateRootHelper.GetOrCreateId<DeliverySaga>();
 
             var itemInfos = ThenHelper.GetAggregateRootEvents(cartId)
                 .OfType<ItemAdded>()
@@ -57,7 +59,7 @@ namespace Restbucks.ShoppingCart
                                  i.ItemId, i.MenuItemId, i.Preferences, i.Quantity))
                 .ToArray();
 
-            var e = new OrderPlaced(cartId, Location.InShop, itemInfos);
+            var e = new OrderPlaced(cartId, Location.InShop, itemInfos, deliverySagaId);
 
             GivenHelper.GivenEvent<Cart>(e);
         }

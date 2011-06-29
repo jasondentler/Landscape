@@ -8,7 +8,7 @@ namespace Restbucks.Billing
     {
         protected override OrderPlaced GivenEvent()
         {
-            return new OrderPlaced(Guid.NewGuid(), Guid.NewGuid(), 29.7M);
+            return new OrderPlaced(Guid.NewGuid(), Guid.NewGuid(), 29.7M, Guid.NewGuid());
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Restbucks.Billing
 {
@@ -11,13 +8,16 @@ namespace Restbucks.Billing
 
         public Guid OrderId { get; private set; }
         public Guid ShoppingCardOrderId { get; private set; }
+        public Guid DeliverySagaId { get; private set; }
 
         public OrderPaid(
             Guid orderId,
-            Guid shoppingCardOrderId)
+            Guid shoppingCardOrderId,
+            Guid deliverySagaId)
         {
             OrderId = orderId;
             ShoppingCardOrderId = shoppingCardOrderId;
+            DeliverySagaId = deliverySagaId;
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Ncqrs;
 using Restbucks.Menu;
+using Restbucks.Sagas;
 using SharpTestsEx;
 using TechTalk.SpecFlow;
 
@@ -48,6 +49,7 @@ namespace Restbucks.Billing
             var total = decimal.Parse(totalString);
 
             var cartId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
+            var deliverySagaId = AggregateRootHelper.GetIdFor<DeliverySaga>();
 
             var e = ThenHelper.GetEvent<OrderPlaced>();
 
@@ -55,8 +57,9 @@ namespace Restbucks.Billing
             e.OrderId.Should().Not.Be.EqualTo(Guid.Empty);
             e.OrderId.Should().Not.Be.EqualTo(cartId);
 
-            e.ShoppingCardOrderId.Should().Be.EqualTo(cartId);
+            e.ShoppingCartOrderId.Should().Be.EqualTo(cartId);
             e.OrderTotal.Should().Be.EqualTo(total);
+            e.DeliverySagaId.Should().Be.EqualTo(deliverySagaId);
         }
 
         [Then(@"the order is cancelled")]
@@ -75,11 +78,13 @@ namespace Restbucks.Billing
         {
             var orderId = AggregateRootHelper.GetIdFor<Order>();
             var cartId = AggregateRootHelper.GetIdFor<ShoppingCart.Cart>();
+            var deliverySagaId = AggregateRootHelper.GetIdFor<DeliverySaga>();
 
             var e = ThenHelper.GetEvent<OrderPaid>();
 
             e.OrderId.Should().Be.EqualTo(orderId);
             e.ShoppingCardOrderId.Should().Be.EqualTo(cartId);
+            e.DeliverySagaId.Should().Be.EqualTo(deliverySagaId);
         }
     
     }

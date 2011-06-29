@@ -175,6 +175,64 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             testRunner.CollectScenarioErrors();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Finish preparing a paid order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void FinishPreparingAPaidOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Finish preparing a paid order", new string[] {
+                        "domain"});
+#line 51
+this.ScenarioSetup(scenarioInfo);
+#line 52
+ testRunner.Given("the franchise owner has set up the menu");
+#line 53
+ testRunner.And("an order has been queued for the barista");
+#line 54
+ testRunner.And("I have started preparing the order");
+#line 55
+ testRunner.And("I have paid for the order");
+#line 56
+ testRunner.When("I finish preparing the order");
+#line 57
+ testRunner.Then("the order is prepared");
+#line 58
+ testRunner.And("the order is delivered");
+#line 59
+ testRunner.And("nothing else happens");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Pay for a prepared order")]
+        [NUnit.Framework.CategoryAttribute("domain")]
+        public virtual void PayForAPreparedOrder()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pay for a prepared order", new string[] {
+                        "domain"});
+#line 62
+this.ScenarioSetup(scenarioInfo);
+#line 63
+ testRunner.Given("the franchise owner has set up the menu");
+#line 64
+ testRunner.And("an order has been queued for the barista");
+#line 65
+ testRunner.And("I have started preparing the order");
+#line 66
+ testRunner.And("I have prepared the order");
+#line 67
+ testRunner.When("I pay with a credit card");
+#line 68
+ testRunner.Then("the order is paid for");
+#line 69
+ testRunner.And("the order is delivered");
+#line 70
+ testRunner.And("nothing else happens");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
     }
 }
 #endregion

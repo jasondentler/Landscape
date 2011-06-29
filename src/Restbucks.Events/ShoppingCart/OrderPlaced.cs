@@ -8,15 +8,18 @@ namespace Restbucks.ShoppingCart
         public Guid CartId { get; private set; }
         public Location Location { get; private set; }
         public OrderItemInfo[] Items { get; private set; }
+        public Guid DeliverySagaId { get; private set; }
 
         public OrderPlaced(
             Guid cartId,
             Location location,
-            OrderItemInfo[] items)
+            OrderItemInfo[] items,
+            Guid deliverySagaId)
         {
             CartId = cartId;
             Location = location;
             Items = items;
+            DeliverySagaId = deliverySagaId;
         }
     }
 }

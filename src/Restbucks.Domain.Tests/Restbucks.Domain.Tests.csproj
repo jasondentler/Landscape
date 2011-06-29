@@ -197,6 +197,10 @@
       <Project>{00EA1804-0946-4022-9A1D-1904E6DDCC83}</Project>
       <Name>Landscape.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ncqrs.Saga\Ncqrs.Saga.csproj">
+      <Project>{4B18E343-57DE-4764-8F91-B26A2896F72C}</Project>
+      <Name>Ncqrs.Saga</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Restbucks.BoundedContextCommunication\Restbucks.BoundedContextCommunication.csproj">
       <Project>{B42BB193-A29A-4F70-BAF2-822F8259F5C6}</Project>
       <Name>Restbucks.BoundedContextCommunication</Name>
@@ -220,6 +224,10 @@
     <ProjectReference Include="..\Restbucks.Events\Restbucks.Events.csproj">
       <Project>{11339A2A-D215-4FBD-AB3E-97ACBEEA1A73}</Project>
       <Name>Restbucks.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Restbucks.Sagas\Restbucks.Sagas.csproj">
+      <Project>{9A9F70D7-1AE6-4D22-9DE0-243A104CA3CD}</Project>
+      <Name>Restbucks.Sagas</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

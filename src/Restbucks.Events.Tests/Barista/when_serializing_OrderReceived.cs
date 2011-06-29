@@ -20,7 +20,8 @@ namespace Restbucks.Barista
                                     {"Size", "medium"}
                                 },
                             4)
-                    });
+                    },
+                    Guid.NewGuid());
         }
     }
 }

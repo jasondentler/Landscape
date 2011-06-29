@@ -46,3 +46,25 @@ Scenario: Finish preparing a queued order
 	When I finish preparing the order
 	Then the aggregate state is invalid
 	And the error is "You never started preparing this order."
+
+@domain
+Scenario: Finish preparing a paid order
+	Given the franchise owner has set up the menu
+	And an order has been queued for the barista
+	And I have started preparing the order
+	And I have paid for the order
+	When I finish preparing the order
+	Then the order is prepared
+	And the order is delivered
+	And nothing else happens
+
+@domain
+Scenario: Pay for a prepared order
+	Given the franchise owner has set up the menu
+	And an order has been queued for the barista
+	And I have started preparing the order
+	And I have prepared the order
+	When I pay with a credit card
+	Then the order is paid for
+	And the order is delivered
+	And nothing else happens

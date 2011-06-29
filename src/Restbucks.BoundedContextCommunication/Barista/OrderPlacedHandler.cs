@@ -29,7 +29,8 @@ namespace Restbucks.Barista
             var cmd = new QueueOrder(
                 orderId,
                 e.Location,
-                Convert(e.Items));
+                Convert(e.Items),
+                e.DeliverySagaId);
 
             _commandService.Execute(cmd);
 

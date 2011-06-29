@@ -1,4 +1,6 @@
 ﻿using Ncqrs.Eventing.ServiceModel.Bus;
+using Restbucks.Sagas;
+using Restbucks.ShoppingCart;
 
 namespace Restbucks
 {
@@ -10,6 +12,7 @@ namespace Restbucks
         IEventHandler<Menu.MenuItemAdded>,
         IEventHandler<ShoppingCart.CartCreated>,
         IEventHandler<ShoppingCart.ItemAdded>,
+        IEventHandler<ShoppingCart.OrderPlaced>,
         IEventHandler<Billing.ProductAdded>,
         IEventHandler<Billing.OrderPlaced>,
         IEventHandler<Barista.OrderQueued>
@@ -20,6 +23,7 @@ namespace Restbucks
             eventBus.RegisterHandler<Menu.MenuItemAdded>(this);
             eventBus.RegisterHandler<ShoppingCart.CartCreated>(this);
             eventBus.RegisterHandler<ShoppingCart.ItemAdded>(this);
+            eventBus.RegisterHandler<ShoppingCart.OrderPlaced>(this);
             eventBus.RegisterHandler<Billing.ProductAdded>(this);
             eventBus.RegisterHandler<Billing.OrderPlaced>(this);
             eventBus.RegisterHandler<Barista.OrderQueued>(this);
@@ -61,7 +65,12 @@ namespace Restbucks
             AggregateRootHelper.SetIdFor<Barista.Order>(e.OrderId);
         }
 
-    }
+        public void Handle(IPublishedEvent<OrderPlaced> evnt)
+        {
+            var e = evnt.Payload;
+            AggregateRootHelper.SetIdFor<DeliverySaga>(e.DeliverySagaId);
+        }
 
+    }
 
 }

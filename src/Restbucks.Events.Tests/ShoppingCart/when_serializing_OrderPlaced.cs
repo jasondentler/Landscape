@@ -20,7 +20,8 @@ namespace Restbucks.ShoppingCart
                                 {
                                     {"Size", "medium"}
                                 }, 4),
-                    });
+                    },
+                Guid.NewGuid());
         }
     }
 }

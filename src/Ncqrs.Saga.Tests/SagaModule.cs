@@ -11,6 +11,9 @@ namespace Ncqrs.Saga
         {
             SetupCommandService();
             SetupEventBus();
+
+            Kernel.Bind<ISagaCreationStrategy>()
+                .To<SagaCreationStrategy>();
         }
 
         private void SetupCommandService()
@@ -28,7 +31,6 @@ namespace Ncqrs.Saga
             Kernel.Bind<IEventBus>()
                 .ToConstant(bus);
         }
-
 
     }
 }

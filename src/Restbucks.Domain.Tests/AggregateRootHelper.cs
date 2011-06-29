@@ -33,6 +33,17 @@ namespace Restbucks
             return Get<WrappedValue<Guid>>(key).Value;
         }
 
+        public static Guid GetOrCreateId<T>(params string[] naturalId)
+        {
+            if (!IdExists<T>(naturalId))
+            {
+                var id = Guid.NewGuid();
+                SetIdFor<T>(id, naturalId);
+                return id;
+            }
+            return GetIdFor<T>(naturalId);
+        }
+
         public static bool IdExists<T>(params string[] naturalId)
         {
             var key = typeof(T) + String.Join(" ", naturalId);

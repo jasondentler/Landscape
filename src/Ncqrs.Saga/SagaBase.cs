@@ -2,23 +2,14 @@
 using System.Collections.Generic;
 using System.Threading;
 using Ncqrs.Commanding;
-using Ncqrs.Domain;
-using Ncqrs.Eventing;
+using Ncqrs.Eventing.Sourcing;
+using Ncqrs.Eventing.Sourcing.Snapshotting;
 
 namespace Ncqrs.Saga
 {
 
-    public abstract class SagaBase : AggregateRootMappedByConvention, ISaga
+    public abstract class SagaBase : EventSource, ISaga
     {
-
-        protected SagaBase()
-        {
-        }
-
-        protected SagaBase(Guid sagaId)
-            : base(sagaId)
-        {
-        }
 
         private static readonly ThreadLocal<List<Action<ISaga, ICommand>>> CommandDispatchedCallbacks =
             new ThreadLocal<List<Action<ISaga, ICommand>>>(() => new List<Action<ISaga, ICommand>>());
@@ -32,6 +23,24 @@ namespace Ncqrs.Saga
         {
             CommandDispatchedCallbacks.Value.Remove(callback);
         }
+
+        protected SagaBase()
+        {
+        }
+
+        protected SagaBase(Guid sagaSagaId)
+            :base(sagaSagaId)
+        {
+        }
+
+        protected override void OnEventApplied(Eventing.UncommittedEvent evnt)
+        {
+            if (EventApplied != null)
+                EventApplied(this, new EventAppliedEventArgs(evnt));
+        }
+
+        public event EventHandler<CommandDispatchedEventArgs> CommandDispatched;
+        public event EventHandler<EventAppliedEventArgs> EventApplied;
 
         protected void Dispatch(ICommand command)
         {
@@ -48,24 +57,6 @@ namespace Ncqrs.Saga
             foreach (var callback in callbacks)
                 callback(this, command);
         }
-
-        public event EventHandler<CommandDispatchedEventArgs> CommandDispatched;
-
-        public override void InitializeFromHistory(CommittedEventStream history)
-        {
-            base.InitializeFromHistory(history);
-            OnInitialized();
-        }
-
-        public override void InitializeFromSnapshot(Eventing.Sourcing.Snapshotting.Snapshot snapshot)
-        {
-            base.InitializeFromSnapshot(snapshot);
-            OnInitialized();
-        }
-
-        public virtual void OnInitialized()
-        {
-        }
-
+        
     }
 }

@@ -34,9 +34,6 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\libs\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.Spec">
-      <HintPath>..\..\libs\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,7 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandDispatchedEventArgs.cs" />
+    <Compile Include="EventSource.cs" />
     <Compile Include="ISaga.cs" />
+    <Compile Include="ISagaCreationStrategy.cs" />
+    <Compile Include="MappedSaga.cs" />
+    <Compile Include="Mapping\EventBusExtensions.cs" />
     <Compile Include="Mapping\IMappedEvent.cs" />
     <Compile Include="Mapping\IMappedEventToSaga.cs" />
     <Compile Include="Mapping\IMappedEventToSagaWithConstructor.cs" />
@@ -61,8 +62,10 @@
     <Compile Include="Mapping\SagaEventExecutorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SagaBase.cs" />
+    <Compile Include="SagaCreationStrategy.cs" />
     <Compile Include="SagaDispatchContext.cs" />
     <Compile Include="SagaHandler.cs" />
+    <Compile Include="SagaMappedByConvention.cs" />
     <Compile Include="SagaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>

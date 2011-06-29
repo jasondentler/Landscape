@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Restbucks.Sagas;
 using TechTalk.SpecFlow;
 
 namespace Restbucks.Barista
@@ -12,6 +13,8 @@ namespace Restbucks.Barista
         public void WhenIQueueAnOrderForTheBarista()
         {
             var cappuccinoId = AggregateRootHelper.GetIdFor<Menu.MenuItem>("Cappuccino");
+
+            var deliverySagaId = AggregateRootHelper.GetOrCreateId<DeliverySaga>();
 
             var cmd = new QueueOrder(
                 Guid.NewGuid(),
@@ -26,7 +29,8 @@ namespace Restbucks.Barista
                                                   {"Shots", "single"}
                                               },
                                           1)
-                    });
+                    },
+                deliverySagaId);
 
             WhenHelper.WhenExecuting(cmd);
 

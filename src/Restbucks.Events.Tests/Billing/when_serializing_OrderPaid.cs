@@ -8,7 +8,7 @@ namespace Restbucks.Billing
     {
         protected override OrderPaid GivenEvent()
         {
-            return new OrderPaid(Guid.NewGuid(), Guid.NewGuid());
+            return new OrderPaid(Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid());
         }
     }
 }
