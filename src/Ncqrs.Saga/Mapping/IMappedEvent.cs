@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Ncqrs.Domain;
 
 namespace Ncqrs.Saga.Mapping
 {
@@ -9,7 +6,7 @@ namespace Ncqrs.Saga.Mapping
     {
 
         IMappedSagaEvent<TEvent, TSaga> ToSaga<TSaga>()
-            where TSaga : class, ISaga;
+            where TSaga : AggregateRoot, ISaga;
 
     }
 }

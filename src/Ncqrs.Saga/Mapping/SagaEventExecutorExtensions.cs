@@ -1,4 +1,5 @@
-﻿using Ncqrs.Eventing.ServiceModel.Bus;
+﻿using Ncqrs.Domain;
+using Ncqrs.Eventing.ServiceModel.Bus;
 
 namespace Ncqrs.Saga.Mapping
 {
@@ -9,7 +10,7 @@ namespace Ncqrs.Saga.Mapping
         public static void RegisterWith<TEvent, TSaga>(
             this ISagaEventExecutor<TEvent, TSaga> executor,  
             InProcessEventBus eventBus)
-            where TSaga: class, ISaga
+            where TSaga : AggregateRoot, ISaga
         {
             eventBus.RegisterHandler(typeof (TEvent),
                                      pe =>

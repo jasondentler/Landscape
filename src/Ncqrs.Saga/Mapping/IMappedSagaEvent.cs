@@ -1,12 +1,12 @@
 ﻿using System;
+using Ncqrs.Domain;
 
 namespace Ncqrs.Saga.Mapping
 {
     public interface IMappedSagaEvent<TEvent, TSaga>
-        where TSaga : class, ISaga
+        where TSaga : AggregateRoot, ISaga
     {
 
-        ISagaEventExecutor<TEvent, TSaga> CreateNew(Func<TEvent, TSaga> createNewSaga);
         IMappedEventToSaga<TEvent, TSaga> WithId(Func<TEvent, Guid> getSagaId);
 
     }

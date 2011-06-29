@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Ncqrs.Domain;
 
 namespace Ncqrs.Saga.Mapping
 {
     public interface ISagaEventExecutor<TEvent, TSaga>
-        where TSaga : class, ISaga
+        where TSaga : AggregateRoot, ISaga
     {
 
         void Transition(TEvent @event);

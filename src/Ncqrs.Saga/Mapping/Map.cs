@@ -1,4 +1,5 @@
 ﻿using System;
+using Ncqrs.Saga.Mapping.Impl;
 
 namespace Ncqrs.Saga.Mapping
 {
@@ -7,7 +8,7 @@ namespace Ncqrs.Saga.Mapping
 
         public static IMappedEvent<TEvent> Event<TEvent>()
         {
-            throw new NotImplementedException();
+            return new MappedEvent<TEvent>();
         }
 
 
