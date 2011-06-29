@@ -13,13 +13,13 @@ namespace Ncqrs.Saga.Sagas
             Map.Event<InvoicePaid>()
                 .ToSaga<ShippingSaga>()
                 .WithId(e => e.ShippingSagaId)
-                .ToCallOn((e, saga) => { })
+                .ToCallOn((e, saga) => saga.InvoicePaid(e))
                 .RegisterWith(eventBus);
 
             Map.Event<ShipmentPrepared>()
                 .ToSaga<ShippingSaga>()
                 .WithId(e => e.ShippingSagaId)
-                .ToCallOn((e, saga) => { })
+                .ToCallOn((e, saga) => saga.ShipmentPrepared(e))
                 .RegisterWith(eventBus);
 
         }

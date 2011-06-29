@@ -68,6 +68,7 @@
     <Compile Include="Domain\Shipping\ShipmentPrepared.cs" />
     <Compile Include="Domain\Shipping\Ship.cs" />
     <Compile Include="Given.cs" />
+    <Compile Include="NullCommandService.cs" />
     <Compile Include="SagaModule.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="TestHelper.cs" />

@@ -34,6 +34,9 @@
     <Reference Include="Ncqrs">
       <HintPath>..\..\libs\ncqrs\Framework\Ncqrs.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs.Spec">
+      <HintPath>..\..\libs\ncqrs\Spec\Ncqrs.Spec.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
