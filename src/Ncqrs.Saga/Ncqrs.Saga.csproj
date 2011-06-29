@@ -50,6 +50,7 @@
     <Compile Include="ISaga.cs" />
     <Compile Include="Mapping\IMappedEvent.cs" />
     <Compile Include="Mapping\IMappedEventToSaga.cs" />
+    <Compile Include="Mapping\IMappedEventToSagaWithConstructor.cs" />
     <Compile Include="Mapping\IMappedSagaEvent.cs" />
     <Compile Include="Mapping\Impl\MappedEvent.cs" />
     <Compile Include="Mapping\Impl\MappedSagaEvent.cs" />
@@ -68,7 +69,6 @@
     <Content Include="license.txt" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

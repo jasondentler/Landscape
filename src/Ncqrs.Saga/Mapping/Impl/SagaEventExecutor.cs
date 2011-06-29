@@ -16,13 +16,16 @@ namespace Ncqrs.Saga.Mapping.Impl
     {
 
         private readonly Func<TEvent, Guid> _getSagaId;
+        private readonly Func<Guid, TSaga> _constructor;
         private readonly Action<TEvent, TSaga> _method;
 
         public SagaEventExecutor(
             Func<TEvent, Guid> getSagaId,
+            Func<Guid, TSaga> constructor,
             Action<TEvent, TSaga> method)
         {
             _getSagaId = getSagaId;
+            _constructor = constructor;
             _method = method;
         }
 
@@ -50,12 +53,11 @@ namespace Ncqrs.Saga.Mapping.Impl
 
         private TSaga LoadSaga(Guid sagaId)
         {
-            var arFactory = NcqrsEnvironment.Get<IAggregateRootCreationStrategy>();
 
             TSaga saga = null;
 
             Action<IUnitOfWorkContext> uowAction =
-                uow => saga = uow.GetById<TSaga>(sagaId) ?? arFactory.CreateAggregateRoot<TSaga>();
+                uow => saga = uow.GetById<TSaga>(sagaId) ?? _constructor(sagaId);
 
             if (UnitOfWorkContext.Current != null)
             {
@@ -76,22 +78,10 @@ namespace Ncqrs.Saga.Mapping.Impl
 
             var store = NcqrsEnvironment.Get<IEventStore>();
             var idGenerator = NcqrsEnvironment.Get<IUniqueIdentifierGenerator>();
-            var clock = NcqrsEnvironment.Get<IClock>();
             var stream = new UncommittedEventStream(idGenerator.GenerateNewId());
 
             foreach (var @event in events)
-            {
-                var e = new UncommittedEvent(
-                    idGenerator.GenerateNewId(),
-                    sagaId,
-                    saga.InitialVersion + 1,
-                    saga.InitialVersion,
-                    clock.UtcNow(),
-                    @event.Payload,
-                    null);
-
-                stream.Append(e);
-            }
+                stream.Append(@event);
 
             store.Store(stream);
 

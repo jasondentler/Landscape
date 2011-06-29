@@ -8,16 +8,24 @@ namespace Ncqrs.Saga.Mapping.Impl
 {
     public class MappedSagaEvent<TEvent, TSaga>
         : IMappedSagaEvent<TEvent, TSaga>,
-        IMappedEventToSaga<TEvent, TSaga> 
+        IMappedEventToSaga<TEvent, TSaga>,
+        IMappedEventToSagaWithConstructor<TEvent, TSaga> 
         where TSaga : AggregateRoot, ISaga
     {
 
         private Func<TEvent, Guid> _getSagaId;
         private Action<TEvent, TSaga> _method;
+        private Func<Guid, TSaga> _constructor;
 
         public IMappedEventToSaga<TEvent, TSaga> WithId(Func<TEvent, Guid> getSagaId)
         {
             _getSagaId = getSagaId;
+            return this;
+        }
+
+        public IMappedEventToSagaWithConstructor<TEvent, TSaga> OrCreate(Func<Guid, TSaga> constructor)
+        {
+            _constructor = constructor;
             return this;
         }
 
@@ -31,6 +39,7 @@ namespace Ncqrs.Saga.Mapping.Impl
         {
             return new SagaEventExecutor<TEvent, TSaga>(
                 _getSagaId,
+                _constructor,
                 _method);
         }
 

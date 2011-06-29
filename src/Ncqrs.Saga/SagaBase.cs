@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using Ncqrs.Commanding;
-using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Domain;
 using Ncqrs.Eventing;
-using Ncqrs.Eventing.ServiceModel.Bus;
-using Ncqrs.Eventing.Sourcing;
-using Ncqrs.Eventing.Storage;
 
 namespace Ncqrs.Saga
 {
@@ -37,43 +33,6 @@ namespace Ncqrs.Saga
             CommandDispatchedCallbacks.Value.Remove(callback);
         }
 
-        //internal void Handle<TEvent>(
-        //    Guid commitId,
-        //    IPublishableEvent @event,
-        //    Action<TEvent> handler,
-        //    IEventStore eventStore,
-        //    ICommandService commandService)
-        //{
-
-        //    IEnumerable<ICommand> dispatches;
-        //    using (var ctx = new SagaDispatchContext())
-        //    {
-        //        handler((TEvent) @event.Payload);
-        //        dispatches = ctx.Dispatches;
-        //    }
-
-        //    var uncommittedEvent = new UncommittedEvent(
-        //        @event.EventIdentifier,
-        //        EventSourceId,
-        //        0,
-        //        InitialVersion,
-        //        @event.EventTimeStamp,
-        //        @event.Payload,
-        //        @event.EventVersion);
-
-        //    var stream = new UncommittedEventStream(commitId);
-        //    stream.Append(uncommittedEvent);
-        //    eventStore.Store(stream);
-
-        //    foreach (var dispatch in dispatches)
-        //        commandService.Execute(dispatch);
-        //}
-
-        internal new void HandleEvent(object @event)
-        {
-            base.HandleEvent(@event);
-        }
-
         protected void Dispatch(ICommand command)
         {
             OnCommandDispatched(command);
@@ -91,6 +50,22 @@ namespace Ncqrs.Saga
         }
 
         public event EventHandler<CommandDispatchedEventArgs> CommandDispatched;
+
+        public override void InitializeFromHistory(CommittedEventStream history)
+        {
+            base.InitializeFromHistory(history);
+            OnInitialized();
+        }
+
+        public override void InitializeFromSnapshot(Eventing.Sourcing.Snapshotting.Snapshot snapshot)
+        {
+            base.InitializeFromSnapshot(snapshot);
+            OnInitialized();
+        }
+
+        public virtual void OnInitialized()
+        {
+        }
 
     }
 }

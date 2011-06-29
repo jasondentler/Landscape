@@ -7,7 +7,8 @@ namespace Ncqrs.Saga.Mapping
         where TSaga : AggregateRoot, ISaga
     {
 
-        ISagaEventExecutor<TEvent, TSaga> ToCallOn(Action<TEvent, TSaga> method);
+        IMappedEventToSagaWithConstructor<TEvent, TSaga> OrCreate(Func<Guid, TSaga> constructor);
+
 
     }
 }
