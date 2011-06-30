@@ -77,5 +77,14 @@ namespace Restbucks.Barista
             e.OrderId.Should().Be.EqualTo(orderId);
         }
 
+
+        [Then(@"the order is delivered")]
+        public void ThenTheOrderIsDelivered()
+        {
+            var orderId = AggregateRootHelper.GetIdFor<Order>();
+            var e = ThenHelper.GetEvent<OrderDelivered>();
+            e.OrderId.Should().Be.EqualTo(orderId);
+        }
+
     }
 }

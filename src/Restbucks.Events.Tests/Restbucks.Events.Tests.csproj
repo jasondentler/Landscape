@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllEventsFixture.cs" />
+    <Compile Include="Barista\when_serializing_OrderDelivered.cs" />
     <Compile Include="Barista\when_serializing_OrderPrepared.cs" />
     <Compile Include="Barista\when_serializing_OrderBeingPrepared.cs" />
     <Compile Include="Barista\when_serializing_OrderReceived.cs" />

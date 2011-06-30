@@ -10,7 +10,8 @@ namespace Restbucks.Barista
         {
             Queued,
             BeingPrepared,
-            Prepared
+            Prepared,
+            Delivered
         }
 
         private State _state;
@@ -56,6 +57,12 @@ namespace Restbucks.Barista
             ApplyEvent(e);
         }
 
+        public void Deliver()
+        {
+            var e = new OrderDelivered(EventSourceId);
+            ApplyEvent(e);
+        }
+
         protected void On(OrderQueued e)
         {
             _state = State.Queued;
@@ -70,6 +77,11 @@ namespace Restbucks.Barista
         protected void On(OrderPrepared e)
         {
             _state = State.Prepared;
+        }
+
+        protected void On(OrderDelivered e)
+        {
+            _state = State.Delivered;
         }
 
     }

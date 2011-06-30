@@ -26,6 +26,12 @@ namespace Restbucks.Barista
                 .ToCallOn((cmd, order) => order.FinishPreparingOrder())
                 .RegisterWith(commandService);
 
+            Map.Command<DeliverOrder>()
+                .ToAggregateRoot<Order>()
+                .WithId(cmd => cmd.OrderId)
+                .ToCallOn((cmd, order) => order.Deliver())
+                .RegisterWith(commandService);
+
         }
     }
 }
