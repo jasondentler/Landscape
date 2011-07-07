@@ -9,29 +9,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restbucks.UI", "Restbucks.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandscapeJs", "LandscapeJs\LandscapeJs.csproj", "{16557BCB-056F-45E6-8044-46E19F406E79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.UI", "Exampe\Example.UI\Example.UI.csproj", "{3D468146-5993-4151-A9D7-E66FAFB78920}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.UI", "Example\Example.UI\Example.UI.csproj", "{3D468146-5993-4151-A9D7-E66FAFB78920}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Commands", "Exampe\Example.Commands\Example.Commands.csproj", "{C25F3937-A414-4397-80FB-9802CF034E5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Commands", "Example\Example.Commands\Example.Commands.csproj", "{C25F3937-A414-4397-80FB-9802CF034E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Core", "Exampe\Example.Core\Example.Core.csproj", "{B64FF99A-9F06-4270-8F8E-D1F39998916E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Core", "Example\Example.Core\Example.Core.csproj", "{B64FF99A-9F06-4270-8F8E-D1F39998916E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Events", "Exampe\Example.Events\Example.Events.csproj", "{3CA57348-CBBE-454D-AB4B-B9890DD6C2F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Events", "Example\Example.Events\Example.Events.csproj", "{3CA57348-CBBE-454D-AB4B-B9890DD6C2F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Domain", "Exampe\Example.Domain\Example.Domain.csproj", "{0AB1DFC4-7F7D-46B9-9DC5-092B948F31A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Domain", "Example\Example.Domain\Example.Domain.csproj", "{0AB1DFC4-7F7D-46B9-9DC5-092B948F31A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Domain.Tests", "Exampe\Example.Domain.Tests\Example.Domain.Tests.csproj", "{26ABAC41-2681-4A63-89EB-24430636D5A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Domain.Tests", "Example\Example.Domain.Tests\Example.Domain.Tests.csproj", "{26ABAC41-2681-4A63-89EB-24430636D5A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Handlers", "Exampe\Example.Handlers\Example.Handlers.csproj", "{82AED54C-61B9-42F5-9D6E-D2897AF56F41}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Handlers", "Example\Example.Handlers\Example.Handlers.csproj", "{82AED54C-61B9-42F5-9D6E-D2897AF56F41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Services", "Exampe\Example.Services\Example.Services.csproj", "{F38AD1A6-5A8D-402D-ADA9-90BEEA100CB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Services", "Example\Example.Services\Example.Services.csproj", "{F38AD1A6-5A8D-402D-ADA9-90BEEA100CB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2BC5566A-BFD6-4CAD-B239-1568656FF739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Wiring", "Exampe\Example.Wiring\Example.Wiring.csproj", "{8F66FAF6-0602-455E-9766-8DE34AB62F71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Wiring", "Example\Example.Wiring\Example.Wiring.csproj", "{8F66FAF6-0602-455E-9766-8DE34AB62F71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Initialize", "Exampe\Example.Initialize\Example.Initialize.csproj", "{6209C40D-13C3-46EE-9014-7287C440395B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Initialize", "Example\Example.Initialize\Example.Initialize.csproj", "{6209C40D-13C3-46EE-9014-7287C440395B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ReadModel", "Exampe\Example.ReadModel\Example.ReadModel.csproj", "{8F66BE15-F439-4C12-A97B-403D860B350A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ReadModel", "Example\Example.ReadModel\Example.ReadModel.csproj", "{8F66BE15-F439-4C12-A97B-403D860B350A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
