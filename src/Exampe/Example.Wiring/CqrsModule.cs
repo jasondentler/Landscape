@@ -4,8 +4,8 @@ using Cqrs.Domain;
 using Cqrs.EventStore;
 using Cqrs.EventStore.MsSql;
 using Cqrs.Eventing;
-using Example.Denormalizers;
 using Example.Menu;
+using Example.ReadModel;
 using Ninject.Modules;
 
 namespace Example.Wiring

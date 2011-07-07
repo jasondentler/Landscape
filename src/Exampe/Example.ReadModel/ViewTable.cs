@@ -1,12 +1,11 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 
-namespace Example.Denormalizers
+namespace Example.ReadModel
 {
-    public class ReadModel 
+    public class ViewTable 
     {
-
-        static ReadModel()
+        
+        static ViewTable()
         {
             ConnectionString = ConfigurationManager.ConnectionStrings["ReadModel"].ConnectionString;
 

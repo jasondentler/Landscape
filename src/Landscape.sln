@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Wiring", "Exampe\Ex
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Initialize", "Exampe\Example.Initialize\Example.Initialize.csproj", "{6209C40D-13C3-46EE-9014-7287C440395B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Denormalizers", "Exampe\Example.Denormalizers\Example.Denormalizers.csproj", "{8F66BE15-F439-4C12-A97B-403D860B350A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ReadModel", "Exampe\Example.ReadModel\Example.ReadModel.csproj", "{8F66BE15-F439-4C12-A97B-403D860B350A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -65,9 +65,9 @@
       <Project>{B64FF99A-9F06-4270-8F8E-D1F39998916E}</Project>
       <Name>Example.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Example.Denormalizers\Example.Denormalizers.csproj">
+    <ProjectReference Include="..\Example.ReadModel\Example.ReadModel.csproj">
       <Project>{8F66BE15-F439-4C12-A97B-403D860B350A}</Project>
-      <Name>Example.Denormalizers</Name>
+      <Name>Example.ReadModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Example.Handlers\Example.Handlers.csproj">
       <Project>{82AED54C-61B9-42F5-9D6E-D2897AF56F41}</Project>

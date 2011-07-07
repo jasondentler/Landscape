@@ -1,13 +1,13 @@
 ﻿using Cqrs;
 using Example.Menu;
 
-namespace Example.Denormalizers
+namespace Example.ReadModel
 {
 
-    public class MenuList : ReadModel 
+    public class MenuList : ViewTable 
     {
 
-        private class Denormalizer : ReadModel,
+        private class Denormalizer : ViewTable,
             IHandle<ItemAdded>
         {
             public void Handle(ItemAdded message)
