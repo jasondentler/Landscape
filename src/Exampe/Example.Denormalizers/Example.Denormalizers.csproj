@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8F66FAF6-0602-455E-9766-8DE34AB62F71}</ProjectGuid>
+    <ProjectGuid>{8F66BE15-F439-4C12-A97B-403D860B350A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Example.Wiring</RootNamespace>
-    <AssemblyName>Example.Wiring</AssemblyName>
+    <RootNamespace>Example.Denormalizers</RootNamespace>
+    <AssemblyName>Example.Denormalizers</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,19 +34,8 @@
     <Reference Include="Cqrs">
       <HintPath>..\..\..\lib\cqrs\Cqrs.dll</HintPath>
     </Reference>
-    <Reference Include="Cqrs.EventStore.MsSql">
-      <HintPath>..\..\..\lib\cqrs\Cqrs.EventStore.MsSql.dll</HintPath>
-    </Reference>
-    <Reference Include="Cqrs.Ninject">
-      <HintPath>..\..\..\lib\cqrs\Cqrs.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\lib\cqrs\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\..\..\lib\cqrs\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,27 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CqrsModule.cs" />
-    <Compile Include="KernelFactory.cs" />
-    <Compile Include="ServicesModule.cs" />
+    <Compile Include="ReadModel.cs" />
+    <Compile Include="MenuList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Example.Core\Example.Core.csproj">
-      <Project>{B64FF99A-9F06-4270-8F8E-D1F39998916E}</Project>
-      <Name>Example.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Example.Denormalizers\Example.Denormalizers.csproj">
-      <Project>{8F66BE15-F439-4C12-A97B-403D860B350A}</Project>
-      <Name>Example.Denormalizers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Example.Handlers\Example.Handlers.csproj">
-      <Project>{82AED54C-61B9-42F5-9D6E-D2897AF56F41}</Project>
-      <Name>Example.Handlers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Example.Services\Example.Services.csproj">
-      <Project>{F38AD1A6-5A8D-402D-ADA9-90BEEA100CB7}</Project>
-      <Name>Example.Services</Name>
+    <ProjectReference Include="..\Example.Events\Example.Events.csproj">
+      <Project>{3CA57348-CBBE-454D-AB4B-B9890DD6C2F1}</Project>
+      <Name>Example.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Linq;
+using Example.Wiring;
 using Ninject;
-using Ninject.Modules;
 
 namespace Example.Initialize
 {
@@ -10,21 +9,13 @@ namespace Example.Initialize
 
         private static void Main(string[] args)
         {
-            var kernel = Wire();
+            var kernel = KernelFactory.ConfigureKernel();
             kernel.Get<EventStoreInitializer>().Initialize();
             kernel.Get<MenuInitializer>().Initialize();
+            Console.WriteLine("Landscape example initialized. Press any key.");
+            Console.ReadKey();
         }
 
-        private static IKernel Wire()
-        {
-            var asm = typeof (Example.Wiring.CqrsModule).Assembly;
-            var modules = asm.GetTypes()
-                .Where(t => typeof (NinjectModule).IsAssignableFrom(t))
-                .Select(Activator.CreateInstance)
-                .Cast<NinjectModule>()
-                .ToArray();
-            return new StandardKernel(modules);
-        }
 
     }
 }

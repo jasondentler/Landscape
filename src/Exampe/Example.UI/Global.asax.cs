@@ -39,7 +39,7 @@ namespace Example.UI
 
         private void Wire()
         {
-            var kernel = new StandardKernel(new CqrsModule(), new ServicesModule());
+            var kernel = KernelFactory.ConfigureKernel();
             var controllerFactory = new NinjectControllerFactory(kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }

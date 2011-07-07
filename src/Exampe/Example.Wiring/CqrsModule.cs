@@ -4,6 +4,7 @@ using Cqrs.Domain;
 using Cqrs.EventStore;
 using Cqrs.EventStore.MsSql;
 using Cqrs.Eventing;
+using Example.Denormalizers;
 using Example.Menu;
 using Ninject.Modules;
 
@@ -32,8 +33,9 @@ namespace Example.Wiring
         private void RegisterHandlers()
         {
             new HandlerRegistration(Kernel)
-                .RegisterHandlers(typeof(ItemCommandHandler).Assembly)
-                .RegisterHandlers(typeof(ServicesModule).Assembly);
+                .RegisterHandlers(typeof (ItemCommandHandler).Assembly)
+                .RegisterHandlers(typeof (ServicesModule).Assembly)
+                .RegisterHandlers(typeof (MenuList).Assembly);
         }
 
         private void SetupCommandSender()

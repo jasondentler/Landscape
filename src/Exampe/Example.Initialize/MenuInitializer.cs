@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Cqrs.Commanding;
 using Example.Menu;
+using log4net;
 
 namespace Example.Initialize
 {
     public class MenuInitializer : IInitializer
     {
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly ICommandSender _commandSender;
 
         public MenuInitializer(ICommandSender commandSender)
@@ -16,6 +20,9 @@ namespace Example.Initialize
 
         public void Initialize()
         {
+
+            Log.Info("Adding menu items and customizations.");
+
             var milk = new[] { "skim", "semi", "whole" };
             var shots = new[] { "single", "double", "triple" };
             var size = new[] { "small", "medium", "large" };
