@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Cqrs.Commanding;
 using Example.Menu;
 
 namespace Example.Initialize
 {
-    public class MenuInitializer
+    public class MenuInitializer : IInitializer
     {
         private readonly ICommandSender _commandSender;
 

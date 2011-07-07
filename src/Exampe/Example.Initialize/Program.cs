@@ -10,16 +10,12 @@ namespace Example.Initialize
 
         private static void Main(string[] args)
         {
-            new Program().Run();
-        }
-
-        private void Run()
-        {
             var kernel = Wire();
+            kernel.Get<EventStoreInitializer>().Initialize();
             kernel.Get<MenuInitializer>().Initialize();
         }
 
-        private IKernel Wire()
+        private static IKernel Wire()
         {
             var asm = typeof (Example.Wiring.CqrsModule).Assembly;
             var modules = asm.GetTypes()
@@ -29,8 +25,6 @@ namespace Example.Initialize
                 .ToArray();
             return new StandardKernel(modules);
         }
-
-
 
     }
 }
