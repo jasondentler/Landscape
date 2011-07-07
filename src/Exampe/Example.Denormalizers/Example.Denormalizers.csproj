@@ -34,6 +34,15 @@
     <Reference Include="Cqrs">
       <HintPath>..\..\..\lib\cqrs\Cqrs.dll</HintPath>
     </Reference>
+    <Reference Include="Simple.Data, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Simple.Data.Core.0.6.8\lib\net40\Simple.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.Ado, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Simple.Data.Ado.0.6.8\lib\net40\Simple.Data.Ado.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.SqlServer, Version=0.6.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Simple.Data.SqlServer.0.6.8\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -44,15 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReadModel.cs" />
     <Compile Include="MenuList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Example.Events\Example.Events.csproj">
       <Project>{3CA57348-CBBE-454D-AB4B-B9890DD6C2F1}</Project>
       <Name>Example.Events</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -62,4 +74,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="BeforeBuild">
+    <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="&quot;$(SolutionDir)..\Tools\nuget.exe&quot; install &quot;$(ProjectDir)packages.config&quot; -o &quot;$(SolutionDir)Packages&quot;" />
+  </Target>
 </Project>

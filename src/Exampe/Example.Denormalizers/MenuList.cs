@@ -1,29 +1,21 @@
-﻿using System.Collections.Generic;
-using Cqrs;
+﻿using Cqrs;
 using Example.Menu;
 
 namespace Example.Denormalizers
 {
 
-    public class MenuList :
-        IHandle<ItemAdded>
+    public class MenuList : ReadModel 
     {
-        private readonly ReadModel _readModel;
 
-        public MenuList(ReadModel readModel)
+        private class Denormalizer : ReadModel,
+            IHandle<ItemAdded>
         {
-            _readModel = readModel;
+            public void Handle(ItemAdded message)
+            {
+                Db.MenuList.Insert(Id: message.MenuItemId, Name: message.Name, Price: message.Price);
+            }
         }
 
-        public void Handle(ItemAdded message)
-        {
-            _readModel.Insert("MenuList", new Dictionary<string, object>()
-                                              {
-                                                  {"MenuItemId", message.MenuItemId},
-                                                  {"Name", message.Name},
-                                                  {"Price", message.Price}
-                                              });
-        }
     }
 
 }
