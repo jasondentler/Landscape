@@ -79,6 +79,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +146,10 @@
     <ProjectReference Include="..\Example.Commands\Example.Commands.csproj">
       <Project>{C25F3937-A414-4397-80FB-9802CF034E5C}</Project>
       <Name>Example.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Example.Wiring\Example.Wiring.csproj">
+      <Project>{8F66FAF6-0602-455E-9766-8DE34AB62F71}</Project>
+      <Name>Example.Wiring</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
