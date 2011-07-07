@@ -4,6 +4,9 @@ bin
 *.csproj.user
 *.suo
 
+#nuget packages
+src/Packages*
+
 # Resharper
 *ReSharper*
 *resharper*
@@ -17,3 +20,4 @@ bin
 *.swp
 *.user
 *.DS_Store
+
