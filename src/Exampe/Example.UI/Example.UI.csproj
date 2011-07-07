@@ -38,11 +38,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AjaxMin.4.19.4141.18463\lib\AjaxMin.dll</HintPath>
     </Reference>
+    <Reference Include="Cqrs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\cqrs\Cqrs.dll</HintPath>
+    </Reference>
     <Reference Include="Jurassic">
       <HintPath>..\..\packages\Knapsack.0.4.1\lib\net40\Jurassic.dll</HintPath>
     </Reference>
     <Reference Include="Knapsack">
       <HintPath>..\..\packages\Knapsack.0.4.1\lib\net40\Knapsack.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\..\lib\cqrs\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -134,6 +141,10 @@
     <ProjectReference Include="..\..\Landscape.Core\Landscape.Core.csproj">
       <Project>{00EA1804-0946-4022-9A1D-1904E6DDCC83}</Project>
       <Name>Landscape.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Example.Commands\Example.Commands.csproj">
+      <Project>{C25F3937-A414-4397-80FB-9802CF034E5C}</Project>
+      <Name>Example.Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
