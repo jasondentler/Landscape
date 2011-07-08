@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Initialize", "Examp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ReadModel", "Example\Example.ReadModel\Example.ReadModel.csproj", "{8F66BE15-F439-4C12-A97B-403D860B350A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.ReadModel.Tests", "Example\Example.ReadModel.Tests\Example.ReadModel.Tests.csproj", "{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,16 @@ Global
 		{8F66BE15-F439-4C12-A97B-403D860B350A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8F66BE15-F439-4C12-A97B-403D860B350A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8F66BE15-F439-4C12-A97B-403D860B350A}.Release|x86.ActiveCfg = Release|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,5 +213,6 @@ Global
 		{6209C40D-13C3-46EE-9014-7287C440395B} = {ED33E20C-D512-4CCB-A817-9C93F1A15076}
 		{8F66BE15-F439-4C12-A97B-403D860B350A} = {ED33E20C-D512-4CCB-A817-9C93F1A15076}
 		{26ABAC41-2681-4A63-89EB-24430636D5A7} = {2BC5566A-BFD6-4CAD-B239-1568656FF739}
+		{A988EB3E-F001-4094-87A8-BE8C1EC1C91D} = {2BC5566A-BFD6-4CAD-B239-1568656FF739}
 	EndGlobalSection
 EndGlobal

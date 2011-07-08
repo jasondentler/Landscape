@@ -12,6 +12,10 @@ namespace Example.Wiring
         static KernelFactory()
         {
             log4net.Config.XmlConfigurator.Configure();
+
+            // Make an explicit reference to the Simple.Data.SqlServer.dll 
+            // so that it will get included in the final build output.
+            var t = typeof(Simple.Data.SqlServer.SqlConnectionProvider);
         }
 
         public static IKernel ConfigureKernel()

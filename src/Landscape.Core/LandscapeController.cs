@@ -15,6 +15,14 @@ namespace Landscape.Core
         }
 
         [NonAction]
+        public virtual ActionResult JsonOrView(object model)
+        {
+            if (Request.IsAjaxRequest())
+                return Json(model);
+            return View(model);
+        }
+
+        [NonAction]
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {
             return new CustomJsonResult

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace Landscape.Core
 {
@@ -10,15 +11,21 @@ namespace Landscape.Core
 
         public static MvcHtmlString RenderViewModel(this HtmlHelper html)
         {
-            var model = html.ViewData.Model as IJsonSerializable;
+            var model = html.ViewData.Model;
             if (model == null)
                 return new MvcHtmlString(null);
+
+            var customSerializedModel = html.ViewData.Model as IJsonSerializable;
+
+            var serializedModel = customSerializedModel != null
+                                      ? customSerializedModel.ToJson()
+                                      : new MvcHtmlString(JsonConvert.SerializeObject(model));
 
             var output = new StringBuilder();
             output.AppendLine();
             output.AppendLine(@"<script type=""text/javascript"">");
             output.Append("   var model = ");
-            output.Append(model.ToJson());
+            output.Append(serializedModel);
             output.AppendLine(";");
             output.AppendLine(@"</script>");
             return new MvcHtmlString(output.ToString());
