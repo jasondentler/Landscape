@@ -5,7 +5,7 @@ namespace Landscape.Core
     public interface IJsonSerializable
     {
 
-        HtmlString ToJson();
+        string ToJson();
 
     }
 }

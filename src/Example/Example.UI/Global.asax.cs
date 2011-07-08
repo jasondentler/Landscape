@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using Example.Wiring;
-using Ninject;
 
 namespace Example.UI
 {
@@ -22,7 +21,7 @@ namespace Example.UI
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Menu", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

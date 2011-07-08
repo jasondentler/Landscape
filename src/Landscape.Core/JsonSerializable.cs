@@ -5,10 +5,9 @@ namespace Landscape.Core
 {
     public abstract class JsonSerializable : IJsonSerializable
     {
-        public HtmlString ToJson()
+        public string ToJson()
         {
-            var data = JsonConvert.SerializeObject(this);
-            return new HtmlString(data);
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

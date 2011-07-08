@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 
@@ -12,14 +13,7 @@ namespace Landscape.Core
         public static MvcHtmlString RenderViewModel(this HtmlHelper html)
         {
             var model = html.ViewData.Model;
-            if (model == null)
-                return new MvcHtmlString(null);
-
-            var customSerializedModel = html.ViewData.Model as IJsonSerializable;
-
-            var serializedModel = customSerializedModel != null
-                                      ? customSerializedModel.ToJson()
-                                      : new MvcHtmlString(JsonConvert.SerializeObject(model));
+            var serializedModel = SerializeModel(model);
 
             var output = new StringBuilder();
             output.AppendLine();
@@ -29,6 +23,24 @@ namespace Landscape.Core
             output.AppendLine(";");
             output.AppendLine(@"</script>");
             return new MvcHtmlString(output.ToString());
+        }
+
+        private static HtmlString SerializeModel(object model)
+        {
+            if (model == null)
+                return new MvcHtmlString("null");
+
+            var customSerializedModel = model as IJsonSerializable;
+
+            var serializedModel = customSerializedModel != null
+                                      ? customSerializedModel.ToJson()
+                                      : JsonConvert.SerializeObject(model);
+            
+            if (serializedModel.StartsWith("["))
+            {
+                serializedModel = string.Format("{{items: {0}}}", serializedModel);
+            }
+            return new MvcHtmlString(serializedModel);
         }
 
         public static void ReferenceTemplate(this HtmlHelper html, string id, string appRelativeUrl)

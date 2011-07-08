@@ -120,6 +120,7 @@
     <Content Include="Styles\base\jquery.ui.tabs.css" />
     <Content Include="Styles\base\jquery.ui.theme.css" />
     <Content Include="Styles\Shared\Site.css" />
+    <Content Include="Templates\Menu\Index.tmpl.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -134,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -148,10 +148,17 @@
       <Project>{C25F3937-A414-4397-80FB-9802CF034E5C}</Project>
       <Name>Example.Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Example.ReadModel\Example.ReadModel.csproj">
+      <Project>{8F66BE15-F439-4C12-A97B-403D860B350A}</Project>
+      <Name>Example.ReadModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Example.Wiring\Example.Wiring.csproj">
       <Project>{8F66FAF6-0602-455E-9766-8DE34AB62F71}</Project>
       <Name>Example.Wiring</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

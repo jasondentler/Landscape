@@ -12,7 +12,7 @@ namespace Example.ReadModel
         public IEnumerable<Item> GetAllItems(int pageNumber, int itemsPerPage)
         {
             var skip = (pageNumber - 1)*itemsPerPage;
-            return Db.MenuList.All().OrderByName().Skip(skip).Take(itemsPerPage).Cast<Item>();
+            return Db.MenuList.All().OrderByName().Skip(skip).Take(itemsPerPage).ToArray<Item>();
         }
 
         public class Item 
