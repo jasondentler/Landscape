@@ -73,6 +73,7 @@
     <Compile Include="BaseQueryFixture.cs" />
     <Compile Include="ConventionDenormalizerFixture.cs" />
     <Compile Include="ConventionQueryFixture.cs" />
+    <Compile Include="MenuListTests\RetrieveSecondPageOfMenu.cs" />
     <Compile Include="MenuListTests\RetrievePageOfMenu.cs" />
     <Compile Include="MenuListTests\WhenAnItemIsAdded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

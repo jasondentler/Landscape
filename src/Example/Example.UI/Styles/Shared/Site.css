@@ -1,9 +1,15 @@
+@import url("../base/jquery.ui.all.css");
+
 body
 {
+    background-position: 350px 350px;
     font-size: .85em;
-    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    font-family: Helvetica, sans-serif;
     color: #232323;
-    background-color: #fff;
+    background-color: #FFF;
+    background-image: url('../../Images/CoffeeRing.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 header,
@@ -44,6 +50,10 @@ textarea
     margin:0.5em 0 0 0;
 }
 
+a
+{
+    color: #BE631F;
+}
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
@@ -72,4 +82,64 @@ textarea
 .validation-summary-valid
 {
     display: none;
+}
+
+.pageLinks li
+{
+    list-style-type: none;
+    display: inline-block;
+}
+
+header img
+{
+    float: left;
+    vertical-align: middle;
+}
+
+header h1
+{
+    padding-left: 0.5em;
+    font-weight: normal;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    display: inline;
+}
+
+header h2
+{
+    padding-left: 0.5em;
+    font-weight: normal;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    color: #BE631F;
+    display: inline;
+}
+
+header li
+{
+    font-family: Helvetica, sans-serif;
+    font-variant: small-caps;
+    display: inline-block;
+    padding: 0.5em 1.5em 3em 1.5em;
+    font-size: 0.9em;
+}
+
+header li a
+{
+    font-size: 1.5em;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+header li a:hover
+{
+    color: #BE631F;
+}
+
+footer
+{
+    bottom: 0;
+    position: fixed;
+    font-size: 0.7em;    
 }

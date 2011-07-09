@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Example.Menu;
 using NUnit.Framework;
@@ -9,7 +8,7 @@ namespace Example.ReadModel.Tests.MenuListTests
 {
 
     [TestFixture]
-    public class RetrievePageOfMenu : 
+    public class RetrieveSecondPageOfMenu : 
         ConventionQueryFixture<MenuList.Model, MenuList>
     {
 
@@ -23,7 +22,7 @@ namespace Example.ReadModel.Tests.MenuListTests
         protected override MenuList.Model WhenQuerying()
         {
             var menuList = new MenuList();
-            return menuList.GetAllItems(1, 2);
+            return menuList.GetAllItems(2, 2);
         }
 
         [Test]
@@ -33,15 +32,19 @@ namespace Example.ReadModel.Tests.MenuListTests
         }
 
         [Test]
-        public void ThenOnlyTwoItemsAreReturned()
+        public void ThenOnlyOnetemIsReturned()
         {
-            Result.Items.Count().Should().Be.EqualTo(2);
+            Result.Items.Count().Should().Be.EqualTo(1);
         }
 
         [Test]
-        public void ThenTheItemsAreInAlphabeticalOrder()
+        public void ThenTheLastItemIsReturned()
         {
-            Result.Items.Select(item => item.Name).Should().Be.OrderedAscending();
+            var expected = GivenEvents.Cast<ItemAdded>().OrderBy(e => e.Name).Last();
+            var actual = Result.Items.Single();
+            actual.Name.Should().Be.EqualTo(expected.Name);
+            actual.Id.Should().Be.EqualTo(expected.MenuItemId);
+            actual.Price.Should().Be.EqualTo(expected.Price);
         }
 
         [Test]
@@ -51,9 +54,9 @@ namespace Example.ReadModel.Tests.MenuListTests
         }
 
         [Test]
-        public void ThenPageOneIsReturned()
+        public void ThenPageTwoIsReturned()
         {
-            Result.PageNumber.Should().Be.EqualTo(1);
+            Result.PageNumber.Should().Be.EqualTo(2);
         }
 
         [Test]

@@ -28,7 +28,7 @@ namespace Landscape.Core
         private static HtmlString SerializeModel(object model)
         {
             if (model == null)
-                return new MvcHtmlString("null");
+                return new MvcHtmlString("{}");
 
             var customSerializedModel = model as IJsonSerializable;
 

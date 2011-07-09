@@ -1,11 +1,17 @@
-﻿<h1>It's a great day at CQRSBucks. May I take your order?</h1>
+﻿{{tmpl '#header'}}
 <div>
-    <fieldset>
-        <label>Menu</label>
-        <ul>
-        {{each(i,item) items}}
-            <li>${item.Name} - $${item.Price}</li>
+    <ul>
+        {{each(i,item) Items}}
+        <li>${item.Name} - ${formatCurrency(item.Price)}</li>
         {{/each}}
-        </ul>
-    </fieldset>
+    </ul>
+    <ul class="pageLinks">
+        <li>Page</li>
+        {{each(i, pageNumber) pageIndexer(PageCount)}} {{if (pageNumber == PageNumber)}}
+        <li>${pageNumber}</li>
+        {{else}}
+        <li><a href="?pageNumber=${pageNumber}">${pageNumber}</a></li>
+        {{/if}} {{/each}}
+    </ul>
 </div>
+{{tmpl '#footer'}} 

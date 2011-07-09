@@ -1,5 +1,7 @@
-﻿@model IEnumerable<MenuList.Item>
-@{
+﻿@{
     Html.ReferenceTemplate("template","Templates/Menu/Index.tmpl.html");
+    Html.ReferenceScript("Scripts/Menu/Index/Index.js");
 }
-<div data-bind="template: 'template'"></div>
+<div data-bind="template: 'template'">
+    Please wait. Loading.
+</div>

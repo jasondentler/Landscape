@@ -1,5 +1,8 @@
 ﻿@{
-    Html.ReferenceScript("Scripts/libs/landscape.js");
+    Html.ReferenceStylesheet("Styles/Shared/Site.css");
+    Html.ReferenceScript("Scripts/lib/landscape.js");
+    Html.ReferenceTemplate("header", "Templates/Shared/Header.tmpl.html");
+    Html.ReferenceTemplate("footer", "Templates/Shared/Footer.tmpl.html");
 }
 <!DOCTYPE html>
 <html>
@@ -10,7 +13,6 @@
     @Html.RenderTemplates()
     @Html.RenderViewModel()
 </head>
-
 <body>
     @RenderBody()
 </body>
