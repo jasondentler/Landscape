@@ -2,7 +2,6 @@
 
 body
 {
-    background-position: 350px 350px;
     font-size: .85em;
     font-family: Helvetica, sans-serif;
     color: #232323;
@@ -10,6 +9,7 @@ body
     background-image: url('../../Images/CoffeeRing.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
+    background-position: 350px 350px;
 }
 
 header,
@@ -141,5 +141,16 @@ footer
 {
     bottom: 0;
     position: fixed;
-    font-size: 0.7em;    
+    font-size: 0.7em;
+    z-index: -1;
+}
+
+img.wrapText {
+    float: left;
+    padding-right: 1em;
+}
+
+#content
+{
+    background-color: white;
 }
