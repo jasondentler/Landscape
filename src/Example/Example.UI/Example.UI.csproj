@@ -217,9 +217,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="BeforeBuild">
-    <Exec Condition="Exists('$(SolutionDir)LandscapeJs\Scripts\landscape.js')" Command="copy &quot;$(SolutionDir)LandscapeJs\Scripts\landscape.js&quot;  &quot;$(ProjectDir)Scripts\libs&quot;" />
-  </Target>
-  <Target Name="BeforeBuild">
+    <Exec Condition="Exists('$(SolutionDir)LandscapeJs\Scripts\landscape.js')" Command="copy &quot;$(SolutionDir)LandscapeJs\Scripts\landscape.js&quot;  &quot;$(ProjectDir)Scripts\lib&quot;" />
     <Exec Condition="Exists('$(ProjectDir)packages.config')" Command="&quot;$(SolutionDir)..\Tools\nuget.exe&quot; install &quot;$(ProjectDir)packages.config&quot; -o &quot;$(SolutionDir)Packages&quot;" />
   </Target>
 </Project>
