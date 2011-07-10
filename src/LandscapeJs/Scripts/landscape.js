@@ -29,7 +29,7 @@ $(function () {
         if (items.length == 0)
             return $.Deferred().resolve().promise();
 
-        ko.utils.arrayForEach(items, function(item) {
+        ko.utils.arrayForEach(items, function (item) {
             var url = $(item).attr('src');
             var request = $.get(url);
 
