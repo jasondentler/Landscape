@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\lib\cqrs\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\..\..\lib\cqrs\Ninject.dll</HintPath>

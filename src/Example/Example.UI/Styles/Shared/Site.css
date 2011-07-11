@@ -6,10 +6,6 @@ body
     font-family: Helvetica, sans-serif;
     color: #232323;
     background-color: #FFF;
-    background-image: url('../../Images/CoffeeRing.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: 350px 350px;
 }
 
 header,
@@ -139,11 +135,19 @@ header li a:hover
 
 footer
 {
-    bottom: 0;
-    position: fixed;
-    font-size: 0.7em;
-    z-index: -1;
+	bottom: 0;
+	position: fixed;
+	font-size: 0.7em;
+	z-index: -1;
+	padding: 1em;
 }
+
+footer img
+{
+	float: left;
+	padding-right: 1em;
+}
+
 
 img.wrapText {
     float: left;
@@ -154,3 +158,4 @@ img.wrapText {
 {
     background-color: white;
 }
+

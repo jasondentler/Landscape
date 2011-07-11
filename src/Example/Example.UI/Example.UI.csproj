@@ -91,7 +91,6 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Images\BaristaAmericanGothic.jpg" />
-    <Content Include="Images\CoffeeRing.jpg" />
     <Content Include="Images\credits.txt" />
     <Content Include="Images\Logo.jpg" />
     <Content Include="Scripts\lib\jquery-1.6.2.js" />
